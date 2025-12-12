@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
+
 
 :root {
   --background: #ffffff;
@@ -9,6 +11,14 @@
   font-family: "wix";
   src: url('/fonts/file.woff2') format('woff2'),
        url('/fonts/file.woff') format('woff');
+}
+
+.playfair {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 84px;
 }
 
 .wix {

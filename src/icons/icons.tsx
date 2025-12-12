@@ -3,7 +3,7 @@ export const Apple = () => {
     <svg
       preserveAspectRatio="xMidYMid meet"
       fill="white"
-      className="w-40 h-20"
+      className="w-30 h-16"
       data-bbox="130.119 117.17 138.561 165.446"
       viewBox="130.119 117.17 138.561 165.446"
       xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ export const Victoria = ()=> {
     return (
         <svg preserveAspectRatio="xMidYMid meet" 
         fill="white"
-      className="w-40 h-20"
+      className="w-30 h-16"
         data-bbox="70.67 96.107 259.696 210.223" viewBox="70.67 96.107 259.696 210.223" xmlns="http://www.w3.org/2000/svg" data-type="shape" role="presentation" aria-hidden="true" aria-label="">
     <g>
         <path d="M209.08 306.32c2.44-2.77 2.52-6.11 2.47-9.55-.09-6.46-.03-12.92-.03-19.36-1.02-.77-1.86-1.4-2.74-2.06.34-.33.54-.67.73-.67 3.58 0 7.18-.17 10.74.14 8.37.71 11.21 6.96 6.49 13.98-.63.94-1.33 1.84-2.25 3.12 4.21 4.7 6.58 11.14 13.64 12.93.23.06.25.96.36 1.48h-5.19c-6.45-2.11-8.42-8.73-12.96-13.03-1.43-.08-2.94-.17-4.62-.27v9.74c1.2 1.48 2.04 2.52 2.88 3.56h-9.52Zm6.59-16.1c3.14.77 5.95 1.58 8.03-1.4 1.49-2.14 1.34-7.25-.25-9.43-1.97-2.7-4.57-3.05-7.77-1.97v12.8Z"></path>
@@ -54,7 +54,7 @@ export const Marot = ()=> {
     return (
         <svg preserveAspectRatio="xMidYMid meet" 
         fill="white"
-        className="w-40 h-20"
+        className="w-30 h-16"
         data-bbox="21.14 143.42 357.8 113.453" viewBox="21.14 143.42 357.8 113.453" xmlns="http://www.w3.org/2000/svg" data-type="shape" role="presentation" aria-hidden="true" aria-label="">
     <g>
         <path d="M94.69 143.45c.14.43.23.88.42 1.29 11.35 24.45 22.72 48.89 34.08 73.34.23.49.45.99.72 1.59-.46.04-.78.1-1.09.1-6.06 0-12.12-.02-18.18.03-1.01 0-1.34-.48-1.7-1.26-4.22-9.11-8.46-18.21-12.69-27.31-.21-.45-.45-.89-.79-1.55-1.72 3.69-3.37 7.16-4.93 10.66-.16.36.07.98.27 1.41 2.53 5.49 5.09 10.96 7.64 16.44.19.42.37.84.62 1.4-.45.05-.78.12-1.12.12-6.01 0-12.03-.02-18.04.03-.95 0-1.37-.32-1.76-1.16-4.22-9.16-8.49-18.3-12.75-27.44-.21-.45-.44-.89-.75-1.51-2.53 5.42-4.85 10.69-7.43 15.84-1.83 3.64-3.78 7.27-6.1 10.62-5.93 8.59-14.16 11.51-24.28 9.05-1.93-.47-3.79-1.23-5.69-1.85v-.28c.23-.38.51-.75.7-1.16 1.83-3.91 3.65-7.83 5.48-11.74.55-1.17 1.11-2.33 1.68-3.53.27.07.45.12.62.17 9.46 2.7 15.88.23 21.09-8.1.1-.16.21-.31.29-.47 2.94-6 5.9-12 8.79-18.02.19-.39-.01-1.06-.22-1.52-2.48-5.4-5-10.78-7.51-16.17-1.72-3.69-3.44-7.39-5.2-11.19 3.49-1.63 6.9-3.2 10.3-4.81 2.09-.99 4.15-2.03 6.23-3.04h.28c7.32 15.71 14.63 31.41 22.08 47.4 1.65-3.53 3.11-6.73 4.65-9.9.43-.89.39-1.59-.03-2.47-4.03-8.58-8.02-17.17-12.01-25.76-.21-.44-.38-.91-.59-1.43 2.79-1.31 5.49-2.54 8.17-3.83 2.75-1.32 5.48-2.68 8.22-4.02h.56Z"></path>
@@ -87,7 +87,7 @@ export const Marot = ()=> {
 export const Netflix = ()=> {
     return (
         <svg preserveAspectRatio="xMidYMid meet" 
-        className="w-40 h-20"
+        className="w-30 h-16"
         fill="white"
         data-bbox="30.697 153.649 339.613 93.041" viewBox="30.697 153.649 339.613 93.041" xmlns="http://www.w3.org/2000/svg" data-type="shape" role="presentation" aria-hidden="true" aria-label="">
     <g>
@@ -107,7 +107,7 @@ export const Netflix = ()=> {
 export const TrustPilot = ()=> {
     return (
         <svg preserveAspectRatio="xMidYMid meet" 
-        className="w-40 h-20"
+        className="w-30 h-16"
         fill="white"
         data-bbox="21.19 156.08 357.61 87.85" viewBox="21.19 156.08 357.61 87.85" xmlns="http://www.w3.org/2000/svg" data-type="tint" role="presentation" aria-hidden="true" aria-label="">
     <g>
@@ -122,7 +122,7 @@ export const TrustPilot = ()=> {
 export const Naked = ()=> {
     return (
         <svg preserveAspectRatio="xMidYMid meet" 
-        className="w-40 h-20"
+        className="w-30 h-16"
         fill="white"
         data-bbox="15.07 154.333 377.009 92.021" viewBox="15.07 154.333 377.009 92.021" xmlns="http://www.w3.org/2000/svg" data-type="shape" role="presentation" aria-hidden="true" aria-label="">
     <g>

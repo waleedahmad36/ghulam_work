@@ -28,21 +28,24 @@ const HorizontalSliderOnScroll = ({ items = [], height = "70vh" }) => {
     });
 
     const totalWidth = inner.scrollWidth;
-
-    // ⭐ NEW: Start the slider slightly in view (center-ish)
-    const initialOffset = window.innerWidth / 2; 
+    const viewportWidth = window.innerWidth;
+    
+    // Calculate the exact center position
+    // We want the center of the first item to align with the center of the viewport
+    const firstItemWidth = inner.children[0]?.offsetWidth || 0;
+    const initialOffset = (viewportWidth / 2) - (firstItemWidth / 2);
+    
     gsap.set(inner, { x: initialOffset });
 
     // Create animation
     const st = ScrollTrigger.create({
       trigger: container,
-      start: "top 60%", // ⭐ NEW: Start when section is ~10% visible
+      start: "top 60%",
       end: "bottom top",
-      scrub: 1,
+      scrub: 3, // Increased for smoother, slower scrolling
       onUpdate: (self) => {
-        // ⭐ NEW formula uses initialOffset
-        const xPos = initialOffset - (self.progress * (initialOffset + totalWidth));
-        gsap.set(inner, { x: xPos });
+        const xPos = initialOffset - (self.progress * (initialOffset + totalWidth * 0.7)); // Reduced from 0.8 to 0.7 for slower movement
+        gsap.set(inner, { x: xPos, ease: "power1.out" }); // Added easing for extra smoothness
       },
     });
 
@@ -74,7 +77,7 @@ const HorizontalSliderOnScroll = ({ items = [], height = "70vh" }) => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden bg-black"
       style={{ height }}
     >
       <div

@@ -49,7 +49,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full h-screen relative flex justify-center items-center">
+        <div ref={containerRef} className="w-full h-screen relative flex justify-center items-center overflow-hidden">
       {/* Background Image (unchanged) */}
       <div className="absolute inset-0">
         <Image src="/hero.avif" alt="" fill className="relative" />
@@ -62,11 +62,11 @@ const Hero = () => {
         muted
         loop
         className="absolute top-0 left-0 w-full h-full object-cover"
-        style={{ opacity: 0 }} // start hidden to avoid flash
+        style={{ opacity: 0 }} 
       />
 
       {/* Overlay (unchanged) */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black/30"></div>
+      {/* <div className="absolute top-0 left-0 w-full h-full bg-black/30"></div> */}
 
       {/* Center content - keep markup but wrap to control initial hidden state */}
       <div className="relative z-30 text-center flex justify-center items-center flex-col gap-6 px-2 lg:px-0">
@@ -80,17 +80,17 @@ const Hero = () => {
 
         {/* Heading: hidden by default and slightly shifted up so animation brings it in */}
         <h1
-          className="hero-heading wix text-3xl lg:text-7xl max-w-6xl font-extrabold tracking-wider"
+          className="hero-heading playfair text-3xl lg:text-7xl max-w-6xl font-extrabold tracking-normal leading-22"
           style={{ opacity: 0, transform: "translateY(0px)" }}
         >
-          <span className="wixui-rich-text__text ">BIG MOMENTS FOR DISRUPTIVE BRANDS</span>
+          <span className=" leading-0.5 ">BIG MOMENTS FOR DISRUPTIVE BRANDS</span>
         </h1>
       </div>
 
-      {/* Subtext and Arrow are separate elements and both hidden by default */}
+      
       <div className="flex flex-col items-center gap-1 absolute bottom-6">
         <span
-          className="hero-subtext text-2xl text-slate-300 mt-8 mx-2 lg:mx-0 text-center"
+          className="hero-subtext text-[18.44px] text-slate-200 mt-8 mx-2 lg:mx-0 text-center tracking-wide font-bold"
           style={{ opacity: 0, transform: "translateY(0px)" }}
         >
           EXPLORE OUR ONE OF A KIND APPROACH
@@ -106,10 +106,10 @@ const Hero = () => {
       </div>
 
       {/* Side Brandings unchanged */}
-      <div className="hidden lg:block z-40 absolute left-0">
+      <div className="hidden lg:block z-40 absolute -left-5">
         <HeroLeftBranding />
       </div>
-      <div className="hidden lg:block z-40 absolute right-0">
+      <div className="hidden lg:block z-40 absolute -right-5">
         <HeroRightBranding />
       </div>
     </div>
@@ -126,7 +126,7 @@ export const ArrowDown = () => {
       fill="white"
       data-bbox="46.141 20.63 107.717 158.741"
       viewBox="46.141 20.63 107.717 158.741"
-      height="50"
+      height="40"
       width="50"
       xmlns="http://www.w3.org/2000/svg"
       data-type="shape"

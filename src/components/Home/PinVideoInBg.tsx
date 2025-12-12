@@ -25,10 +25,11 @@ const PinVideoInBg = () => {
     sections.forEach((section) => {
       gsap.fromTo(
         section,
-        { opacity: 0.3, y: 30 },
+        { opacity: 0.3, y: 30, scale: 1 },
         {
           opacity: 1,
           y: 0,
+          scale: 1,
           scrollTrigger: {
             trigger: section,
             start: "top 70%",
@@ -37,17 +38,27 @@ const PinVideoInBg = () => {
           },
         }
       );
+
+      // Scale down text smoothly as it moves up and out of viewport
+      gsap.to(section, {
+        scale: 0.85,
+        opacity: 0.7,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 30%",
+          end: "top -10%",
+          scrub: 2,
+        },
+      });
     });
 
-    // Control video visibility based on container position
+    // Pin video to container boundaries
     ScrollTrigger.create({
       trigger: container,
-      start: "top 30%",
-      end: "bottom top",
-      onEnter: () => gsap.to(video, { opacity: 1, duration: 0.3 }),
-      onLeave: () => gsap.to(video, { opacity: 0, duration: 0.3 }),
-      onEnterBack: () => gsap.to(video, { opacity: 1, duration: 0.3 }),
-      onLeaveBack: () => gsap.to(video, { opacity: 0, duration: 0.3 }),
+      start: "top top",
+      end: "bottom bottom",
+      pin: video,
+      pinSpacing: false,
     });
 
     return () => {
@@ -56,37 +67,41 @@ const PinVideoInBg = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className='w-full min-h-[500vh] relative flex flex-col justify-start px-24 gap-[80vh] py-40 overflow-hidden'>
+    <div ref={containerRef} className='w-full min-h-[300vh] relative flex flex-col justify-start px-24 gap-[30vh] py-40' style={{fontFamily: '"Helvetica Neue", "Arial Narrow", Arial, sans-serif'}}>
       
-      <div className='text-section relative z-10 text-center flex flex-col items-center justify-center'>
-        <span className="text-6xl wix text-white">A GLOBAL 360° <br/>CREATIVE&nbsp;</span>
-        <span className="text-5xl font-bold text-white">&nbsp;AGENCY   x  STUDIO</span>
-        <p className="font_7 wixui-rich-text__text text-white">SPARKING STAGGERING BRAND MOVEMENTS IN ASTONISHING WAYS</p>
-      </div>
-      
-      <div className='text-section relative z-10 text-center flex flex-col items-center justify-center'>
-        <h3><span className="text-2xl shadow-2xl font-extrabold text-white">"Staying on budget, while ensuring quality, The Boathouse <br/> boosted my target KPIs by 10x in the past year."</span></h3>
-        <p className="text-slate-200">OLLIE CMO</p>
-      </div>
-      
-      <div className='text-section relative z-10 text-center flex flex-col items-end justify-center'>
-        <div>
-          <span className="text-2xl shadow-2xl font-extrabold text-white">"A one of a kind process with unparalleled results."</span>
-          <p className="text-slate-200 text-center">RXSENSE | PRESIDENT + CMO</p>
+      <div className='text-section relative z-10 text-center flex flex-col items-center justify-center px-4'>
+        <div className="max-w-6xl">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-white tracking-wider mb-1">A GLOBAL 360° CREATIVE</h2>
+          <h2 className="text-5xl md:text-6xl lg:text-8xl font-bold text-white tracking-wide mb-4">AGENCY <span className="font-light">x</span> STUDIO</h2>
+          <p className="text-3xl font-bold  md:text-sm text-white tracking-widest mt-6">SPARKING STAGGERING BRAND MOVEMENTS IN ASTONISHING WAYS</p>
         </div>
       </div>
       
-      <div className='text-section relative z-10 text-center hidden md:flex flex-col lg:items-start justify-center'>
-        <div>
-          <h3 className="md:max-w-4xl xl:max-w-5xl"><span className="text-2xl shadow-2xl font-extrabold text-white ">"The Boathouse&nbsp;is&nbsp;our&nbsp;creative agency&nbsp;Navy Seals, who find a way to get it done in an exceptional manner when no one else could."</span></h3>
-          <p className="text-slate-200">APPLE | COMMUNICATIONS &amp; BRAND MARKETING</p>
+      <div className='text-section relative z-10  flex flex-col items-center justify-center px-8'>
+        <div className="max-w-5xl">
+          <h3 className="text-2xl md:text-3xl lg:text-4xl font-light text-white leading-snug mb-4 text-center">"Staying on budget, while ensuring quality, The Boathouse boosted my target KPIs by 10x in the past year."</h3>
+          <p className="text-slate-300 text-xl md:text-sm tracking-wider mt-6 text-center">OLLIE CMO</p>
         </div>
       </div>
       
-      <div className='text-section relative z-10 text-center flex flex-col items-end justify-center'>
-        <div>
-          <h3 className="font_3 wixui-rich-text__text md:max-w-4xl xl:max-w-5xl"><span className="text-2xl shadow-2xl font-extrabold text-white">"They're like nothing I've ever experienced with other agency partners."</span></h3>
-          <p className="text-slate-200">APPLE | COMMUNICATIONS &amp; BRAND MARKETING</p>
+      <div className='text-section relative z-10 text-center flex flex-col items-end justify-center px-8'>
+        <div className="max-w-4xl">
+          <h3 className="text-2xl md:text-3xl lg:text-4xl font-light text-white leading-snug mb-4">"A one of a kind process with unparalleled results."</h3>
+          <p className="text-slate-300 text-center text-xs md:text-sm tracking-wider mt-6">RXSENSE | PRESIDENT + CMO</p>
+        </div>
+      </div>
+      
+      <div className='text-section relative z-10 text-center hidden md:flex flex-col lg:items-start justify-center px-8'>
+        <div className="max-w-4xl">
+          <h3 className="text-2xl md:text-3xl lg:text-4xl font-light text-white leading-snug mb-4 max-w-4xl">"The Boathouse is our creative agency Navy Seals, who find a way to get it done in an exceptional manner when no one else could."</h3>
+          <p className="text-slate-300 text-xs md:text-sm tracking-wider mt-6">APPLE | COMMUNICATIONS &amp; BRAND MARKETING</p>
+        </div>
+      </div>
+      
+      <div className='text-section relative z-10 text-center flex flex-col items-end justify-center px-8'>
+        <div className="max-w-5xl">
+          <h3 className="text-2xl md:text-3xl lg:text-4xl font-light text-white leading-snug mb-4 max-w-4xl">"They're like nothing I've ever experienced with other agency partners."</h3>
+          <p className="text-slate-300 text-xs md:text-sm tracking-wider mt-6">APPLE | COMMUNICATIONS &amp; BRAND MARKETING</p>
         </div>
       </div>
 
@@ -96,7 +111,7 @@ const PinVideoInBg = () => {
         autoPlay    
         muted
         loop
-        className="w-full h-screen object-cover fixed top-0 left-0 -z-10 opacity-0"
+        className="w-full h-screen object-cover absolute top-0 left-0 z-0"
       />
     </div>
   );

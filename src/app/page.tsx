@@ -11,7 +11,9 @@ export default function Home() {
     <Header/>
     <HorizontalSliderOnScroll/>
     <PinVideoInBg/>
-    <div  className="w-full h-screen " />
+    <div  className="w-full h-[40vh] bg-black text-3xl font-extrabold shadow-2xl flex flex-col text-center justify-center items-center " >
+      <h3>Next Section Continue</h3>
+    </div>
     </>
   );
 }
