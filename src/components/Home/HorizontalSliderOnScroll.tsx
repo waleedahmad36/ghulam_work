@@ -77,7 +77,7 @@ const HorizontalSliderOnScroll = ({ items = [], height = "70vh" }) => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full overflow-hidden bg-black"
+      className="relative w-full overflow-hidden "
       style={{ height }}
     >
       <div
