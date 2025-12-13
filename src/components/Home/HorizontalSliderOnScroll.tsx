@@ -11,7 +11,7 @@ if (typeof window !== "undefined") {
 
 const ICONS = [Apple, Victoria, Marot, Netflix, TrustPilot];
 
-const HorizontalSliderOnScroll = ({ items = [], height = "70vh" }) => {
+const HorizontalSliderOnScroll = ({ items = [], height = "85vh" }) => {
   const containerRef = useRef(null);
   const innerRef = useRef(null);
 
@@ -22,30 +22,49 @@ const HorizontalSliderOnScroll = ({ items = [], height = "70vh" }) => {
     const inner = innerRef.current;
     if (!container || !inner) return;
 
-    // Kill existing ScrollTriggers for this container
     ScrollTrigger.getAll().forEach((t) => {
       if (t.trigger === container) t.kill();
     });
 
     const totalWidth = inner.scrollWidth;
     const viewportWidth = window.innerWidth;
-    
-    // Calculate the exact center position
-    // We want the center of the first item to align with the center of the viewport
-    const firstItemWidth = inner.children[0]?.offsetWidth || 0;
-    const initialOffset = (viewportWidth / 2) - (firstItemWidth / 2);
-    
-    gsap.set(inner, { x: initialOffset });
 
-    // Create animation
+    // PERFECT left-alignment start like reference
+    const firstItemWidth = inner.children[0]?.offsetWidth || 0;
+    const initialOffset = viewportWidth / 2 - firstItemWidth / 2 - 70; // -70 = matches reference left shift
+
+    gsap.set(inner, { x: initialOffset, y: 0 });
+
     const st = ScrollTrigger.create({
       trigger: container,
-      start: "top 60%",
+      start: "top 72%", // EXACT reference feel
       end: "bottom top",
-      scrub: 3, // Increased for smoother, slower scrolling
+      scrub: 7.5, // heavy, slow, reference-like movement
+
       onUpdate: (self) => {
-        const xPos = initialOffset - (self.progress * (initialOffset + totalWidth * 0.7)); // Reduced from 0.8 to 0.7 for slower movement
-        gsap.set(inner, { x: xPos, ease: "power1.out" }); // Added easing for extra smoothness
+        const p = self.progress;
+
+        // VERY slow horizontal drift (reference = ~0.18–0.20)
+        // EXTREMELY slow horizontal drift to sync exact exit timing
+        const xPos = initialOffset - p * (initialOffset + totalWidth * 0.14); // ← was 0.19
+
+        // smooth upward + diagonal shift
+        let yPos = 0;
+        let xShift = 0;
+
+        if (p > 0.88) {
+          // up + left BEGIN EXACTLY where reference starts
+          const ep = (p - 0.88) / 0.12; // 0 → 1 only at late stage
+
+          yPos = -24 * ep; // light upward movement
+          xShift = -20 * ep; // soft left drift
+        }
+
+        gsap.set(inner, {
+          x: xPos + xShift,
+          y: yPos,
+          ease: "power4.out",
+        });
       },
     });
 
@@ -58,8 +77,7 @@ const HorizontalSliderOnScroll = ({ items = [], height = "70vh" }) => {
     };
   }, [items]);
 
-  // Build slides from icons
-  const NUM_SLIDES = 8;
+  const NUM_SLIDES = 12;
   const slides = items.length
     ? items
     : new Array(NUM_SLIDES).fill(0).map((_, i) => {
@@ -67,7 +85,9 @@ const HorizontalSliderOnScroll = ({ items = [], height = "70vh" }) => {
         return (
           <div
             key={i}
-            className="shrink-0 w-30 rounded-3xl shadow-2xl flex flex-col justify-center items-center mx-20"
+            className={`shrink-0 w-30 rounded-3xl flex flex-col justify-center items-center ${
+              i === 0 ? "mr-4" : "mx-4"
+            }`}
           >
             <Icon />
           </div>
@@ -77,7 +97,7 @@ const HorizontalSliderOnScroll = ({ items = [], height = "70vh" }) => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full overflow-hidden "
+      className="relative w-full overflow-hidden  "
       style={{ height }}
     >
       <div

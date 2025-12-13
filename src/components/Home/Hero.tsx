@@ -104,7 +104,7 @@ const Hero = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full h-[102vh] relative flex justify-center items-center overflow-hidden"
+      className="w-full h-[102vh] relative flex justify-center items-start overflow-hidden"
     >
       {/* Background Image */}
       <div className="absolute inset-0">
@@ -122,24 +122,26 @@ const Hero = () => {
       />
 
       {/* Center content */}
-      <div className="relative z-30 text-center flex justify-center items-center flex-col gap-6 px-2 lg:px-0">
+     <div   className="relative h-screen z-10 flex flex-col justify-center items-center overflow-hidden  w-full" >
+
+       <div className="relative z-30 text-center flex justify-center items-center flex-col gap-6 px-2 lg:px-0">
         {/* Logo wrapper — keep sizing so it doesn't collapse (no debug outline) */}
-        <div className="hero-logo-wrap w-48" style={{ opacity: 0, transform: "translateY(12px)" }}>
-          <Logo width={48} />
+        <div className="hero-logo-wrap w-60" style={{ opacity: 0, transform: "translateY(12px)" }}>
+          <Logo width={60} />
         </div>
 
         {/* Heading */}
         <h1
-          className="hero-heading playfair text-3xl lg:text-7xl max-w-6xl font-extrabold tracking-normal leading-22"
+          className="hero-heading badoni text-3xl lg:text-[80px] max-w-6xl font-extrabold tracking-normal  lg:leading-8"
           style={{ opacity: 0, transform: "translateY(12px)" }}
         >
-          <span className=" leading-0.5 ">BIG MOMENTS FOR DISRUPTIVE BRANDS</span>
+          <span className="tracking-tight ">BIG MOMENTS FOR DISRUPTIVE BRANDS</span>
         </h1>
       </div>
 
-      <div className="flex flex-col items-center gap-1 absolute bottom-12">
+      <div className="hidden lg:flex flex-col items-center gap-1 absolute bottom-12">
         <span
-          className="hero-subtext text-[18.44px] text-slate-300 mt-8 mx-2 lg:mx-0 text-center tracking-wide font-bold"
+          className="hero-subtext text-[16.2px] text-slate-200 mt-8 mx-2 lg:mx-0 text-center tracking-wide"
           style={{ opacity: 0, transform: "translateY(12px)" }}
         >
           EXPLORE OUR ONE OF A KIND APPROACH
@@ -150,13 +152,18 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Side Brandings unchanged */}
-      <div className="hidden lg:block z-40 absolute -left-5">
+
+       <div className="hidden lg:block z-40 absolute left-0">
         <HeroLeftBranding />
       </div>
-      <div className="hidden lg:block z-40 absolute -right-5">
+      <div className="hidden lg:block z-40 absolute right-0  w-fit">
         <HeroRightBranding />
       </div>
+
+      
+     </div>
+
+     
     </div>
   );
 };
@@ -171,7 +178,7 @@ export const ArrowDown = () => {
       fill="white"
       data-bbox="46.141 20.63 107.717 158.741"
       viewBox="46.141 20.63 107.717 158.741"
-      height="40"
+      height="35"
       width="50"
       xmlns="http://www.w3.org/2000/svg"
       data-type="shape"

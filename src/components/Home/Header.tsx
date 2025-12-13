@@ -22,12 +22,14 @@ const Header = () => {
     <>
       <header className="sticky top-0 z-50 bg-transparent py-4 px-8">
         <div className="lg:max-w-7xl 2xl:max-w-[1400px] mx-auto flex justify-between items-center">
-          <Logo   width={30} />
+          <div  className="w-40" >
+            <Logo   width={40} />
+          </div>
           {/* Keep same structure: icon here, toggles panel */}
           <button
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((s) => !s)}
-            className="w-8 h-8 flex items-center justify-center cursor-pointer relative z-60"
+            className="w-10 h-10 flex items-center justify-center cursor-pointer relative z-60"
           >
             {/* show X when open, MenuIcon when closed */}
             {open ? <X className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
@@ -39,15 +41,14 @@ const Header = () => {
       <div
         aria-hidden={!open}
         className={[
-          "fixed top-0 right-0 h-screen bg-black/95 z-40 shadow-xl transition-transform duration-500 ease-in-out",
+          "fixed top-0 right-0 h-screen  shadow-xl transition-transform duration-500 ease-in-out",
           // width responsive
           "w-full md:w-1/2",
           // transform based on open state
           open ? "translate-x-0" : "translate-x-full",
         ].join(" ")}
         style={{
-          // ensure panel covers full height and sits above most things
-          // Uses backdrop blur lightly (optional): remove if not desired
+          zIndex: 1000,
           backdropFilter: "saturate(120%) blur(6px)",
         }}
       >
