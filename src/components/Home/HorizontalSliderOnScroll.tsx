@@ -11,7 +11,7 @@ if (typeof window !== "undefined") {
 
 const ICONS = [Apple, Victoria, Marot, Netflix, TrustPilot];
 
-const HorizontalSliderOnScroll = ({ items = [], height = "85vh" }) => {
+const HorizontalSliderOnScroll = ({ items = [], height = "65vh" }) => {
   const containerRef = useRef(null);
   const innerRef = useRef(null);
 
@@ -97,7 +97,7 @@ const HorizontalSliderOnScroll = ({ items = [], height = "85vh" }) => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full overflow-hidden z-[-10]  "
+      className="relative w-full overflow-hidden z-[-10] bg-black  "
       style={{ height }}
     >
       <div

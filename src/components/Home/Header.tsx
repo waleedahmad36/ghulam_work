@@ -20,17 +20,17 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-[99999] isolation-isolate bg-transparent py-4 px-8">
+      <header className=" bg-black sticky top-0 z-[99999] isolation-isolate bg-transparent py-6 px-8">
         <div className="lg:max-w-7xl 2xl:max-w-[1400px] mx-auto flex justify-between items-center relative "
         >
-          <div  className="w-40" >
-            <Logo   width={40} />
+          <div  className="w-36" >
+            <Logo   width={36} />
           </div>
           {/* Keep same structure: icon here, toggles panel */}
           <button
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((s) => !s)}
-            className="w-10 h-10 flex items-center justify-center cursor-pointer relative "
+            className="w-12 h-12 flex items-center justify-center cursor-pointer relative "
             style={{
               zIndex:9999
             }}
