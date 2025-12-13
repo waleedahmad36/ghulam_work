@@ -70,7 +70,7 @@ const PinVideoInBg = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full min-h-[300vh] relative flex flex-col justify-start px-24 gap-[25vh] pt-40 pb-20 overflow-hidden badoni"
+      className="w-full min-h-[300vh] relative flex flex-col justify-start px-24 gap-[25vh] pt-40 pb-14 overflow-hidden badoni"
     >
       <div className="text-section relative z-10 text-center flex flex-col items-center justify-center px-4 badoni">
         <div className="max-w-6xl">

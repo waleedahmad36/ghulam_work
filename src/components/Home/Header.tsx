@@ -20,8 +20,9 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-transparent py-4 px-8">
-        <div className="lg:max-w-7xl 2xl:max-w-[1400px] mx-auto flex justify-between items-center">
+      <header className="sticky top-0 z-[99999] isolation-isolate bg-transparent py-4 px-8">
+        <div className="lg:max-w-7xl 2xl:max-w-[1400px] mx-auto flex justify-between items-center relative "
+        >
           <div  className="w-40" >
             <Logo   width={40} />
           </div>
@@ -29,7 +30,10 @@ const Header = () => {
           <button
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((s) => !s)}
-            className="w-10 h-10 flex items-center justify-center cursor-pointer relative z-60"
+            className="w-10 h-10 flex items-center justify-center cursor-pointer relative "
+            style={{
+              zIndex:9999
+            }}
           >
             {/* show X when open, MenuIcon when closed */}
             {open ? <X className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
@@ -41,14 +45,13 @@ const Header = () => {
       <div
         aria-hidden={!open}
         className={[
-          "fixed top-0 right-0 h-screen  shadow-xl transition-transform duration-500 ease-in-out",
+          "fixed top-0 right-0 h-screen  shadow-xl transition-transform duration-500 ease-in-out z-50 bg-black/90   ",
           // width responsive
           "w-full md:w-1/2",
           // transform based on open state
           open ? "translate-x-0" : "translate-x-full",
         ].join(" ")}
         style={{
-          zIndex: 1000,
           backdropFilter: "saturate(120%) blur(6px)",
         }}
       >

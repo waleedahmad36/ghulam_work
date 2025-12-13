@@ -1,214 +1,63 @@
 "use client";
 
-import React from "react";
-
-const CircleWithLabeledDots = () => {
+export default function StrategyCircle() {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-[#E8E4DC] relative">
-      <div className="relative" style={{ width: "1400px", height: "700px" }}>
-        
-        {/* ================================
-            CIRCLE
-        ================================= */}
-        <div
-          className="absolute rounded-full border border-gray-400 bg-[#E8E4DC]"
-          style={{
-            width: "440px",
-            height: "440px",
-            left: "480px",
-            top: "130px",
-          }}
-        >
-          <div className="absolute inset-0 flex justify-center items-center">
-            <h1
-              className="font-serif text-black"
-              style={{
-                fontSize: "52px",
-                letterSpacing: "0.05em",
-                fontWeight: "400",
-              }}
-            >
-              THE STRATEGY
-            </h1>
-          </div>
-        </div>
+    <div className="w-full hidden lg:flex justify-center items-center text-black bg-white py-20 overflow-hidden">
+      <div
+        className="relative flex items-center justify-center rounded-full"
+        style={{
+          width: "360px",
+          height: "360px",
+          border: "1px solid #bfbfbf",
+        }}
+      >
+        {/* CENTER TITLE */}
+        <h3 className="text-3xl md:text-4xl font-serif font-bold tracking-wide text-black">
+          THE STRATEGY
+        </h3>
 
-        {/* Circle center point (for reference) */}
-        {/* Center X = 480 + 220 = 700
-            Center Y = 130 + 220 = 350 */}
+        {/* DOT 1 (Top Center) */}
+        <div className="dot absolute top-[-10px] left-1/2 -translate-x-1/2" />
+        <p className="absolute top-[-45px] left-1/2 -translate-x-1/2 text-sm tracking-widest text-nowrap">
+          CONSUMER PSYCHOGRAPHICS
+        </p>
 
-        {/* ======================================================
-            TOP DOT + TEXT (CONSUMER PSYCHOGRAPHICS)
-        ======================================================= */}
-        <svg className="absolute inset-0 pointer-events-none">
-          <line x1="700" y1="350" x2="700" y2="130" stroke="#BBB" strokeWidth="1" />
-        </svg>
+        {/* DOT 2 (Top Right Diagonal) */}
+        <div className="dot absolute top-[48px] right-[38px]" />
+        <p className="absolute top-[48px] right-[-180px] text-sm tracking-widest">
+          COMPETITION RESEARCH
+        </p>
 
-        <div
-          className="absolute bg-[#E8E4DC] border border-gray-500 rounded-full"
-          style={{ width: "16px", height: "16px", left: "692px", top: "122px" }}
-        />
+        {/* DOT 3 (Top Left Diagonal) */}
+        <div className="dot absolute top-[48px] left-[40px]" />
+        <p className="absolute top-[48px] left-[-130px] text-sm tracking-widest">
+          KPI TARGETS
+        </p>
 
-        <div
-          className="absolute text-center"
-          style={{ left: "580px", top: "55px", width: "240px" }}
-        >
-          <span
-            className="uppercase tracking-wider text-gray-700"
-            style={{ fontSize: "14px", letterSpacing: "0.15em", fontWeight: "300" }}
-          >
-            CONSUMER PSYCHOGRAPHICS
-          </span>
-        </div>
+        {/* DOT 4 (Left Center) */}
+        <div className="dot absolute left-[-10px] top-1/2 -translate-y-1/2" />
+        <p className="absolute left-[-230px] top-1/2 -translate-y-1/2 text-sm tracking-widest">
+          CHANNEL INTEGRATIONS
+        </p>
 
-        {/* ======================================================
-            KPI TARGETS (TOP-LEFT)
-        ======================================================= */}
-        <svg className="absolute inset-0 pointer-events-none">
-          <line x1="700" y1="350" x2="560" y2="200" stroke="#BBB" strokeWidth="1" />
-        </svg>
+        {/* DOT 5 (Right Center) */}
+        <div className="dot absolute right-[-10px] top-1/2 -translate-y-1/2" />
+        <p className="absolute right-[-230px] top-1/2 -translate-y-1/2 text-sm tracking-widest">
+          BRAND AFFINITY INDEX
+        </p>
 
-        <div
-          className="absolute bg-[#E8E4DC] border border-gray-500 rounded-full"
-          style={{ width: "16px", height: "16px", left: "552px", top: "192px" }}
-        />
+        {/* DOT 6 (Bottom Right Diagonal) */}
+        <div className="dot absolute bottom-[48px] right-[45px]" />
+        <p className="absolute bottom-[48px] right-[-200px] text-sm tracking-widest">
+          REGRESSION ANALYTICS
+        </p>
 
-        <div
-          className="absolute text-right"
-          style={{ left: "330px", top: "182px", width: "210px" }}
-        >
-          <span
-            className="uppercase tracking-wider text-gray-700"
-            style={{ fontSize: "14px", letterSpacing: "0.15em", fontWeight: "300" }}
-          >
-            KPI TARGETS
-          </span>
-        </div>
-
-        {/* ======================================================
-            COMPETITION RESEARCH (TOP-RIGHT)
-        ======================================================= */}
-        <svg className="absolute inset-0 pointer-events-none">
-          <line x1="700" y1="350" x2="840" y2="200" stroke="#BBB" strokeWidth="1" />
-        </svg>
-
-        <div
-          className="absolute bg-[#E8E4DC] border border-gray-500 rounded-full"
-          style={{ width: "16px", height: "16px", left: "832px", top: "192px" }}
-        />
-
-        <div
-          className="absolute"
-          style={{ left: "880px", top: "182px", width: "260px" }}
-        >
-          <span
-            className="uppercase tracking-wider text-gray-700"
-            style={{ fontSize: "14px", letterSpacing: "0.15em", fontWeight: "300" }}
-          >
-            COMPETITION RESEARCH
-          </span>
-        </div>
-
-        {/* ======================================================
-            RIGHT (BRAND AFFINITY INDEX)
-        ======================================================= */}
-        <svg className="absolute inset-0 pointer-events-none">
-          <line x1="700" y1="350" x2="920" y2="350" stroke="#BBB" strokeWidth="1" />
-        </svg>
-
-        <div
-          className="absolute bg-[#E8E4DC] border border-gray-500 rounded-full"
-          style={{ width: "16px", height: "16px", left: "912px", top: "342px" }}
-        />
-
-        <div
-          className="absolute"
-          style={{ left: "950px", top: "335px", width: "260px" }}
-        >
-          <span
-            className="uppercase tracking-wider text-gray-700"
-            style={{ fontSize: "14px", letterSpacing: "0.15em", fontWeight: "300" }}
-          >
-            BRAND AFFINITY INDEX
-          </span>
-        </div>
-
-        {/* ======================================================
-            BOTTOM-RIGHT (REGRESSION ANALYTICS)
-        ======================================================= */}
-        <svg className="absolute inset-0 pointer-events-none">
-          <line x1="700" y1="350" x2="840" y2="500" stroke="#BBB" strokeWidth="1" />
-        </svg>
-
-        <div
-          className="absolute bg-[#E8E4DC] border border-gray-500 rounded-full"
-          style={{ width: "16px", height: "16px", left: "832px", top: "492px" }}
-        />
-
-        <div
-          className="absolute"
-          style={{ left: "880px", top: "482px", width: "260px" }}
-        >
-          <span
-            className="uppercase tracking-wider text-gray-700"
-            style={{ fontSize: "14px", letterSpacing: "0.15em", fontWeight: "300" }}
-          >
-            REGRESSION ANALYTICS
-          </span>
-        </div>
-
-        {/* ======================================================
-            BOTTOM (CAMPAIGN POSITIONING)
-        ======================================================= */}
-        <svg className="absolute inset-0 pointer-events-none">
-          <line x1="700" y1="350" x2="700" y2="570" stroke="#BBB" strokeWidth="1" />
-        </svg>
-
-        <div
-          className="absolute bg-[#E8E4DC] border border-gray-500 rounded-full"
-          style={{ width: "16px", height: "16px", left: "692px", top: "562px" }}
-        />
-
-        <div
-          className="absolute text-center"
-          style={{ left: "580px", top: "585px", width: "240px" }}
-        >
-          <span
-            className="uppercase tracking-wider text-gray-700"
-            style={{ fontSize: "14px", letterSpacing: "0.15em", fontWeight: "300" }}
-          >
-            CAMPAIGN POSITIONING
-          </span>
-        </div>
-
-        {/* ======================================================
-            BOTTOM-LEFT (CHANNEL INTEGRATIONS)
-        ======================================================= */}
-        <svg className="absolute inset-0 pointer-events-none">
-          <line x1="700" y1="350" x2="560" y2="500" stroke="#BBB" strokeWidth="1" />
-        </svg>
-
-        <div
-          className="absolute bg-[#E8E4DC] border border-gray-500 rounded-full"
-          style={{ width: "16px", height: "16px", left: "552px", top: "492px" }}
-        />
-
-        <div
-          className="absolute text-right"
-          style={{ left: "250px", top: "482px", width: "300px" }}
-        >
-          <span
-            className="uppercase tracking-wider text-gray-700"
-            style={{ fontSize: "14px", letterSpacing: "0.15em", fontWeight: "300" }}
-          >
-            CHANNEL INTEGRATIONS
-          </span>
-        </div>
-
-      
+        {/* DOT 7 (Bottom Left Diagonal) */}
+        <div className="dot absolute bottom-[48px] left-[40px]" />
+        <p className="absolute bottom-[48px] left-[-200px] text-sm tracking-widest">
+          CAMPAIGN POSITIONING
+        </p>
       </div>
     </div>
   );
-};
-
-export default CircleWithLabeledDots;
+}

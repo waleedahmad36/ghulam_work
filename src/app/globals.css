@@ -32,6 +32,15 @@
   font-family: "wix", sans-serif;
 }
 
+.dot {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

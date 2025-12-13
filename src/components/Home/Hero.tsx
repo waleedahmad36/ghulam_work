@@ -132,7 +132,7 @@ const Hero = () => {
 
         {/* Heading */}
         <h1
-          className="hero-heading badoni text-3xl lg:text-[80px] max-w-6xl font-extrabold tracking-normal  lg:leading-8"
+          className="hero-heading badoni text-3xl lg:text-[80px] max-w-6xl font-extrabold tracking-normal "
           style={{ opacity: 0, transform: "translateY(12px)" }}
         >
           <span className="tracking-tight ">BIG MOMENTS FOR DISRUPTIVE BRANDS</span>
