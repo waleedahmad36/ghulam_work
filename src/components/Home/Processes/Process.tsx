@@ -13,24 +13,25 @@ if (typeof window !== "undefined") {
 const Process = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  const topBorderRef = useRef<HTMLDivElement>(null);
+  const topBorderInnerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const bottomBorderRef = useRef<HTMLDivElement>(null);
+  const bottomBorderInnerRef = useRef<HTMLDivElement>(null);
   const circleNumberRef = useRef<HTMLDivElement>(null);
   const ideationRef = useRef<HTMLHeadingElement>(null);
-  const secondBorderRef = useRef<HTMLDivElement>(null);
+  const secondBorderInnerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
+      /* ---------------- TOP BORDER ---------------- */
       gsap.fromTo(
-        topBorderRef.current,
+        topBorderInnerRef.current,
         { height: 0 },
         {
-          height: "20vh",
+          height: "100%",
           scrollTrigger: {
-            trigger: topBorderRef.current,
+            trigger: topBorderInnerRef.current,
             start: "top 80%",
             end: "top 40%",
             scrub: 1,
@@ -38,12 +39,13 @@ const Process = () => {
         }
       );
 
+      /* ---------------- HEADING ---------------- */
       gsap.fromTo(
         headingRef.current,
-        { scale: 0.7, opacity: 0 },
+        { opacity: 0, scale: 0.7 },
         {
-          scale: 1,
           opacity: 1,
+          scale: 1,
           scrollTrigger: {
             trigger: headingRef.current,
             start: "top 75%",
@@ -53,13 +55,14 @@ const Process = () => {
         }
       );
 
+      /* ---------------- BOTTOM BORDER (STEP 1) ---------------- */
       gsap.fromTo(
-        bottomBorderRef.current,
+        bottomBorderInnerRef.current,
         { height: 0 },
         {
-          height: "20vh",
+          height: "100%",
           scrollTrigger: {
-            trigger: bottomBorderRef.current,
+            trigger: bottomBorderInnerRef.current,
             start: "top 80%",
             end: "top 50%",
             scrub: 1,
@@ -67,6 +70,7 @@ const Process = () => {
         }
       );
 
+      /* ---------------- CIRCLE NUMBER ---------------- */
       gsap.fromTo(
         circleNumberRef.current,
         { opacity: 0 },
@@ -81,13 +85,14 @@ const Process = () => {
         }
       );
 
+      /* ---------------- SECOND BORDER ---------------- */
       gsap.fromTo(
-        secondBorderRef.current,
+        secondBorderInnerRef.current,
         { height: 0 },
         {
-          height: "20vh",
+          height: "100%",
           scrollTrigger: {
-            trigger: secondBorderRef.current,
+            trigger: secondBorderInnerRef.current,
             start: "top 80%",
             end: "top 50%",
             scrub: 1,
@@ -95,6 +100,7 @@ const Process = () => {
         }
       );
 
+      /* ---------------- IDEATION ---------------- */
       gsap.fromTo(
         ideationRef.current,
         { opacity: 0, y: 10 },
@@ -120,13 +126,27 @@ const Process = () => {
       ref={sectionRef}
       className="flex flex-col bg-white justify-center items-center text-black"
     >
-      <div ref={topBorderRef} className="bg-black w-[1px]" style={{ height: 0 }} />
+      {/* TOP BORDER */}
+      <div className="h-[20vh] flex items-start">
+        <div
+          ref={topBorderInnerRef}
+          className="bg-black w-[1px]"
+          style={{ height: 0 }}
+        />
+      </div>
 
       <h3 ref={headingRef} className="text-[80px] my-6">
         Our Process
       </h3>
 
-      <div ref={bottomBorderRef} className="bg-black w-[1px]" style={{ height: 0 }} />
+      {/* BOTTOM BORDER */}
+      <div className="h-[20vh] flex items-start">
+        <div
+          ref={bottomBorderInnerRef}
+          className="bg-black w-[1px]"
+          style={{ height: 0 }}
+        />
+      </div>
 
       <div
         ref={circleNumberRef}
@@ -138,7 +158,14 @@ const Process = () => {
 
       <StrategyCircle />
 
-      <div ref={secondBorderRef} className="bg-black w-[1px]" style={{ height: 0 }} />
+      {/* SECOND BORDER */}
+      <div className="h-[20vh] flex items-start">
+        <div
+          ref={secondBorderInnerRef}
+          className="bg-black w-[1px]"
+          style={{ height: 0 }}
+        />
+      </div>
 
       <div className="w-12 h-12 flex justify-center items-center mt-3 mb-6 rounded-full border border-black">
         2

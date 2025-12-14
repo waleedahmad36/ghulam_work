@@ -24,33 +24,35 @@ const cardsData: CardProps[] = [
 const CardsDisplay = () => {
   const rowRefs = useRef<HTMLDivElement[]>([]);
 
-  useEffect(() => {
+ useEffect(() => {
+  const ctx = gsap.context(() => {
     rowRefs.current.forEach((row) => {
+      if (!row) return;
+
       const cards = row.querySelectorAll(".card");
 
       gsap.fromTo(
         cards,
-        {
-          y: 80,
-          opacity: 0,
-        },
+        { y: 80, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          ease: "power3.out",
           stagger: 0.18,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: row,
             start: "top 85%",
             end: "top 45%",
-            scrub: true,          // 🔥 THIS is the key
+            scrub: true,
           },
         }
       );
     });
+  });
 
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
-  }, []);
+  return () => ctx.revert(); // ✅ sirf CardsDisplay ke triggers remove honge
+}, []);
+
 
   return (
     <div className="py-4 space-y-4">
