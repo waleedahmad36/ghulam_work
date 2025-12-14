@@ -2,6 +2,7 @@ import Header from "@/components/Home/Header";
 import Hero from "@/components/Home/Hero";
 import HorizontalSliderOnScroll from "@/components/Home/HorizontalSliderOnScroll";
 import PinVideoInBg from "@/components/Home/PinVideoInBg";
+import CardsDisplay from "@/components/Home/Processes/_components/CardsDisplay";
 import Process from "@/components/Home/Processes/Process";
 import Image from "next/image";
 

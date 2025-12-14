@@ -46,7 +46,7 @@ const HorizontalSliderOnScroll = ({ items = [], height = "65vh" }) => {
 
         // VERY slow horizontal drift (reference = ~0.18–0.20)
         // EXTREMELY slow horizontal drift to sync exact exit timing
-        const xPos = initialOffset - p * (initialOffset + totalWidth * 0.14); // ← was 0.19
+        const xPos = initialOffset - p * (initialOffset + totalWidth * 0.11); // ← was 0.19
 
         // smooth upward + diagonal shift
         let yPos = 0;
