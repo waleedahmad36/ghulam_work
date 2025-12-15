@@ -126,19 +126,19 @@ const Hero = () => {
       {/* CONTENT */}
       <div className="relative h-screen z-30 flex flex-col justify-center items-center w-full">
         <div className="relative text-center flex flex-col gap-6 px-2 lg:px-0">
-          <div className="hero-logo-wrap w-60 flex justify-center mx-auto">
-            <Logo width={60} />
+          <div className="hero-logo-wrap w-64 flex justify-center mx-auto">
+            <Logo width={64} />
           </div>
 
-          <h1 className="hero-heading badoni text-3xl lg:text-[80px] max-w-6xl font-extrabold">
-            <span className="tracking-tight">
+          <h1 className="hero-heading font4 text-3xl lg:text-[87px] max-w-6xl font-extrabold">
+            <span className="">
               BIG MOMENTS FOR<br/> DISRUPTIVE BRANDS
             </span>
           </h1>
         </div>
 
-        <div className="hidden lg:flex flex-col items-center gap-2 absolute bottom-7">
-          <span className="hero-subtext text-[14px] text-[#b4b0b0] mt-8 text-center tracking-wider shadow-2xl">
+        <div className="hidden md:flex flex-col items-center gap-2 absolute bottom-7">
+          <span className="hero-subtext md:text-[12px] lg:text-[14px] text-[#b4b0b0] mt-8 text-center tracking-wider shadow-2xl font3">
             EXPLORE OUR ONE OF A KIND APPROACH
           </span>
 
@@ -147,11 +147,11 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hidden lg:block absolute left-9 z-40 w-fit">
+        <div className="hidden md:block absolute md:left-4 lg:left-9 z-40 w-fit">
           <HeroLeftBranding />
         </div>
 
-        <div className="hidden lg:block absolute right-9 z-40 w-fit">
+        <div className="hidden md:block absolute md:right-4 lg:right-9 z-40 w-fit">
           <HeroRightBranding />
         </div>
       </div>

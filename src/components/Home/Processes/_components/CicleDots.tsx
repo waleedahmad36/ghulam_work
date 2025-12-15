@@ -108,7 +108,7 @@ export default function StrategyCircle() {
             border: "1px solid #bfbfbf",
           }}
         >
-          <h3 className="text-[43.41px] text-nowrap font-serif tracking-tight">
+          <h3 className="text-[48.41px]  font4 text-nowrap font-bold tracking-tight">
             THE STRATEGY
           </h3>
 

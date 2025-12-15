@@ -148,7 +148,7 @@ const Process = () => {
 
       <h3
         ref={headingRef}
-        className="text-center lg:text-[74px] my-1 badoni tracking-tight font-bold"
+        className="text-center lg:text-[74px] my-1 font4 tracking-tight font-bold"
       >
         OUR PROCESS
       </h3>
@@ -185,7 +185,7 @@ const Process = () => {
 
       <h3
         ref={ideationRef}
-        className="text-[60px] my-6 badoni tracking-tight opacity-0"
+        className="text-[60px] my-6 font4 tracking-tight opacity-0"
       >
         IDEATION
       </h3>

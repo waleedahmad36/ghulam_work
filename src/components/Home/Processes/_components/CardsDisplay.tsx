@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { CircleOne, TextOne } from "@/icons/icons";
+import { CircleOne, TextOne, TextTwo } from "@/icons/icons";
 import Image from "next/image";
 import { ComponentType } from "react";
 
@@ -14,7 +14,7 @@ if (typeof window !== "undefined") {
 /* ---------------- DATA ---------------- */
 const cardsData: CardProps[] = [
   { imageSrc: "/card1.avif", CircleIcon: CircleOne, TextIcon: TextOne },
-  { imageSrc: "/card2.avif", CircleIcon: CircleOne, TextIcon: TextOne },
+  { imageSrc: "/card2.avif", CircleIcon: CircleOne, TextIcon: TextTwo },
   { imageSrc: "/card3.avif", CircleIcon: CircleOne, TextIcon: TextOne },
   { imageSrc: "/card4.avif", CircleIcon: CircleOne, TextIcon: TextOne },
   { imageSrc: "/card5.avif", CircleIcon: CircleOne },
@@ -59,12 +59,12 @@ const CardsDisplay = () => {
         <div
           key={rowIndex}
           ref={(el) => el && (rowRefs.current[rowIndex] = el)}
-          className="grid grid-cols-3 gap-4"
+          className="grid grid-cols-3 gap-8"
         >
           {cardsData
             .slice(rowIndex * 3, rowIndex * 3 + 3)
             .map((card, i) => (
-              <div key={i} className="overflow-hidden">
+              <div key={i} className="">
                 <Card {...card} />
               </div>
             ))}
@@ -87,7 +87,7 @@ export interface CardProps {
 const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
   return (
     <div className="card">
-      <div className="md:w-[200px] md:h-[400px]   lg:w-[390px] lg:h-[220px] relative bg-black">
+      <div className="md:w-[200px] md:h-[400px]   lg:w-[380px] lg:h-[220px] relative bg-black overflow-visible">
         <Image
           src={imageSrc}
           alt=""
@@ -100,7 +100,7 @@ const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
         </div>
 
         {TextIcon && (
-          <div className="absolute rotate-12 right-2 top-3">
+          <div className={`absolute  ${imageSrc.includes('2') ? '-right-6 -top-3 rotate-8 ' : 'right-2 top-3 rotate-12' } `}>
             <TextIcon />
           </div>
         )}

@@ -9,9 +9,62 @@
 
 @font-face {
   font-family: "wix";
-  src: url('/fonts/file.woff2') format('woff2'),
-       url('/fonts/file.woff') format('woff');
+  src:
+    url("/fonts/file.woff2") format("woff2"),
+    url("/fonts/file.woff") format("woff");
+  font-display: swap;
 }
+
+@font-face {
+  font-family: "font1";
+  src:
+    url("/fonts/f1.woff2") format("woff2"),
+    url("/fonts/f1.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "font2";
+  src:
+    url("/fonts/f2.woff2") format("woff2"),
+    url("/fonts/f2.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "font3";
+  src:
+    url("/fonts/f3.woff2") format("woff2"),
+    url("/fonts/f3.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "font4";
+  src:
+    url("/fonts/f4.woff2") format("woff2"),
+    url("/fonts/f4.woff") format("woff");
+  font-display: swap;
+}
+
+
+.font1 {
+  font-family: "font1", sans-serif;
+}
+
+.font2 {
+  font-family: "font2", sans-serif;
+}
+
+.font3 {
+  font-family: "font3", sans-serif;
+}
+
+.font4 {
+  font-family: "font4", sans-serif;
+}
+
+
 
 .playfair {
   font-family: "Playfair Display", serif;
