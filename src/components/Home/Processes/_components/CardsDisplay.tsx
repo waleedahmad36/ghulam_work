@@ -92,7 +92,7 @@ const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
           src={imageSrc}
           alt=""
           fill
-          className="object-cover opacity-70"
+          className="object-cover opacity-95"
         />
 
         <div className="w-10 h-10 absolute left-4 top-2">
