@@ -76,9 +76,9 @@ const PinVideoInBg = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full min-h-[300vh] relative flex flex-col justify-start px-16 gap-[25vh] pt-40 pb-14 overflow-hidden badoni"
+      className="w-full min-h-[300vh] relative flex flex-col justify-start px-16 gap-[25vh] pt-40 pb-14 overflow-hidden "
     >
-      <div className="text-section relative z-10 text-center flex flex-col items-center justify-center px-4 font4 my-12">
+      <div className="text-section relative z-10 text-center flex flex-col items-center justify-center px-4 font3 my-12">
         <div className="max-w-6xl">
           <h2 className="text-5xl md:text-6xl lg:text-[68px] font-light text-white tracking-wide mb-1 font1 shadow-2xl">
             A GLOBAL 360° CREATIVE
@@ -94,11 +94,11 @@ const PinVideoInBg = () => {
 
       <div className="text-section relative z-10 flex flex-col items-center justify-center px-8 mt-12">
         <div className="max-w-5xl">
-          <h3 className="text-2xl md:text-3xl lg:text-[34px] font-light text-white leading-normal tracking-tight mb-2 text-center shadow-2xl">
+          <h3 className="text-2xl md:text-3xl lg:text-[34px] font-light text-white leading-normal tracking-tight mb-2 text-center shadow-2xl font1">
             "Staying on budget, while ensuring quality, The <br /> Boathouse boosted my
             target KPIs by 10x in the past year."
           </h3>
-          <p className="text-slate-100 text-xl md:text-sm tracking-wider mt-2 text-center">
+          <p className="text-slate-100 text-3xl font1 md:text-sm tracking-wider mt-2 text-center">
             OLLIE CMO
           </p>
         </div>
@@ -106,7 +106,7 @@ const PinVideoInBg = () => {
 
       <div className="text-section relative z-10 text-center flex flex-col items-end justify-center px-8">
         <div className="max-w-3xl">
-          <h3 className="text-2xl md:text-3xl lg:text-[34px] shadow-2xl font-light text-white leading-snug mb-2">
+          <h3 className="text-2xl md:text-3xl lg:text-[34px] shadow-2xl font-light text-white leading-snug mb-2 font1">
             "A one of a kind process with unparalleled results."
           </h3>
           <p className="text-slate-300 text-center text-xs md:text-sm tracking-wider mt-2">
@@ -117,7 +117,7 @@ const PinVideoInBg = () => {
 
       <div className="text-section relative z-10 text-center hidden md:flex flex-col lg:items-start justify-center px-2 lg:px-0">
         <div className="max-w-[700px] 2xl:max-w-3xl">
-          <h3 className="text-2xl md:text-3xl lg:text-[34px] shadow-2xl font-light text-white leading-snug mb-2 max-w-4xl">
+          <h3 className="text-2xl md:text-3xl lg:text-[34px] shadow-2xl font-light text-white leading-snug mb-2 max-w-4xl font1">
             "The Boathouse is our creative agency Navy Seals, who find a way to
             get it done in an exceptional manner when no one else could."
           </h3>
@@ -127,7 +127,7 @@ const PinVideoInBg = () => {
         </div>
       </div>
 
-      <div className="text-section relative z-10 text-center flex flex-col items-end justify-center px-4 lg:px-0 badoni">
+      <div className="text-section relative z-10 text-center flex flex-col items-end justify-center px-4 lg:px-0 font1">
         <div className="max-w-3xl">
           <h3 className="text-2xl md:text-3xl lg:text-[34px] font-light text-white leading-snug mb-2 max-w-4xl shadow-2xl">
             "They're like nothing I've ever experienced with other agency
