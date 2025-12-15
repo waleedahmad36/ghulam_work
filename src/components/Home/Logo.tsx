@@ -1,6 +1,6 @@
 
 
-const Logo = ({width=60,fillLogo="white"}:{width?:number,fillLogo?:string}) => {
+const Logo = ({width='60',fillLogo="white"}:{width?:string,fillLogo?:string}) => {
   return (
       <svg preserveAspectRatio="xMidYMid meet" data-bbox="-0.1 0.69 1306.9 495.61" 
             fill={fillLogo}   className={`w-${width} h-auto`}

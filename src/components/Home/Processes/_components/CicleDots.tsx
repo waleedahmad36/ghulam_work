@@ -105,10 +105,10 @@ export default function StrategyCircle() {
           style={{
             width: "390px",
             height: "390px",
-            border: "1px solid #bfbfbf",
+            border: "1px solid #000000",
           }}
         >
-          <h3 className="text-[48.41px]  font4 text-nowrap font-bold tracking-tight">
+          <h3 className="text-[48px]  font4 text-nowrap font-bold tracking-tight">
             THE STRATEGY
           </h3>
 
@@ -116,13 +116,13 @@ export default function StrategyCircle() {
           <div className="dot absolute top-[-10px] left-1/2 -translate-x-1/2" />
           <p
             ref={topTextRef}
-            className="absolute top-[-45px] left-1/2 -translate-x-1/2 text-[18px] tracking-widest text-[#4d4b4b] font-light opacity-0 whitespace-nowrap"
+            className="absolute top-[-45px] left-1/2 -translate-x-1/2 text-[18px] tracking-widest text-[#656363] font-light opacity-0 whitespace-nowrap"
           >
             CONSUMER PSYCHOGRAPHICS
           </p>
 
           {/* RIGHT TOP */}
-          <div className="dot absolute top-[48px] right-[45px]" />
+          <div className="dot absolute top-[48px] right-[46px]" />
           <p
             ref={(el) => (rightTexts.current[0] = el)}
             className="absolute top-[45px] right-[-250px] text-[18px] tracking-widest text-[#4d4b4b] font-light opacity-0"
@@ -131,7 +131,7 @@ export default function StrategyCircle() {
           </p>
 
           {/* LEFT TOP */}
-          <div className="dot absolute top-[48px] left-[50px]" />
+          <div className="dot absolute top-[48px] left-[46px]" />
           <p
             ref={(el) => (leftTexts.current[0] = el)}
             className="absolute top-[48px] left-[-130px] text-[18px] tracking-widest text-[#4d4b4b] opacity-0 font-light"
@@ -158,7 +158,7 @@ export default function StrategyCircle() {
           </p>
 
           {/* RIGHT BOTTOM */}
-          <div className="dot absolute bottom-[48px] right-[45px]" />
+          <div className="dot absolute bottom-[48px] right-[46px]" />
           <p
             ref={(el) => (rightTexts.current[2] = el)}
             className="absolute bottom-[45px] right-[-250px] text-[18px] tracking-widest text-[#4d4b4b] font-light opacity-0"
@@ -167,10 +167,10 @@ export default function StrategyCircle() {
           </p>
 
           {/* LEFT BOTTOM */}
-          <div className="dot absolute bottom-[48px] left-[40px]" />
+          <div className="dot absolute bottom-[48px] left-[46px]" />
           <p
             ref={(el) => (leftTexts.current[2] = el)}
-            className="absolute bottom-[45px] left-[-250px] text-[18px] tracking-widest text-[#4d4b4b] font-light opacity-0"
+            className="absolute bottom-[45px] left-[-270px] text-[20px] tracking-[2px] text-[#4d4b4b] font-light opacity-0"
           >
             CAMPAIGN POSITIONING
           </p>

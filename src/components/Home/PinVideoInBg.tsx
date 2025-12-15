@@ -80,13 +80,13 @@ const PinVideoInBg = () => {
     >
       <div className="text-section relative z-10 text-center flex flex-col items-center justify-center px-4 font3 my-12">
         <div className="max-w-6xl">
-          <h2 className="text-5xl md:text-6xl lg:text-[68px] font-light text-white tracking-wide mb-1 font1 shadow-2xl">
+          <h2 className="text-5xl md:text-6xl lg:text-[87px] font-light text-white tracking-wide mb-1 font1 shadow-2xl">
             A GLOBAL 360° CREATIVE
           </h2>
-          <h2 className="text-5xl md:text-6xl lg:text-8xl font-bold text-white tracking-wide mb-4 badoni">
-            AGENCY <span className="font-light">x</span> STUDIO
+          <h2 className="text-5xl md:text-6xl lg:text-[87px] font-bold text-white tracking-wide mt-[15px] mb-4 font1">
+            AGENCY <span className="font3 text-[55px] relative bottom-3">x</span> STUDIO
           </h2>
-          <p className="text-[20px] font-semibold shadow-2xl md:text-lg text-white tracking-wider mt-6 font3">
+          <p className="text-[20px] font-semibold shadow-2xl md:text-lg text-slate-200 tracking-[2px] mt-6 font3">
             SPARKING STAGGERING BRAND MOVEMENTS IN ASTONISHING WAYS
           </p>
         </div>
@@ -94,7 +94,7 @@ const PinVideoInBg = () => {
 
       <div className="text-section relative z-10 flex flex-col items-center justify-center px-8 mt-12">
         <div className="max-w-5xl">
-          <h3 className="text-2xl md:text-3xl lg:text-[34px] font-light text-white leading-normal tracking-tight mb-2 text-center shadow-2xl font1">
+          <h3 className="text-2xl md:text-3xl lg:text-[34px] font-light text-white   mb-2 text-center shadow-2xl font1 leading-[40px] tracking-[1px]">
             "Staying on budget, while ensuring quality, The <br /> Boathouse boosted my
             target KPIs by 10x in the past year."
           </h3>
@@ -104,7 +104,7 @@ const PinVideoInBg = () => {
         </div>
       </div>
 
-      <div className="text-section relative z-10 text-center flex flex-col items-end justify-center px-8">
+      <div className="text-section relative z-10 text-center flex flex-col items-end justify-center px-4 lg:pr-32">
         <div className="max-w-3xl">
           <h3 className="text-2xl md:text-3xl lg:text-[34px] shadow-2xl font-light text-white leading-snug mb-2 font1">
             "A one of a kind process with unparalleled results."
@@ -115,7 +115,7 @@ const PinVideoInBg = () => {
         </div>
       </div>
 
-      <div className="text-section relative z-10 text-center hidden md:flex flex-col lg:items-start justify-center px-2 lg:px-0">
+      <div className="text-section relative z-10 text-center hidden md:flex flex-col lg:items-start justify-center px-2 lg:px-0 lg:pr-[25px]">
         <div className="max-w-[700px] 2xl:max-w-3xl">
           <h3 className="text-2xl md:text-3xl lg:text-[34px] shadow-2xl font-light text-white leading-snug mb-2 max-w-4xl font1">
             "The Boathouse is our creative agency Navy Seals, who find a way to
