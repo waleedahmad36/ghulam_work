@@ -3,19 +3,16 @@ import React from "react";
 const HeroRightBranding = () => {
   return (
     <svg
-      preserveAspectRatio="xMidYMid meet"
-      className="w-20 h-[85vh]"
-      data-bbox="0.81 0.207 14.85 807.965"
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 809"
+      preserveAspectRatio="xMaxYMid meet"
+      className="h-[85vh] w-auto block"
+      xmlns="http://www.w3.org/2000/svg"
       fillRule="evenodd"
       clipRule="evenodd"
       strokeLinejoin="round"
       strokeMiterlimit="2"
-      data-type="ugc"
       role="presentation"
       aria-hidden="true"
-      aria-label=""
     >
       <g>
         <path

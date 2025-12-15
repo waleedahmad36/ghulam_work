@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import StrategyCircle from "./_components/CicleDots";
 import CardsDisplay from "./_components/CardsDisplay";
+import { useHeaderContext } from "@/context/useHeaderContext";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -12,6 +13,7 @@ if (typeof window !== "undefined") {
 
 const Process = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { setColors } = useHeaderContext();
 
   const topBorderInnerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -24,6 +26,15 @@ const Process = () => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
+      /* ---------------- HEADER COLOR CHANGE ---------------- */
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 10%", // when Process enters header area
+        end: "bottom center", // when Process leaves header area
+        onEnter: () => setColors({ fillColor: "black", menuIconColor: "black" }), // light background → dark header
+        onLeaveBack: () => setColors({ fillColor: "white", menuIconColor: "white" }), // reverse when scrolling up
+      });
+
       /* ---------------- TOP BORDER ---------------- */
       gsap.fromTo(
         topBorderInnerRef.current,
@@ -119,15 +130,15 @@ const Process = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [setColors]);
 
   return (
     <div
       ref={sectionRef}
-      className="flex flex-col bg-white justify-center items-center text-black"
+      className="flex flex-col bg-[#E7E4E5] justify-center items-center text-black"
     >
-      {/* TOP BORDER */}
-      <div className="h-[20vh] flex items-start">
+      {/* ...rest of your component stays same */}
+      <div className="lg:h-[25vh] flex items-start">
         <div
           ref={topBorderInnerRef}
           className="bg-black w-[1px]"
@@ -135,12 +146,14 @@ const Process = () => {
         />
       </div>
 
-      <h3 ref={headingRef} className="text-[80px] my-6">
-        Our Process
+      <h3
+        ref={headingRef}
+        className="text-center lg:text-[74px] my-1 badoni tracking-tight font-bold"
+      >
+        OUR PROCESS
       </h3>
 
-      {/* BOTTOM BORDER */}
-      <div className="h-[20vh] flex items-start">
+      <div className="h-[25vh] flex items-start">
         <div
           ref={bottomBorderInnerRef}
           className="bg-black w-[1px]"
@@ -153,12 +166,11 @@ const Process = () => {
         className="w-12 h-12 flex justify-center items-center mt-3 mb-10 rounded-full border border-black"
         style={{ opacity: 0 }}
       >
-        1
+        <span className="text-[30px] font-extralight">1</span>
       </div>
 
       <StrategyCircle />
 
-      {/* SECOND BORDER */}
       <div className="h-[20vh] flex items-start">
         <div
           ref={secondBorderInnerRef}

@@ -8,97 +8,99 @@ import gsap from "gsap";
 import Logo from "./Logo";
 
 const Hero = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // select nodes (may be null)
+    const imageWrap = container.querySelector(".hero-image-wrap");
     const videoEl = container.querySelector("video");
     const logoWrap = container.querySelector(".hero-logo-wrap");
     const heading = container.querySelector(".hero-heading");
     const subText = container.querySelector(".hero-subtext");
     const arrowWrap = container.querySelector(".hero-arrow-wrap");
 
-    // ---- Remove debug outline: do NOT apply any debug styles here ----
-    // Ensure wrapper visible and sized so Logo doesn't collapse
-    if (logoWrap) {
-      logoWrap.style.zIndex = "60";
-      logoWrap.style.opacity = "1";
-      logoWrap.style.position = logoWrap.style.position || "relative";
-      logoWrap.style.display = logoWrap.style.display || "inline-block";
-      // IMPORTANT: clear any debug/outline left from earlier runs
-      logoWrap.style.outline = "";
-      logoWrap.style.border = ""; 
-      // Force svg/img to display if present so wrapper gets size
-      const svgs = logoWrap.querySelectorAll("svg");
-      if (svgs.length) {
-        svgs.forEach((s) => {
-          s.style.display = s.style.display || "block";
-          s.setAttribute("aria-hidden", "true");
-          try {
-            s.querySelectorAll("path, circle, rect, g").forEach((shape) => {
-              if (!shape.getAttribute("fill")) shape.setAttribute("fill", "#fff");
-              if (shape.getAttribute("stroke")) shape.setAttribute("stroke", "none");
-            });
-          } catch (e) {
-            // ignore
-          }
-        });
-      } else {
-        const imgs = logoWrap.querySelectorAll("img");
-        if (imgs.length) {
-          imgs.forEach((img) => {
-            img.style.display = "block";
-          });
-        }
-      }
-    }
+    const tl = gsap.timeline({
+      defaults: { ease: "none" }, // 🚨 critical
+    });
 
-    // Build timeline safely: only add tweens for elements that exist
-    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+    /* -------------------------------------------------
+       IMAGE → VIDEO TRANSITION
+    -------------------------------------------------- */
+    if (imageWrap && videoEl) {
+      gsap.set(imageWrap, {
+        scale: 1,
+        opacity: 1,
+        transformOrigin: "50% 50%",
+        zIndex: 20,
+      });
 
-    // Add video fade only if video exists
-    if (videoEl) {
       gsap.set(videoEl, { opacity: 0 });
-      tl.to(videoEl, { opacity: 1, duration: 0.8 }, "+=0.5");
-    } else {
-      tl.to({}, { duration: 0.5 });
+
+      // IMAGE SCALE
+      tl.to(imageWrap, {
+        scale: 0,
+        duration: 0.9,
+        ease: "power3.inOut",
+        onUpdate: () => {
+          const progress = gsap.getProperty(imageWrap, "scale") as number;
+          gsap.set(imageWrap, { opacity: progress * 1.2 });
+
+          // Fade in video near end
+          if (progress < 0.05) {
+            gsap.to(videoEl, { opacity: 1, duration: 0.3, ease: "power2.out" });
+          }
+        },
+      });
     }
 
-    // Logo tween (only if present)
+    /* -------------------------------------------------
+       CONTENT SEQUENCE (LOGO → HEADING → SUBTEXT → ARROW)
+    -------------------------------------------------- */
+    const contentDelay = 1.3; // after image/video animation
+
     if (logoWrap) {
       gsap.set(logoWrap, { opacity: 0, y: 12 });
-      tl.fromTo(logoWrap, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5 }, "+=0.08");
+      tl.fromTo(
+        logoWrap,
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.65, ease: "power2.out" },
+        `+=${contentDelay}`
+      );
     }
 
-    // Heading
     if (heading) {
       gsap.set(heading, { opacity: 0, y: 12 });
-      tl.fromTo(heading, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6 }, "+=0.12");
+      tl.fromTo(
+        heading,
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.75, ease: "power2.out" },
+        "-=0.15"
+      );
     }
 
-    // Sub text
     if (subText) {
       gsap.set(subText, { opacity: 0, y: 12 });
-      tl.fromTo(subText, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5 }, "+=0.12");
+      tl.fromTo(
+        subText,
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
+        "-=0.25"
+      );
     }
 
-    // Arrow
     if (arrowWrap) {
       gsap.set(arrowWrap, { opacity: 0, y: -8 });
-      tl.fromTo(arrowWrap, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.6 }, "+=0.08");
+      tl.fromTo(
+        arrowWrap,
+        { opacity: 0, y: -12 },
+        { opacity: 1, y: 0, duration: 0.65, ease: "none" },
+        "-=0.25"
+      );
     }
 
-    // cleanup
-    return () => {
-      tl.kill();
-      // also clear any leftover outline just in case
-      if (logoWrap) {
-        logoWrap.style.outline = "";
-      }
-    };
+    return () => tl.kill();
   }, []);
 
   return (
@@ -106,89 +108,62 @@ const Hero = () => {
       ref={containerRef}
       className="w-full h-[102vh] relative flex justify-center items-start overflow-hidden"
     >
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image src="/hero.avif" alt="" fill className="relative" />
+      {/* IMAGE */}
+      <div className="hero-image-wrap absolute inset-0 z-20">
+        <Image src="/hero.avif" alt="" fill className="object-cover" />
       </div>
 
-      {/* Video - initially hidden via inline style (opacity:0) */}
+      {/* VIDEO */}
       <video
         src="/file.mp4"
         autoPlay
         muted
         loop
-        className="absolute top-0 left-0 w-full h-full object-cover object-center"
-        style={{ opacity: 0 }}
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover z-10"
       />
 
-      {/* Center content */}
-     <div   className="relative h-screen z-10 flex flex-col justify-center items-center overflow-hidden  w-full" >
+      {/* CONTENT */}
+      <div className="relative h-screen z-30 flex flex-col justify-center items-center w-full">
+        <div className="relative text-center flex flex-col gap-6 px-2 lg:px-0">
+          <div className="hero-logo-wrap w-60 flex justify-center mx-auto">
+            <Logo width={60} />
+          </div>
 
-       <div className="relative z-30 text-center flex justify-center items-center flex-col gap-6 px-2 lg:px-0">
-        {/* Logo wrapper — keep sizing so it doesn't collapse (no debug outline) */}
-        <div className="hero-logo-wrap w-60" style={{ opacity: 0, transform: "translateY(12px)" }}>
-          <Logo width={60} />
+          <h1 className="hero-heading badoni text-3xl lg:text-[80px] max-w-6xl font-extrabold">
+            <span className="tracking-tight">
+              BIG MOMENTS FOR<br/> DISRUPTIVE BRANDS
+            </span>
+          </h1>
         </div>
 
-        {/* Heading */}
-        <h1
-          className="hero-heading badoni text-3xl lg:text-[80px] max-w-6xl font-extrabold tracking-normal "
-          style={{ opacity: 0, transform: "translateY(12px)" }}
-        >
-          <span className="tracking-tight ">BIG MOMENTS FOR DISRUPTIVE BRANDS</span>
-        </h1>
-      </div>
+        <div className="hidden lg:flex flex-col items-center gap-2 absolute bottom-7">
+          <span className="hero-subtext text-[14px] text-[#b4b0b0] mt-8 text-center tracking-wider shadow-2xl">
+            EXPLORE OUR ONE OF A KIND APPROACH
+          </span>
 
-      <div className="hidden lg:flex flex-col items-center gap-1 absolute bottom-12">
-        <span
-          className="hero-subtext text-[16.2px] text-slate-200 mt-8 mx-2 lg:mx-0 text-center tracking-wide"
-          style={{ opacity: 0, transform: "translateY(12px)" }}
-        >
-          EXPLORE OUR ONE OF A KIND APPROACH
-        </span>
+          <div className="hero-arrow-wrap">
+            <ArrowDown />
+          </div>
+        </div>
 
-        <div className="hero-arrow-wrap" style={{ opacity: 0, transform: "translateY(-8px)" }}>
-          <ArrowDown />
+        <div className="hidden lg:block absolute left-9 z-40 w-fit">
+          <HeroLeftBranding />
+        </div>
+
+        <div className="hidden lg:block absolute right-9 z-40 w-fit">
+          <HeroRightBranding />
         </div>
       </div>
-
-
-       <div className="hidden lg:block z-40 absolute left-0">
-        <HeroLeftBranding />
-      </div>
-      <div className="hidden lg:block z-40 absolute right-0  w-fit">
-        <HeroRightBranding />
-      </div>
-
-      
-     </div>
-
-     
     </div>
   );
 };
 
 export default Hero;
 
-/* ArrowDown */
-export const ArrowDown = () => {
-  return (
-    <svg
-      preserveAspectRatio="xMidYMid meet"
-      fill="white"
-      data-bbox="46.141 20.63 107.717 158.741"
-      viewBox="46.141 20.63 107.717 158.741"
-      height="35"
-      width="50"
-      xmlns="http://www.w3.org/2000/svg"
-      data-type="shape"
-      role="presentation"
-      aria-hidden="true"
-      aria-label=""
-    >
-      <g>
-        <path d="m153.858 130.731-53.857 48.64-53.86-48.64 1.804-1.944 50.722 45.809V20.63h2.669v153.965l50.719-45.809 1.803 1.945z"></path>
-      </g>
-    </svg>
-  );
-};
+/* Arrow */
+export const ArrowDown = () => (
+  <svg fill="white" viewBox="46.141 20.63 107.717 158.741" height="40" width="40">
+    <path d="m153.858 130.731-53.857 48.64-53.86-48.64 1.804-1.944 50.722 45.809V20.63h2.669v153.965l50.719-45.809 1.803 1.945z" />
+  </svg>
+);

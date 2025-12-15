@@ -3,22 +3,15 @@ import React from "react";
 const HeroLeftBranding = () => {
   return (
     <svg
-      preserveAspectRatio="xMidYMid meet"
-      className="w-20 h-[85vh]"
+     viewBox="0 0 15 865"
+      preserveAspectRatio="xMinYMid meet"
+      className="h-[85vh] w-auto block"
       fill="white"
-      data-bbox="0.144 0.281 14.85 864.241"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 15 865"
-      fillRule="evenodd"
-      clipRule="evenodd"
-      strokeLinejoin="round"
-      strokeMiterlimit="2"
-      data-type="ugc"
       role="presentation"
       aria-hidden="true"
-      aria-label=""
     >
-      <g>
+      <g   >
         <path
           d="M14.86 864.522H.277v-1.527H13.52v-8.167h1.34v9.694Z"
           fill="#ffffff"

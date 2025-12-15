@@ -24,49 +24,50 @@ const cardsData: CardProps[] = [
 const CardsDisplay = () => {
   const rowRefs = useRef<HTMLDivElement[]>([]);
 
- useEffect(() => {
-  const ctx = gsap.context(() => {
-    rowRefs.current.forEach((row) => {
-      if (!row) return;
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      rowRefs.current.forEach((row) => {
+        if (!row) return;
 
-      const cards = row.querySelectorAll(".card");
+        const cards = row.querySelectorAll(".card");
 
-      gsap.fromTo(
-        cards,
-        { y: 80, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.18,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: row,
-            start: "top 85%",
-            end: "top 45%",
-            scrub: true,
-          },
-        }
-      );
+        gsap.fromTo(
+          cards,
+          { y: 80, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.25, // slightly slower, premium feel
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: row,
+              start: "top 85%",
+              end: "+=400", // 🔥 controls animation speed safely
+              scrub: 1,     // smooth buffer (better than true)
+            },
+          }
+        );
+      });
     });
-  });
 
-  return () => ctx.revert(); // ✅ sirf CardsDisplay ke triggers remove honge
-}, []);
-
+    return () => ctx.revert(); // ✅ ONLY this component cleans up
+  }, []);
 
   return (
-    <div className="py-4 space-y-4">
+    <div className="py-8 space-y-4">
       {[0, 1].map((rowIndex) => (
         <div
           key={rowIndex}
           ref={(el) => el && (rowRefs.current[rowIndex] = el)}
           className="grid grid-cols-3 gap-4"
         >
-          {cardsData.slice(rowIndex * 3, rowIndex * 3 + 3).map((card, i) => (
-            <div key={i} className="overflow-hidden">
-              <Card {...card} />
-            </div>
-          ))}
+          {cardsData
+            .slice(rowIndex * 3, rowIndex * 3 + 3)
+            .map((card, i) => (
+              <div key={i} className="overflow-hidden">
+                <Card {...card} />
+              </div>
+            ))}
         </div>
       ))}
     </div>
@@ -86,7 +87,7 @@ export interface CardProps {
 const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
   return (
     <div className="card">
-      <div className="w-[380px] h-[200px] relative bg-black">
+      <div className="md:w-[200px] md:h-[400px]   lg:w-[390px] lg:h-[220px] relative bg-black">
         <Image
           src={imageSrc}
           alt=""

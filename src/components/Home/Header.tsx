@@ -1,13 +1,16 @@
-// components/Header.jsx
+
 "use client";
 
 import { useState, useEffect } from "react";
 import { MenuIcon, X } from "lucide-react";
 import Logo from "./Logo";
 import Link from "next/link";
+import { useHeaderContext } from "@/context/useHeaderContext";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const {fillColor} = useHeaderContext();
+  const {menuIconColor} = useHeaderContext();
 
   // Prevent background scroll when menu is open
   useEffect(() => {
@@ -20,11 +23,11 @@ const Header = () => {
 
   return (
     <>
-      <header className=" bg-black sticky top-0 z-[99999] isolation-isolate bg-transparent py-6 px-8">
+      <header className=" bg-black sticky top-0 z-[99999] isolation-isolate bg-transparent py-6 px-4 lg:px-16">
         <div className="lg:max-w-7xl 2xl:max-w-[1400px] mx-auto flex justify-between items-center relative "
         >
-          <div  className="w-36" >
-            <Logo   width={36} />
+          <div  className="w-32" >
+            <Logo   width={32}     fillLogo={fillColor}  />
           </div>
           {/* Keep same structure: icon here, toggles panel */}
           <button
@@ -32,7 +35,8 @@ const Header = () => {
             onClick={() => setOpen((s) => !s)}
             className="w-12 h-12 flex items-center justify-center cursor-pointer relative "
             style={{
-              zIndex:9999
+              zIndex:9999,
+              color:menuIconColor
             }}
           >
             {/* show X when open, MenuIcon when closed */}
@@ -79,3 +83,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+

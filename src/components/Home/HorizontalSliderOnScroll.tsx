@@ -11,98 +11,149 @@ if (typeof window !== "undefined") {
 
 const ICONS = [Apple, Victoria, Marot, Netflix, TrustPilot];
 
-const HorizontalSliderOnScroll = ({ items = [], height = "65vh" }) => {
+const HorizontalSliderOnScroll = ({ items = [], height = "80vh" }) => {
   const containerRef = useRef(null);
   const innerRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
     const container = containerRef.current;
     const inner = innerRef.current;
     if (!container || !inner) return;
 
+    // clean old triggers
     ScrollTrigger.getAll().forEach((t) => {
       if (t.trigger === container) t.kill();
     });
 
-    const totalWidth = inner.scrollWidth;
-    const viewportWidth = window.innerWidth;
+    const setup = () => {
+      const viewportWidth = window.innerWidth;
+      const totalWidth = inner.scrollWidth;
+      const firstItemWidth = inner.children[0]?.offsetWidth || 0;
 
-    // PERFECT left-alignment start like reference
-    const firstItemWidth = inner.children[0]?.offsetWidth || 0;
-    const initialOffset = viewportWidth / 2 - firstItemWidth / 2 - 70; // -70 = matches reference left shift
+      const initialOffset =
+        viewportWidth / 2 - firstItemWidth / 2 - 70;
 
-    gsap.set(inner, { x: initialOffset, y: 0 });
+      gsap.set(inner, { x: initialOffset, y: 0 });
 
-    const st = ScrollTrigger.create({
-      trigger: container,
-      start: "top 72%", // EXACT reference feel
-      end: "bottom top",
-      scrub: 7.5, // heavy, slow, reference-like movement
+      return {
+        viewportWidth,
+        totalWidth,
+        firstItemWidth, // ✅ RETURNED
+        initialOffset,
+      };
+    };
 
-      onUpdate: (self) => {
-        const p = self.progress;
+    ScrollTrigger.matchMedia({
+      /* -----------------------------
+         SM + MD → FULL HORIZONTAL
+      ------------------------------ */
+      "(max-width: 1023px)": () => {
+        const {
+          viewportWidth,
+          totalWidth,
+          firstItemWidth,
+          initialOffset,
+        } = setup();
 
-        // VERY slow horizontal drift (reference = ~0.18–0.20)
-        // EXTREMELY slow horizontal drift to sync exact exit timing
-        const xPos = initialOffset - p * (initialOffset + totalWidth * 0.11); // ← was 0.19
+        // ensures FULL slide crosses viewport
+        const maxTravel =
+          totalWidth - viewportWidth + firstItemWidth;
 
-        // smooth upward + diagonal shift
-        let yPos = 0;
-        let xShift = 0;
+        return ScrollTrigger.create({
+          trigger: container,
+          start: "top 72%",
+          end: "bottom top",
+          scrub: 7.5,
 
-        if (p > 0.88) {
-          // up + left BEGIN EXACTLY where reference starts
-          const ep = (p - 0.88) / 0.12; // 0 → 1 only at late stage
+          onUpdate: (self) => {
+            const p = self.progress;
 
-          yPos = -24 * ep; // light upward movement
-          xShift = -20 * ep; // soft left drift
-        }
-
-        gsap.set(inner, {
-          x: xPos + xShift,
-          y: yPos,
-          ease: "power4.out",
+            gsap.set(inner, {
+              x: initialOffset - p * maxTravel,
+              y: 0,
+            });
+          },
         });
       },
+
+      /* -----------------------------
+         LG+ → REFERENCE BEHAVIOR
+      ------------------------------ */
+     "(min-width: 1024px)": () => {
+  const {
+    totalWidth,
+    initialOffset,
+    firstItemWidth,
+  } = setup();
+
+  const HORIZONTAL_PADDING = 32; // px-8
+
+  // 🔥 exact top-left alignment (no gap)
+  const finalX =
+    -initialOffset + firstItemWidth / 2 - HORIZONTAL_PADDING;
+
+  return ScrollTrigger.create({
+    trigger: container,
+    start: "top 72%",
+    end: "bottom top",
+    scrub: 7.5,
+
+    onUpdate: (self) => {
+      const p = self.progress;
+
+      let xPos =
+        initialOffset -
+        p * (initialOffset + totalWidth * 0.14);
+
+      let yPos = 0;
+
+      if (p > 0.88) {
+        const ep = (p - 0.88) / 0.16;
+        yPos = -24 * ep;
+
+        // smooth snap to exact left edge
+        xPos = gsap.utils.interpolate(xPos, finalX, ep);
+      }
+
+      gsap.set(inner, {
+        x: xPos,
+        y: yPos,
+      });
+    },
+  });
+}
+
+
     });
 
-    const handleResize = () => ScrollTrigger.refresh();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      st.kill();
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => ScrollTrigger.killAll();
   }, [items]);
 
-  const NUM_SLIDES = 12;
-  const slides = items.length
-    ? items
-    : new Array(NUM_SLIDES).fill(0).map((_, i) => {
-        const Icon = ICONS[i % ICONS.length];
-        return (
-          <div
-            key={i}
-            className={`shrink-0 w-30 rounded-3xl flex flex-col justify-center items-center ${
-              i === 0 ? "mr-4" : "mx-4"
-            }`}
-          >
-            <Icon />
-          </div>
-        );
-      });
+  const slides =
+    items.length ||
+    new Array(12).fill(0).map((_, i) => {
+      const Icon = ICONS[i % ICONS.length];
+      return (
+        <div
+          key={i}
+          className={`shrink-0 w-30 rounded-3xl flex justify-center items-center ${
+            i === 0 ? "mr-3" : "mx-3"
+          }`}
+        >
+          <Icon />
+        </div>
+      );
+    });
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full overflow-hidden z-[-10] bg-black  "
+      className="relative w-full overflow-hidden bg-black"
       style={{ height }}
     >
       <div
         ref={innerRef}
-        className="absolute top-0 flex items-center gap-8 px-8 will-change-transform pointer-events-none z-0"
+        className="absolute top-0 flex items-center gap-8 px-8 will-change-transform pointer-events-none"
         style={{ height: "100%" }}
       >
         {slides}
