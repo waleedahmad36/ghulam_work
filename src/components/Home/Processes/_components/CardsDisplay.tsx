@@ -87,7 +87,7 @@ export interface CardProps {
 const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
   return (
     <div className="card">
-      <div className="md:w-[200px] md:h-[400px]   lg:w-[380px] lg:h-[220px] relative bg-black overflow-visible">
+      <div className="md:w-[200px] md:h-[400px]   lg:w-[380px] lg:h-[220px]  xl:w-[410px] xl:h-[230px] 2xl:w-[430px] 2xl:h-[240px]  relative bg-black overflow-visible">
         <Image
           src={imageSrc}
           alt=""
