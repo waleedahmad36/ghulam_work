@@ -10,15 +10,11 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-/* ---------------- TYPES ---------------- */
-
 export interface CardProps {
   imageSrc: string;
   CircleIcon: ComponentType;
   TextIcon?: ComponentType;
 }
-
-/* ---------------- DATA ---------------- */
 
 const cardsData: CardProps[] = [
   { imageSrc: "/card1.avif", CircleIcon: CircleOne, TextIcon: TextOne },
@@ -28,8 +24,6 @@ const cardsData: CardProps[] = [
   { imageSrc: "/card5.avif", CircleIcon: CircleOne },
   { imageSrc: "/card6.avif", CircleIcon: CircleOne, TextIcon: TextOne },
 ];
-
-/* ---------------- DISPLAY ---------------- */
 
 const CardsDisplay = () => {
   const rowRefs = useRef<HTMLDivElement[]>([]);
@@ -64,7 +58,7 @@ const CardsDisplay = () => {
   }, []);
 
   return (
-    <div className="py-8 space-y-8">
+    <div className="py-8 space-y-8 px-4">
       {[0, 1].map((rowIndex) => (
         <div
           key={rowIndex}
@@ -73,7 +67,7 @@ const CardsDisplay = () => {
             grid
             gap-8
             justify-center
-            grid-cols-[repeat(auto-fit,minmax(380px,1fr))]
+            grid-cols-3
             max-w-[1400px]
             mx-auto
           "
@@ -91,8 +85,6 @@ const CardsDisplay = () => {
 
 export default CardsDisplay;
 
-/* ---------------- CARD ---------------- */
-
 const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
   return (
     <div className="card flex justify-center">
@@ -101,9 +93,10 @@ const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
           relative
           bg-black
           overflow-visible
-          hidden lg:block
-          lg:w-[30vw] lg:h-[242px]
-        
+          w-full
+          h-[220px] lg:h-[220px] xl:w-[380px] xl:h-[220px] 
+          2xl:w-[420px] 2xl:h-[220px]
+          md:w-[220px] md:h-[500px]
         "
       >
         <Image src={imageSrc} alt="" fill className="object-cover opacity-95" />
@@ -143,7 +136,7 @@ const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
           <span className="text-[9.9px] leading-tight">
             Begin with a captivating perspective, gazing upward from
             <br />
-            beneath the earth&apos;s surface.
+            beneath the earth's surface.
           </span>
         </div>
       </div>

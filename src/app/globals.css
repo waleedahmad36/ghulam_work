@@ -65,26 +65,13 @@
 }
 
 
-.cardBox {
-  width: 380px;
-  height: 220px;
-}
 
-/* XL screens (1280px – 1535px) */
-@media (min-width: 1280px) {
-  .cardBox {
-    width: 410px;
-    height: 230px;
+  @media (min-width: 1024px) {
+    .card {
+      width: 380px !important;
+      height: 220px !important;
+    }
   }
-}
-
-/* 2XL screens (1536px and above) */
-@media (min-width: 1536px) {
-  .cardBox {
-    width: 430px;
-    height: 238px;
-  }
-}
 
 
 

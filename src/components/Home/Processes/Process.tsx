@@ -52,19 +52,20 @@ const Process = () => {
 
       /* ---------------- HEADING ---------------- */
       gsap.fromTo(
-        headingRef.current,
-        { opacity: 0, scale: 0.7 },
-        {
-          opacity: 1,
-          scale: 1,
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top 75%",
-            end: "top 50%",
-            scrub: 1,
-          },
-        }
-      );
+  headingRef.current,
+  { scale: 0.85 },
+  {
+    scale: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: headingRef.current,
+      start: "top 75%",
+      end: "top 50%",
+      scrub: 1,
+    },
+  }
+);
+
 
       /* ---------------- BOTTOM BORDER (STEP 1) ---------------- */
       gsap.fromTo(
@@ -164,7 +165,7 @@ const Process = () => {
       <div
         ref={circleNumberRef}
         className="w-12 h-12 flex justify-center items-center mt-3 mb-10 rounded-full border border-black"
-        style={{ opacity: 0 }}
+        // style={{ opacity: 0 }}
       >
         <span className="text-[30px] font-extralight">1</span>
       </div>
