@@ -139,40 +139,42 @@ const Process = () => {
       className="flex flex-col bg-[#E7E4E5] justify-center items-center text-black"
     >
       {/* ...rest of your component stays same */}
-      <div className="lg:h-[25vh] flex items-start">
+      <div className="lg:h-[23vh] flex items-start">
         <div
           ref={topBorderInnerRef}
-          className="bg-black w-[1px]"
+          className="bg-black w-[0.8px]"
           style={{ height: 0 }}
         />
       </div>
 
       <h3
         ref={headingRef}
-        className="text-center lg:text-[74px] my-1 font4 tracking-tight font-bold"
+        className="text-center lg:text-[74px]  font4 tracking-tight font-bold"
       >
         OUR PROCESS
       </h3>
 
-      <div className="h-[25vh] flex items-start">
+      <div className="h-[22vh] flex items-start">
         <div
           ref={bottomBorderInnerRef}
-          className="bg-black w-[1px]"
+          className="bg-black w-[0.8px]"
           style={{ height: 0 }}
         />
       </div>
 
       <div
-        ref={circleNumberRef}
-        className="w-12 h-12 flex justify-center items-center mt-3 mb-10 rounded-full border border-black"
+        // ref={circleNumberRef}
+        className="w-12 h-12 flex justify-center items-center  mt-8 rounded-full border border-black"
         // style={{ opacity: 0 }}
       >
-        <span className="text-[30px] font-extralight">1</span>
+        <span className="text-[20px] font-extralight">1</span>
       </div>
 
-      <StrategyCircle />
+      <div   className="relative -mt-[17px]" >
+        <StrategyCircle />
+      </div>
 
-      <div className="h-[20vh] flex items-start">
+      <div className="h-[18vh] flex items-start">
         <div
           ref={secondBorderInnerRef}
           className="bg-black w-[1px]"

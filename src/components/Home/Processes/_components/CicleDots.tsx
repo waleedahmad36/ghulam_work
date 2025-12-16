@@ -29,7 +29,7 @@ export default function StrategyCircle() {
           ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 70%",
+            start: "top 75%",
             end: "top 55%",
             scrub: true,
           },
