@@ -112,7 +112,7 @@ const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
           <div
             className={`absolute ${
               imageSrc.includes("2")
-                ? "-right-6 -top-3 rotate-8"
+                ? "-right-6 -top-1 rotate-8"
                 : "right-2 top-3 rotate-12"
             }`}
           >

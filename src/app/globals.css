@@ -72,6 +72,11 @@
 
 
 
+#circle_number{
+  font-weight: 400 !important;
+}
+
+
 
   @media (min-width: 1024px) {
     .card {

@@ -222,12 +222,12 @@ const PinVideoInBg = () => {
       {/* HERO SECTION */}
       <div
         ref={heroSectionRef}
-        className="pb-text-section pb-hero-wrap relative z-10 text-center flex flex-col items-center justify-center px-4 font3 my-12"
+        className="pb-text-section pb-hero-wrap relative z-10 text-center flex flex-col items-center justify-center px-4 font3 mt-6 mb-12"
       >
         <div className="max-w-6xl">
           <h2
             ref={heroTopRef}
-            className="pb-hero-top text-4xl md:text-6xl lg:text-[80px] font-light text-white mb-1 font1"
+            className="pb-hero-top text-4xl md:text-6xl lg:text-[80px] font-light text-white mb-1 font1 "
           >
             A GLOBAL 360° CREATIVE
           </h2>
@@ -236,7 +236,7 @@ const PinVideoInBg = () => {
             className="pb-hero-bottom text-4xl md:text-6xl lg:text-[80px] font-bold text-white mt-[15px] mb-4 font1"
           >
             AGENCY{" "}
-            <span className="pb-hero-x font3 text-[40px] md:text-[48px] lg:text-[55px] relative bottom-1 md:bottom-2 lg:bottom-3">
+            <span className="pb-hero-x font3 text-[40px] md:text-[48px] lg:text-[50px] relative bottom-1 md:bottom-2 lg:bottom-3">
               x
             </span>{" "}
             STUDIO

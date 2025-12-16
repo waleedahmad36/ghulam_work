@@ -145,7 +145,7 @@ gsap.timeline({
       </h3>
 
       {/* Bottom border */}
-      <div className="h-[22.4vh] flex items-start">
+      <div className="h-[23vh] flex items-start">
         <div
           ref={bottomBorderInnerRef}
           className="bg-black w-[0.8px]"
@@ -155,9 +155,9 @@ gsap.timeline({
 
       {/* Circle 1 */}
       <div
-        className="w-12 h-12 flex justify-center items-center mt-8 rounded-full border border-black"
+        className="w-12 h-12 flex justify-center items-center mt-10 rounded-full border border-black"
       >
-        <span className="text-[20px] font-extralight">1</span>
+        <span className="text-[35px] font-sans" id="circle_number" >1</span>
       </div>
 
       {/* StrategyCircle */}
@@ -175,14 +175,14 @@ gsap.timeline({
       </div>
 
       {/* Circle 2 */}
-      <div className="w-12 h-12 flex justify-center items-center mt-3 mb-6 rounded-full border border-black">
+      <div className="w-12 h-12 flex justify-center items-center mt-3 mb-2 rounded-full border border-black">
         2
       </div>
 
       {/* IDEATION */}
       <h3
         ref={ideationRef}
-        className="text-[60px] my-6 font4 tracking-tight opacity-0"
+        className="text-[60px] my-4 font4 tracking-tight opacity-0"
       >
         IDEATION
       </h3>
