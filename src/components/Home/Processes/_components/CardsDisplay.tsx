@@ -64,13 +64,17 @@ const CardsDisplay = () => {
           key={rowIndex}
           ref={(el) => el && (rowRefs.current[rowIndex] = el)}
           className="
-            grid
-            gap-8
-            justify-center
-            grid-cols-3
-            max-w-[1400px]
-            mx-auto
-          "
+  grid
+  gap-8
+  justify-center
+  mx-auto
+  max-w-[1600px]
+
+  grid-cols-[repeat(3,220px)]
+  lg:grid-cols-[repeat(3,380px)]
+  2xl:grid-cols-[repeat(3,420px)]
+"
+
         >
           {cardsData
             .slice(rowIndex * 3, rowIndex * 3 + 3)
@@ -88,17 +92,16 @@ export default CardsDisplay;
 const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
   return (
     <div className="card flex justify-center">
-      <div
-        className="
-          relative
-          bg-black
-          overflow-visible
-          w-full
-          h-[220px] lg:h-[220px] xl:w-[380px] xl:h-[220px] 
-          2xl:w-[420px] 2xl:h-[220px]
-          md:w-[220px] md:h-[500px]
-        "
-      >
+     <div
+  className="
+      relative
+      bg-black
+      overflow-visible
+      w-full
+      md:h-[500px]
+      lg:h-[220px]
+    "
+>
         <Image src={imageSrc} alt="" fill className="object-cover opacity-95" />
 
         <div className="absolute left-4 top-2 w-10 h-10">
