@@ -65,6 +65,13 @@
 }
 
 
+#process_heading {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+
+
 
   @media (min-width: 1024px) {
     .card {
@@ -127,8 +134,8 @@
 }
 
 .dot {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   background-color: #E7E4E5;
   border: 1px solid #000;
   border-radius: 50%;

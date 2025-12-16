@@ -227,13 +227,13 @@ const PinVideoInBg = () => {
         <div className="max-w-6xl">
           <h2
             ref={heroTopRef}
-            className="pb-hero-top text-4xl md:text-6xl lg:text-[87px] font-light text-white mb-1 font1"
+            className="pb-hero-top text-4xl md:text-6xl lg:text-[80px] font-light text-white mb-1 font1"
           >
             A GLOBAL 360° CREATIVE
           </h2>
           <h2
             ref={heroBottomRef}
-            className="pb-hero-bottom text-4xl md:text-6xl lg:text-[87px] font-bold text-white mt-[15px] mb-4 font1"
+            className="pb-hero-bottom text-4xl md:text-6xl lg:text-[80px] font-bold text-white mt-[15px] mb-4 font1"
           >
             AGENCY{" "}
             <span className="pb-hero-x font3 text-[40px] md:text-[48px] lg:text-[55px] relative bottom-1 md:bottom-2 lg:bottom-3">

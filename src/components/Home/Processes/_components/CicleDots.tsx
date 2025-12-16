@@ -101,14 +101,14 @@ export default function StrategyCircle() {
         className="sticky top-0 h-screen flex items-center justify-center"
       >
         <div
-          className="relative flex items-center justify-center rounded-full mt-12"
+          className="relative top-3 flex items-center justify-center rounded-full mt-12"
           style={{
             width: "390px",
             height: "390px",
             border: "1px solid #000000",
           }}
         >
-          <h3 className="text-[48px]  font4 text-nowrap font-bold tracking-tight">
+          <h3 className="text-[50px]  font4 text-nowrap font-bold tracking-tight">
             THE STRATEGY
           </h3>
 
@@ -122,7 +122,7 @@ export default function StrategyCircle() {
           </p>
 
           {/* RIGHT TOP */}
-          <div className="dot absolute top-[48px] right-[46px]" />
+          <div className="dot absolute top-[48px] right-[50px]" />
           <p
             ref={(el) => (rightTexts.current[0] = el)}
             className="absolute top-[45px] right-[-250px] text-[18px] tracking-widest text-[#4d4b4b] font-light opacity-0"
@@ -131,7 +131,7 @@ export default function StrategyCircle() {
           </p>
 
           {/* LEFT TOP */}
-          <div className="dot absolute top-[48px] left-[46px]" />
+          <div className="dot absolute top-[48px] left-[50px]" />
           <p
             ref={(el) => (leftTexts.current[0] = el)}
             className="absolute top-[48px] left-[-130px] text-[18px] tracking-widest text-[#4d4b4b] opacity-0 font-light"
@@ -140,7 +140,7 @@ export default function StrategyCircle() {
           </p>
 
           {/* LEFT CENTER */}
-          <div className="dot absolute left-[-10px] top-1/2 -translate-y-1/2" />
+          <div className="dot absolute left-[-8px] top-1/2 -translate-y-1/2" />
           <p
             ref={(el) => (leftTexts.current[1] = el)}
             className="absolute left-[-300px] top-1/2 -translate-y-1/2 text-[18px] tracking-widest text-[#4d4b4b] opacity-0"
@@ -149,7 +149,7 @@ export default function StrategyCircle() {
           </p>
 
           {/* RIGHT CENTER */}
-          <div className="dot absolute right-[-10px] top-1/2 -translate-y-1/2" />
+          <div className="dot absolute right-[-8px] top-1/2 -translate-y-1/2" />
           <p
             ref={(el) => (rightTexts.current[1] = el)}
             className="absolute right-[-278px] top-1/2 -translate-y-1/2 text-[18px] tracking-widest text-[#4d4b4b] opacity-0"
@@ -158,7 +158,7 @@ export default function StrategyCircle() {
           </p>
 
           {/* RIGHT BOTTOM */}
-          <div className="dot absolute bottom-[48px] right-[46px]" />
+          <div className="dot absolute bottom-[48px] right-[50px]" />
           <p
             ref={(el) => (rightTexts.current[2] = el)}
             className="absolute bottom-[45px] right-[-250px] text-[18px] tracking-widest text-[#4d4b4b] font-light opacity-0"
@@ -167,7 +167,7 @@ export default function StrategyCircle() {
           </p>
 
           {/* LEFT BOTTOM */}
-          <div className="dot absolute bottom-[48px] left-[46px]" />
+          <div className="dot absolute bottom-[48px] left-[50px]" />
           <p
             ref={(el) => (leftTexts.current[2] = el)}
             className="absolute bottom-[45px] left-[-270px] text-[20px] tracking-[2px] text-[#4d4b4b] font-light opacity-0"
