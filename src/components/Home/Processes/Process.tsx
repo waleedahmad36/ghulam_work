@@ -6,6 +6,8 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import StrategyCircle from "./_components/CicleDots";
 import CardsDisplay from "./_components/CardsDisplay";
 import { useHeaderContext } from "@/context/useHeaderContext";
+import TalentGallery from "./_components/TalentGallery";
+import ExecutionPinVideo from "./_components/ExecutionPinVideo";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -20,6 +22,7 @@ const Process = () => {
   const bottomBorderInnerRef = useRef<HTMLDivElement>(null);
   const ideationRef = useRef<HTMLHeadingElement>(null);
   const secondBorderInnerRef = useRef<HTMLDivElement>(null);
+  const thirdBorderInnerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -29,8 +32,10 @@ const Process = () => {
         trigger: sectionRef.current,
         start: "top 10%",
         end: "bottom center",
-        onEnter: () => setColors({ fillColor: "black", menuIconColor: "black" }),
-        onLeaveBack: () => setColors({ fillColor: "white", menuIconColor: "white" }),
+        onEnter: () =>
+          setColors({ fillColor: "black", menuIconColor: "black" }),
+        onLeaveBack: () =>
+          setColors({ fillColor: "white", menuIconColor: "white" }),
       });
 
       gsap.fromTo(
@@ -47,30 +52,29 @@ const Process = () => {
         }
       );
 
-   // INITIAL STATE — large scale down (as you want)
-gsap.set(headingRef.current, {
-  scale: 0.75, // big scale difference like ref site
-  transformOrigin: "center center",
-  willChange: "transform",
-});
+      // INITIAL STATE — large scale down (as you want)
+      gsap.set(headingRef.current, {
+        scale: 0.75, // big scale difference like ref site
+        transformOrigin: "center center",
+        willChange: "transform",
+      });
 
-// TIMELINE WITH INERTIA (KEY DIFFERENCE)
-gsap.timeline({
-  scrollTrigger: {
-    trigger: headingRef.current,
-    start: "top 80%",
-    end: "top 40%",
-    scrub: 2,              // 👈 THIS adds smoothness even with big scale
-    fastScrollEnd: true,
-    preventOverlaps: true,
-  },
-})
-.to(headingRef.current, {
-  scale: 1,
-  ease: "power2.out",      // 👈 NOT linear, ref site uses easing
-});
-
-
+      // TIMELINE WITH INERTIA (KEY DIFFERENCE)
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 80%",
+            end: "top 40%",
+            scrub: 2, // 👈 THIS adds smoothness even with big scale
+            fastScrollEnd: true,
+            preventOverlaps: true,
+          },
+        })
+        .to(headingRef.current, {
+          scale: 1,
+          ease: "power2.out", // 👈 NOT linear, ref site uses easing
+        });
 
       gsap.fromTo(
         bottomBorderInnerRef.current,
@@ -85,8 +89,6 @@ gsap.timeline({
           },
         }
       );
-
-      
 
       gsap.fromTo(
         secondBorderInnerRef.current,
@@ -103,11 +105,25 @@ gsap.timeline({
       );
 
       gsap.fromTo(
-        ideationRef.current,
-        { opacity: 0, y: 10 },
+        thirdBorderInnerRef.current,
+        { height: 0 },
         {
-          opacity: 1,
+          height: "100%",
+          scrollTrigger: {
+            trigger: thirdBorderInnerRef.current,
+            start: "top 74%",
+            end: "top 50%",
+            scrub: 1,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ideationRef.current,
+        { scale: 0.85, y: 10 },
+        {
           y: 0,
+          scale: 1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: ideationRef.current,
@@ -137,7 +153,8 @@ gsap.timeline({
       </div>
 
       {/* Heading */}
-      <h3 id="process_heading"
+      <h3
+        id="process_heading"
         ref={headingRef}
         className="text-center lg:text-[74px] font4 tracking-tight font-bold"
       >
@@ -154,10 +171,10 @@ gsap.timeline({
       </div>
 
       {/* Circle 1 */}
-      <div
-        className="w-12 h-12 flex justify-center items-center mt-10 rounded-full border border-black"
-      >
-        <span className="text-[35px] font-sans" id="circle_number" >1</span>
+      <div className="w-12 h-12 flex justify-center items-center mt-10 rounded-full border border-black">
+        <span className="text-[35px] font-sans" id="circle_number">
+          1
+        </span>
       </div>
 
       {/* StrategyCircle */}
@@ -180,15 +197,26 @@ gsap.timeline({
       </div>
 
       {/* IDEATION */}
-      <h3
-        ref={ideationRef}
-        className="text-[60px] my-4 font4 tracking-tight opacity-0"
-      >
+      <h3 ref={ideationRef} className="text-[60px] my-4 font4 tracking-tight">
         IDEATION
       </h3>
 
       {/* CardsDisplay */}
       <CardsDisplay />
+
+      {/* Second border */}
+      <div className="h-[23vh] flex items-start">
+        <div
+          ref={thirdBorderInnerRef}
+          className="bg-black w-[0.9px]"
+          style={{ height: 0 }}
+        />
+      </div>
+
+      {/* Sec 3 */}
+
+      <TalentGallery />
+      <ExecutionPinVideo/>
     </div>
   );
 };

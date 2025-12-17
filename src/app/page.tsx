@@ -1,4 +1,5 @@
 "use client";
+import BoathouseCTA from "@/components/Footer";
 import Header from "@/components/Home/Header";
 import Hero from "@/components/Home/Hero";
 import HorizontalSliderOnScroll from "@/components/Home/HorizontalSliderOnScroll";
@@ -16,9 +17,10 @@ export default function Home() {
         <HorizontalSliderOnScroll />
         <PinVideoInBg />
         <Process />
-        <div className="w-full h-[40vh] bg-black text-3xl font-extrabold shadow-2xl flex flex-col text-center justify-center items-center ">
+        <div className="w-full h-[40vh] bg-white text-3xl font-extrabold shadow-2xl flex flex-col text-center justify-center items-center ">
           <h3>Next Section Continue</h3>
         </div>
+        <BoathouseCTA/>
       </>
     </HeaderProvider>
   );

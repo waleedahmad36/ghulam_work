@@ -58,7 +58,7 @@ const CardsDisplay = () => {
   }, []);
 
   return (
-    <div className="pb-8 space-y-8 px-4">
+    <div className="pb-6 space-y-8 px-4">
       {[0, 1].map((rowIndex) => (
         <div
           key={rowIndex}
