@@ -9,209 +9,116 @@ if (typeof window !== "undefined") {
 }
 
 const PinVideoInBg = () => {
-  const containerRef = useRef(null);
-  const videoRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  const heroSectionRef = useRef(null);
-  const heroTopRef = useRef(null);
-  const heroBottomRef = useRef(null);
-  const heroSubRef = useRef(null);
+  const heroSectionRef = useRef<HTMLDivElement>(null);
+  const heroTopRef = useRef<HTMLHeadingElement>(null);
+  const heroBottomRef = useRef<HTMLHeadingElement>(null);
+  const heroBottomInnerRef = useRef<HTMLSpanElement>(null); // inner wrapper for transform-only tracking
+  const heroSubRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const container = containerRef.current;
-    const video = videoRef.current;
-    const heroSection = heroSectionRef.current;
-    const heroTop = heroTopRef.current;
-    const heroBottom = heroBottomRef.current;
-    const heroSub = heroSubRef.current;
-
-    if (!container || !video || !heroSection || !heroTop || !heroBottom) return;
-
-    const localTriggers: ScrollTrigger[] = [];
+    if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      /* -------------------------------------------------
-         HERO TOP LINE: A GLOBAL 360° CREATIVE
-         - Fade + rise + subtle uniform scale
-      ------------------------------------------------- */
-      const heroTopST = ScrollTrigger.create({
-        trigger: heroSection,
-        start: "top 65%",
-        end: "top 10%",
-        scrub: 1,
-        onUpdate: (self) => {
-          const p = self.progress;
-
-          const enterP = gsap.utils.clamp(
-            0,
-            1,
-            gsap.utils.mapRange(0, 0.4, 0, 1, p)
-          );
-          const exitP = gsap.utils.clamp(
-            0,
-            1,
-            gsap.utils.mapRange(0.4, 1, 0, 1, p)
-          );
-
-          const opacity = gsap.utils.interpolate(0.3, 1, enterP);
-          const y = gsap.utils.interpolate(40, 0, enterP);
-          const scale = gsap.utils.interpolate(1, 0.94, exitP);
-
-          gsap.set(heroTop, {
-            opacity,
-            y,
-            scale,
-            transformOrigin: "center center",
-            force3D: true,
-            willChange: "transform, opacity",
-          });
-        },
+      // Rendering hints to keep text crisp during transforms
+      gsap.set([heroTopRef.current, heroBottomRef.current, heroBottomInnerRef.current, heroSubRef.current], {
+        willChange: "transform, opacity",
+        transformOrigin: "center center",
       });
-      localTriggers.push(heroTopST);
 
-      /* -------------------------------------------------
-         HERO BOTTOM LINE: AGENCY x STUDIO
-         - Fade + rise
-         - Horizontal compression + slight vertical scale
-         - Letter-spacing tightening
-      ------------------------------------------------- */
-      const heroBottomST = ScrollTrigger.create({
-        trigger: heroSection,
-        start: "top 65%",
-        end: "top 10%",
-        scrub: 1,
-        onUpdate: (self) => {
-          const p = self.progress;
-
-          const enterP = gsap.utils.clamp(
-            0,
-            1,
-            gsap.utils.mapRange(0, 0.4, 0, 1, p)
-          );
-          const exitP = gsap.utils.clamp(
-            0,
-            1,
-            gsap.utils.mapRange(0.4, 1, 0, 1, p)
-          );
-
-          const opacity = gsap.utils.interpolate(0.3, 1, enterP);
-          const y = gsap.utils.interpolate(40, 0, enterP);
-
-          // desktop-like behavior; on md/sm it still looks clean
-          const scaleX = gsap.utils.interpolate(1, 0.88, exitP);
-          const scaleY = gsap.utils.interpolate(1, 0.96, exitP);
-          const letterSpacingPx = gsap.utils.interpolate(1.2, 0.2, exitP);
-
-          gsap.set(heroBottom, {
-            opacity,
-            y,
-            scaleX,
-            scaleY,
-            letterSpacing: `${letterSpacingPx}px`,
-            transformOrigin: "center center",
-            force3D: true,
-            willChange: "transform, opacity, letter-spacing",
-          });
+      // Smooth, scroll-linked timeline (no manual onUpdate)
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroSectionRef.current,
+          start: "top 65%",
+          end: "top 10%",
+          scrub: 1.2,
+          fastScrollEnd: true,
+          preventOverlaps: true,
         },
+        defaults: { ease: "power2.out" },
       });
-      localTriggers.push(heroBottomST);
 
-      /* -------------------------------------------------
-         HERO SUBLINE: SPARKING STAGGERING…
-         - Only fade + rise (no scale)
-      ------------------------------------------------- */
-      if (heroSub) {
-        const heroSubST = ScrollTrigger.create({
-          trigger: heroSection,
-          start: "top 70%",
-          end: "top 20%",
-          scrub: 1,
-          onUpdate: (self) => {
-            const p = self.progress;
-            const opacity = gsap.utils.interpolate(0.3, 1, p);
-            const y = gsap.utils.interpolate(30, 0, p);
+      // Top line: fade in + rise + gentle scale down
+      tl.fromTo(
+        heroTopRef.current,
+        { autoAlpha: 0.3, y: 40, scale: 1 },
+        { autoAlpha: 1, y: 0, scale: 0.84 },
+        0
+      );
 
-            gsap.set(heroSub, {
-              opacity,
-              y,
-              transformOrigin: "center center",
-              force3D: true,
-              willChange: "transform, opacity",
-            });
-          },
-        });
-        localTriggers.push(heroSubST);
+      // Bottom line: fade in + rise; tracking-tight via scaleX on inner span
+      // We avoid letterSpacing to prevent layout thrash — scaleX is GPU smooth.
+      tl.fromTo(
+        heroBottomRef.current,
+        { autoAlpha: 0.3, y: 40 },
+        { autoAlpha: 1, y: 0 },
+        0
+      ).fromTo(
+        heroBottomInnerRef.current,
+        { scaleX: 1, scaleY: 1 },
+        { scaleX: 0.84, scaleY: 0.88 },
+        "<"
+      );
+
+      // Sub line: gentle fade + rise
+      if (heroSubRef.current) {
+        gsap.fromTo(
+          heroSubRef.current,
+          { autoAlpha: 0.3, y: 30 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: heroSectionRef.current,
+              start: "top 70%",
+              end: "top 20%",
+              scrub: 1,
+            },
+          }
+        );
       }
 
-      /* -------------------------------------------------
-         OTHER TEXT SECTIONS
-         - Independent ScrollTrigger per section
-         - Simple, linear, no stacking
-      ------------------------------------------------- */
+      // Other text sections (kept smooth with transform-only)
       const sections = Array.from(
-        container.querySelectorAll(".pb-text-section")
+        containerRef.current.querySelectorAll(".pb-text-section")
       ) as HTMLElement[];
 
       sections.forEach((section) => {
-        if (section === heroSection) return; // hero already handled
-
-        const st = ScrollTrigger.create({
-          trigger: section,
-          start: "top 70%",
-          end: "top 20%",
-          scrub: 1,
-          onUpdate: (self) => {
-            const p = self.progress;
-
-            const enterP = gsap.utils.clamp(
-              0,
-              1,
-              gsap.utils.mapRange(0, 0.4, 0, 1, p)
-            );
-            const exitP = gsap.utils.clamp(
-              0,
-              1,
-              gsap.utils.mapRange(0.4, 1, 0, 1, p)
-            );
-
-            const opacity = gsap.utils.interpolate(0.3, 1, enterP);
-            const y = gsap.utils.interpolate(40, 0, enterP);
-            const scale = gsap.utils.interpolate(1, 0.92, exitP);
-
-            gsap.set(section, {
-              opacity,
-              y,
-              scale,
-              transformOrigin: "center center",
-              force3D: true,
-              willChange: "transform, opacity",
-            });
-          },
-        });
-
-        localTriggers.push(st);
+        if (section === heroSectionRef.current) return;
+        gsap.fromTo(
+          section,
+          { autoAlpha: 0.3, y: 40, scale: 1 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 0.92,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 70%",
+              end: "top 20%",
+              scrub: 1,
+            },
+          }
+        );
       });
 
-      /* -------------------------------------------------
-         PINNED VIDEO (fully isolated)
-      ------------------------------------------------- */
-      const pinST = ScrollTrigger.create({
-        trigger: container,
+      // Pin background video
+      ScrollTrigger.create({
+        trigger: containerRef.current,
         start: "top top",
         end: "bottom bottom",
-        pin: video,
+        pin: videoRef.current,
         pinSpacing: false,
         anticipatePin: 1,
       });
-      localTriggers.push(pinST);
-    }, container);
+    }, containerRef);
 
-    return () => {
-      localTriggers.forEach((t) => t.kill());
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -223,27 +130,45 @@ const PinVideoInBg = () => {
       <div
         ref={heroSectionRef}
         className="pb-text-section pb-hero-wrap relative z-10 text-center flex flex-col items-center justify-center px-4 font3 mt-6 mb-12"
+        style={{
+          // Optional rendering hints to reduce font jitter on some browsers
+          textRendering: "optimizeLegibility",
+          WebkitFontSmoothing: "antialiased",
+          MozOsxFontSmoothing: "grayscale",
+        }}
       >
         <div className="max-w-6xl">
           <h2
             ref={heroTopRef}
-            className="pb-hero-top text-4xl md:text-6xl lg:text-[80px] font-light text-white mb-1 font1 "
+            className="pb-hero-top text-4xl md:text-6xl lg:text-[80px] font-light text-white mb-1 font4"
           >
             A GLOBAL 360° CREATIVE
           </h2>
+
+          {/* Bottom line with inner transform wrapper for smooth tracking-tight */}
           <h2
             ref={heroBottomRef}
-            className="pb-hero-bottom text-4xl md:text-6xl lg:text-[80px] font-bold text-white mt-[15px] mb-4 font1"
+            className="pb-hero-bottom text-4xl md:text-6xl lg:text-[80px] font-bold text-white mt-[15px] mb-4 font4"
           >
-            AGENCY{" "}
-            <span className="pb-hero-x font3 text-[40px] md:text-[48px] lg:text-[50px] relative bottom-1 md:bottom-2 lg:bottom-3">
-              x
-            </span>{" "}
-            STUDIO
+            <span
+              ref={heroBottomInnerRef}
+              className="inline-block"
+              style={{
+                display: "inline-block",
+                willChange: "transform",
+              }}
+            >
+              AGENCY{" "}
+              <span className="pb-hero-x font3 text-[40px] md:text-[48px] lg:text-[50px] relative bottom-1 md:bottom-2 lg:bottom-3">
+                x
+              </span>{" "}
+              STUDIO
+            </span>
           </h2>
+
           <p
             ref={heroSubRef}
-            className="pb-hero-sub text-[16px] md:text-[18px] lg:text-[20px]  text-slate-100 tracking-[1.5px] md:tracking-[2px] mt-6 font3"
+            className="pb-hero-sub text-[16px] md:text-[18px] lg:text-[20px] text-white/90 tracking-[1.5px] md:tracking-[2px] mt-6 font5"
           >
             SPARKING STAGGERING BRAND MOVEMENTS IN ASTONISHING WAYS
           </p>
@@ -309,7 +234,7 @@ const PinVideoInBg = () => {
         autoPlay
         muted
         loop
-        className="w-full h-screen object-cover absolute top-0 left-0 z-0"
+        className="w-full h-screen object-cover absolute top-0 left-0 z-0 opacity-80"
       />
     </div>
   );

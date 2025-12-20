@@ -104,7 +104,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div
+    <div id="hero-section"
       ref={containerRef}
       className="w-full h-[102vh] relative flex justify-center items-start overflow-hidden"
     >

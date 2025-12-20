@@ -61,9 +61,9 @@ export default function ExecutionPinVideo() {
           ease: "power2.out",
           scrollTrigger: {
             trigger: container,
-            start: "top+=10% center",
+            start: "top+=10% 95%",
             end: "top center",
-            scrub: 1.5,
+            scrub: 1.6,
           },
         }
       );
@@ -105,7 +105,7 @@ export default function ExecutionPinVideo() {
       // parent div already has fixed height (23vh), so we animate scaleY.
       const lineGrow = gsap.fromTo(
         line,
-        { scaleY: 0, transformOrigin: "center center" },
+        { scaleY: 0, transformOrigin: "top center" },
         {
           scaleY: 1,
           ease: "none",

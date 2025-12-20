@@ -131,10 +131,10 @@ const TalentGallery = () => {
           style={{ height: 0 }}
         />
       </div>
-      <p  className="font5 text-[22px]"   ref={awardTextRef} >
+      <p  className="font5 text-[18px]"   ref={awardTextRef} >
         AWARD-WINNING
       </p>
-      <p  className="font4 text-[68px]"  ref={executionTextRef}  >EXECUTION</p>
+      <p  className="font4 text-[68px] "  ref={executionTextRef}  >EXECUTION</p>
       <div className="h-[22vh] flex items-start">
         <div
           ref={lowerBorderRef}
