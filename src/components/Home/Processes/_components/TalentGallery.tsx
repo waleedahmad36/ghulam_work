@@ -100,7 +100,7 @@ const TalentGallery = () => {
   return (
    <>
    <TelantTop/>
-    <div className="hidden w-full lg:grid lg:grid-cols-5 overflow-hidden mt-4 relative">
+    <div className="hidden no-scrollbar-vw lg:grid lg:grid-cols-5 overflow-hidden mt-4 relative">
       {images.map((src, index) => (
         <div
           key={index}

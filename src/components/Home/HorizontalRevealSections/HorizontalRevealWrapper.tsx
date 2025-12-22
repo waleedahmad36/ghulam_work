@@ -104,15 +104,17 @@ export default function HorizontalRevealWrapper() {
       className="hidden lg:block relative h-screen w-full overflow-hidden bg-[#EEEEEE]"
     >
       {/* SECTION 1 MASK */}
-      <div ref={maskRef} className="absolute inset-0 overflow-hidden z-20">
-        <MaskSection />
+      <div ref={maskRef} className="absolute inset-0 overflow-hidden z-20 pointer-events-none ">
+        <div  className="no-scrollbar-vw h-full" >
+           <MaskSection />
+        </div>
       </div>
 
       {/* HORIZONTAL TRACK */}
       <div
         ref={trackRef}
         className="relative h-screen flex"
-        style={{ width: "500vw" }}
+        style={{ width: "500dvw" }}
       >
         <RevealVideoOnScrollSection />
         <DigitalSection />

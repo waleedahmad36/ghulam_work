@@ -6,6 +6,22 @@
   --foreground: #171717;
 }
 
+:root {
+  --sbw: 0px;
+}
+
+@supports (width: 100vw) {
+  :root {
+    --sbw: calc(100vw - 100%);
+  }
+}
+
+
+.no-scrollbar-vw {
+  width: calc(100vw - var(--sbw));
+}
+
+
 @font-face {
   font-family: "wix";
   src:
@@ -185,5 +201,9 @@ body {
   pointer-events: none;
 }
 
+
+.w-d-screen{
+  width: 100dvw;
+}
 
 

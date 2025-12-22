@@ -143,7 +143,7 @@ const EcoSystem = () => {
 
       gsap.fromTo(
         endH3Ref.current,
-        { scale: 0.78 },
+        { scale: 0.88 },
         {
           scale: 1,
           ease: "none",
@@ -158,7 +158,7 @@ const EcoSystem = () => {
 
       gsap.fromTo(
         endPRef.current,
-        { scale: 0.78 },
+        { scale: 0.88 },
         {
           scale: 1,
           ease: "none",
@@ -171,7 +171,7 @@ const EcoSystem = () => {
         }
       );
 
-      // V-NOTCH CLIP PATH - SHARP TRIANGLE LIKE BOATHOUSE
+      // V-NOTCH CLIP PATH
       gsap.fromTo(
         blackSectionRef.current,
         {
@@ -182,27 +182,39 @@ const EcoSystem = () => {
           ease: "none",
           scrollTrigger: {
             trigger: blackSectionRef.current,
-            start: "bottom 130%",
-            end: "bottom -20%",
+            start: "bottom 120%",
+            end: "bottom 100%",
             scrub: true,
             markers: false,
           },
         }
       );
 
-      return () => {
-        ScrollTrigger.getAll().forEach((st) => st.kill());
-      };
+      gsap.fromTo(
+        blackSectionRef.current,
+        { paddingBottom: "50vh" },
+        {
+          paddingBottom: "20vh",
+          ease: "none",
+          scrollTrigger: {
+            trigger: blackSectionRef.current,
+            start: "bottom 110%",
+            end: "bottom 50%",
+            scrub: true,
+          },
+        }
+      );
     });
 
+    // ✅ Only one cleanup
     return () => mm.revert();
   }, []);
 
   return (
-    <div className="hidden lg:block bg-[#E7E4E5] relative pb-[40vh]">
-      <div ref={blackSectionRef} className="w-full min-h-screen bg-black">
+    <div className="hidden lg:block bg-[#E7E4E5] relative h-[350vh] overflow-hidden">
+      <div className="w-full min-h-screen">
         {/* Hero section */}
-        <div className="w-full h-[92vh] relative">
+        <div className="w-full h-[92vh] relative bg-black">
           <Image
             ref={imageRef}
             src="/images/ss.png"
@@ -228,7 +240,7 @@ const EcoSystem = () => {
         </div>
 
         {/* Mid text box */}
-        <div className="w-full flex flex-col items-center -mt-2">
+        <div className="w-full flex flex-col items-center bg-black ">
           <div className="border border-white w-[600px] h-[158px] flex flex-col justify-center items-center text-white">
             <p ref={midTitleRef} className="font5">
               AI OPTIMISATION
@@ -240,35 +252,43 @@ const EcoSystem = () => {
         </div>
 
         {/* Video section */}
-        <div className="w-full flex flex-col items-center justify-center relative h-[140vh]">
-          <div ref={videoTopBorderRef} className="bg-white w-[0.8px] absolute top-0" />
+        <div className="w-full flex flex-col items-center justify-center relative h-screen overflow-hidden bg-black">
+          <div
+            ref={videoTopBorderRef}
+            className="bg-white w-[0.8px] absolute top-0 z-10"
+          />
           <video
             src="https://video.wixstatic.com/video/f415e2_c9b41b05b086461ba2a34848b1c15ca9/720p/mp4/file.mp4"
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-screen"
+            className="h-[94vh] translate-y-[18vh] object-center relative"
           />
-          <div className="w-fit h-[35.6vh] absolute bottom-0">
-            <div ref={videoBottomBorderRef} className="bg-white w-[0.8px]" />
-          </div>
         </div>
 
         {/* Ending text */}
-        <div className="w-full flex flex-col justify-center items-center gap-4 pb-[20vh]">
-          <h3
-            ref={endH3Ref}
-            className="text-white font4 text-[42px] leading-tight tracking-tight text-center"
-          >
-            DRIVING ENGAGEMENT AT ALL <br /> STAGES OF THE FUNNEL
-          </h3>
-          <p
-            ref={endPRef}
-            className="font5 text-white/80 text-[18px] tracking-wide"
-          >
-            FOR A UNIQUE CUSTOMER EXPERIENCE
-          </p>
+        <div className="pb-[50vh] bg-black" ref={blackSectionRef}>
+          <div className="w-full flex flex-col justify-center items-center gap-4 bg-black">
+            <div className="w-fit h-[35.6vh]">
+              <div
+                ref={videoBottomBorderRef}
+                className="bg-white w-[0.8px]"
+              />
+            </div>
+            <h3
+              ref={endH3Ref}
+              className="text-white font4 text-[58px] leading-tight tracking-tight text-center"
+            >
+              DRIVING ENGAGEMENT AT ALL <br /> STAGES OF THE FUNNEL
+            </h3>
+            <p
+              ref={endPRef}
+              className="font5 text-white/80 text-[28px] tracking-wide mt-3"
+            >
+              FOR A UNIQUE CUSTOMER EXPERIENCE
+            </p>
+          </div>
         </div>
       </div>
     </div>

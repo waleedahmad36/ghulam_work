@@ -70,7 +70,7 @@ function MaskSection() {
   return (
     <div
       ref={sectionRef}
-      className="h-screen w-screen overflow-hidden flex flex-col items-center bg-white relative"
+      className="h-full w-screen overflow-hidden flex flex-col items-center bg-white relative"
     >
       {/* Top border */}
       <div className="lg:h-[23vh] flex items-start">
