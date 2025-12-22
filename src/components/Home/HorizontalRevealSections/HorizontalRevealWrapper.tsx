@@ -105,7 +105,7 @@ export default function HorizontalRevealWrapper() {
     >
       {/* SECTION 1 MASK */}
       <div ref={maskRef} className="absolute inset-0 overflow-hidden z-20 pointer-events-none ">
-        <div  className="no-scrollbar-vw h-full" >
+        <div  className="w-screen h-full" >
            <MaskSection />
         </div>
       </div>

@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useHeaderContext } from "@/context/useHeaderContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,11 +19,32 @@ const EcoSystem = () => {
   const endH3Ref = useRef(null);
   const endPRef = useRef(null);
   const blackSectionRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+const { setColors } = useHeaderContext();
 
   useEffect(() => {
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
+
+      ScrollTrigger.create({
+  trigger: sectionRef.current,
+  start: "top top",
+  end: "bottom bottom",
+  onEnter: () => {
+    setColors({ fillColor: "white", menuIconColor: "white" });
+  },
+  onEnterBack: () => {
+    setColors({ fillColor: "white", menuIconColor: "white" });
+  },
+  onLeave: () => {
+    setColors({ fillColor: "black", menuIconColor: "black" });
+  },
+  onLeaveBack: () => {
+    setColors({ fillColor: "black", menuIconColor: "black" });
+  },
+});
+
       gsap.fromTo(
         topBorderRef.current,
         { opacity: 0 },
@@ -211,7 +233,9 @@ const EcoSystem = () => {
   }, []);
 
   return (
-    <div className="hidden lg:block bg-[#E7E4E5] relative h-[350vh] overflow-hidden">
+    <div
+    ref={sectionRef}
+    className="hidden lg:block bg-[#E7E4E5] relative h-[350vh] overflow-hidden">
       <div className="w-full min-h-screen">
         {/* Hero section */}
         <div className="w-full h-[92vh] relative bg-black">

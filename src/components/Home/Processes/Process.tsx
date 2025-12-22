@@ -29,14 +29,29 @@ const Process = () => {
 
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top 10%",
-        end: "bottom center",
-        onEnter: () =>
-          setColors({ fillColor: "black", menuIconColor: "black" }),
-        onLeaveBack: () =>
-          setColors({ fillColor: "white", menuIconColor: "white" }),
-      });
+  trigger: sectionRef.current,
+  start: "top 10%",
+  end: "bottom 10%", // 👈 IMPORTANT (near end)
+
+  onEnter: () => {
+    setColors({ fillColor: "black", menuIconColor: "black" });
+  },
+
+  onEnterBack: () => {
+    setColors({ fillColor: "black", menuIconColor: "black" });
+  },
+
+  onLeave: () => {
+    // 👇 NEXT section gets control
+    setColors({ fillColor: "white", menuIconColor: "white" });
+  },
+
+  onLeaveBack: () => {
+    // 👇 Previous section gets control
+    setColors({ fillColor: "white", menuIconColor: "white" });
+  },
+});
+
 
       gsap.fromTo(
         topBorderInnerRef.current,

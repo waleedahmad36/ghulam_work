@@ -52,12 +52,7 @@ const Header = () => {
       >
         <div className="lg:max-w-7xl 2xl:max-w-[1400px] mx-auto flex justify-between items-center">
          <div  className="w-32 relative flex items-center" >
-           <div className="w-full absolute">
-            <Logo width={"32"} fillLogo={"black"} />
-          </div>
-           <div className="w-full absolute">
-            <Logo width={"32"} fillLogo={"white"} />
-          </div>
+          <Logo width={"32"} fillLogo={fillColor} />
          </div>
 
           <button

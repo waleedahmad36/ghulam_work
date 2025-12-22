@@ -18,17 +18,11 @@
 
 
 .no-scrollbar-vw {
-  width: calc(100vw - var(--sbw));
+  width: calc(100vw - var(--sbw)) !important;
 }
 
 
-@font-face {
-  font-family: "wix";
-  src:
-    url("/fonts/file.woff2") format("woff2"),
-    url("/fonts/file.woff") format("woff");
-  font-display: swap;
-}
+
 
 @font-face {
   font-family: "font1";

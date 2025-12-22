@@ -73,7 +73,7 @@ function MaskSection() {
       className="h-full w-screen overflow-hidden flex flex-col items-center bg-white relative"
     >
       {/* Top border */}
-      <div className="lg:h-[23vh] flex items-start">
+      <div className="lg:h-[23vh] flex items-start w-fit -translate-x-2">
         <div ref={topBorderRef} className="bg-black/90 w-[0.6px]" style={{ height: 0 }} />
       </div>
 
@@ -86,7 +86,7 @@ function MaskSection() {
       </h3>
 
       {/* Bottom border */}
-      <div className="lg:h-[13vh] flex items-start mt-8">
+      <div className="lg:h-[13vh] flex items-start mt-8 w-fit -translate-x-2">
         <div ref={bottomBorderRef} className="bg-black/90 w-[0.6px]" style={{ height: 0 }} />
       </div>
 
