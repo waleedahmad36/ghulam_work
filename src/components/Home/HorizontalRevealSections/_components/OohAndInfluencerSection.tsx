@@ -76,7 +76,6 @@ function OohAndInfluencerSection() {
 
       {/* RIGHT */}
       <div className="w-[50%] relative h-screen flex items-center -translate-x-[2vw] z-20">
-        <FloatingReactions />
         <h2 className="font4 text-[45px] text-black absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
           INFLUENCERS
         </h2>
@@ -94,13 +93,18 @@ function OohAndInfluencerSection() {
             height={320}
             className="rounded-lg shrink-0"
           />
-          <Image
+         <div  className="relative w-fit h-fit" >
+          <div className="absolute top-14 z-10" >
+            <FloatingReactions/>
+          </div>
+           <Image
             src="/images/storyImage2.avif"
             alt=""
             width={235}
             height={320}
-            className="rounded-lg shrink-0"
+            className="rounded-lg shrink-0 relative z-0"
           />
+         </div>
           <Image
             src="/images/storyImage3.avif"
             alt=""

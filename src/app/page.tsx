@@ -21,6 +21,7 @@ export default function Home() {
         <HorizontalSliderOnScroll />
         <PinVideoInBg />
         <Process />
+        
         <HorizontalRevealWrapper/> 
         <EcoSystem/> 
          <Narrative/>

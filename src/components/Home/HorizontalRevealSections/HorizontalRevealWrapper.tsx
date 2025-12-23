@@ -114,7 +114,7 @@ export default function HorizontalRevealWrapper() {
       <div
         ref={trackRef}
         className="relative h-screen flex"
-        style={{ width: "500dvw" }}
+        style={{ width: "500vw" }}
       >
         <RevealVideoOnScrollSection />
         <DigitalSection />

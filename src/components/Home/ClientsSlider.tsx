@@ -14,6 +14,8 @@ const ClientsSlider = () => {
   const borderRef = useRef<HTMLDivElement>(null);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
   const sliderInnerRef = useRef<HTMLDivElement>(null);
+  const HOLD_SCROLL = 450;
+
 
 useEffect(() => {
   const section = sectionRef.current;
@@ -25,7 +27,7 @@ useEffect(() => {
 
   const ctx = gsap.context(() => {
     ScrollTrigger.matchMedia({
-      "(min-width: 1024px)": () => {
+      "(min-width: 724px)": () => {
         /* ---------------- BORDER ---------------- */
         gsap.fromTo(
           border,
@@ -75,7 +77,11 @@ useEffect(() => {
         ScrollTrigger.create({
           trigger: section,
           start: "top top",
-          end: () => sliderTween.scrollTrigger?.end || "+=1000",
+           end: () => {
+    const sliderST = sliderTween.scrollTrigger;
+    if (!sliderST) return "+=400";
+    return sliderST.end + HOLD_SCROLL;
+  },
           pin: true,
           anticipatePin: 1,
           scrub: true,

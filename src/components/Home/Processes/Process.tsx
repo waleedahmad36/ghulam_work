@@ -156,7 +156,7 @@ const Process = () => {
   return (
     <div
       ref={sectionRef}
-      className="hidden lg:flex flex-col bg-[#E7E4E5] justify-center items-center text-black"
+      className="hidden md:flex flex-col bg-[#E7E4E5] justify-center items-center text-black"
     >
       {/* Top border */}
       <div className="lg:h-[23.6vh] flex items-start">

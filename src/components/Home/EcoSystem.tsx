@@ -3,11 +3,10 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useHeaderContext } from "@/context/useHeaderContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const EcoSystem = () => {
+const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; menuIconColor: string }) => void }) => {
   const topBorderRef = useRef(null);
   const heroTextRef = useRef(null);
   const bottomBorderRef = useRef(null);
@@ -19,32 +18,36 @@ const EcoSystem = () => {
   const endH3Ref = useRef(null);
   const endPRef = useRef(null);
   const blackSectionRef = useRef(null);
+  const leftMaskRef = useRef(null);
+  const rightMaskRef = useRef(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-const { setColors } = useHeaderContext();
+  
 
   useEffect(() => {
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
+      if (setColors) {
+        ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          onEnter: () => {
+            setColors({ fillColor: "white", menuIconColor: "white" });
+          },
+          onEnterBack: () => {
+            setColors({ fillColor: "white", menuIconColor: "white" });
+          },
+          onLeave: () => {
+            setColors({ fillColor: "black", menuIconColor: "black" });
+          },
+          onLeaveBack: () => {
+            setColors({ fillColor: "black", menuIconColor: "black" });
+          },
+        });
+      }
 
-      ScrollTrigger.create({
-  trigger: sectionRef.current,
-  start: "top top",
-  end: "bottom bottom",
-  onEnter: () => {
-    setColors({ fillColor: "white", menuIconColor: "white" });
-  },
-  onEnterBack: () => {
-    setColors({ fillColor: "white", menuIconColor: "white" });
-  },
-  onLeave: () => {
-    setColors({ fillColor: "black", menuIconColor: "black" });
-  },
-  onLeaveBack: () => {
-    setColors({ fillColor: "black", menuIconColor: "black" });
-  },
-});
-
+      // Top border fade in
       gsap.fromTo(
         topBorderRef.current,
         { opacity: 0 },
@@ -59,6 +62,7 @@ const { setColors } = useHeaderContext();
         }
       );
 
+      // Hero text scale
       gsap.fromTo(
         heroTextRef.current,
         { scale: 0.85 },
@@ -74,6 +78,7 @@ const { setColors } = useHeaderContext();
         }
       );
 
+      // Bottom border grow
       gsap.fromTo(
         bottomBorderRef.current,
         { height: 0 },
@@ -89,6 +94,7 @@ const { setColors } = useHeaderContext();
         }
       );
 
+      // Image fade out
       gsap.fromTo(
         imageRef.current,
         { opacity: 1 },
@@ -103,6 +109,7 @@ const { setColors } = useHeaderContext();
         }
       );
 
+      // Mid title scale
       gsap.fromTo(
         midTitleRef.current,
         { scale: 0.9 },
@@ -118,6 +125,7 @@ const { setColors } = useHeaderContext();
         }
       );
 
+      // Mid subtitle scale
       gsap.fromTo(
         midSubtitleRef.current,
         { scale: 0.9 },
@@ -133,6 +141,7 @@ const { setColors } = useHeaderContext();
         }
       );
 
+      // Video top border
       gsap.fromTo(
         videoTopBorderRef.current,
         { height: 0 },
@@ -148,6 +157,7 @@ const { setColors } = useHeaderContext();
         }
       );
 
+      // Video bottom border
       gsap.fromTo(
         videoBottomBorderRef.current,
         { height: 0 },
@@ -163,6 +173,7 @@ const { setColors } = useHeaderContext();
         }
       );
 
+      // End H3 scale
       gsap.fromTo(
         endH3Ref.current,
         { scale: 0.88 },
@@ -171,13 +182,14 @@ const { setColors } = useHeaderContext();
           ease: "none",
           scrollTrigger: {
             trigger: endH3Ref.current,
-            start: "top 60%",
-            end: "top 20%",
+            start: "top 95%",
+            end: "top 70%",
             scrub: true,
           },
         }
       );
 
+      // End P scale
       gsap.fromTo(
         endPRef.current,
         { scale: 0.88 },
@@ -186,56 +198,75 @@ const { setColors } = useHeaderContext();
           ease: "none",
           scrollTrigger: {
             trigger: endPRef.current,
-            start: "top 60%",
-            end: "top 20%",
+            start: "top 95%",
+            end: "top 70%",
             scrub: true,
           },
         }
       );
 
-      // V-NOTCH CLIP PATH
+      // ✅ CRITICAL FIX: MASK ANIMATION (NOT CLIP-PATH MORPH)
+      // Left mask slides in diagonally from left
       gsap.fromTo(
-        blackSectionRef.current,
+        leftMaskRef.current,
         {
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          x: "-100%",
         },
         {
-          clipPath: "polygon(20% 0%, 80% 0%, 50% 100%, 50% 100%)",
+          x: "0%",
           ease: "none",
           scrollTrigger: {
             trigger: blackSectionRef.current,
-            start: "bottom 120%",
-            end: "bottom 100%",
+            start: "bottom 180%",
+            end: "bottom 105%",
             scrub: true,
-            markers: false,
           },
         }
       );
 
+      // Right mask slides in diagonally from right
+      gsap.fromTo(
+        rightMaskRef.current,
+        {
+          x: "100%",
+        },
+        {
+          x: "0%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: blackSectionRef.current,
+            start: "bottom 180%",
+            end: "bottom 105%",
+            scrub: true,
+          },
+        }
+      );
+
+      // Padding reduction
       gsap.fromTo(
         blackSectionRef.current,
-        { paddingBottom: "50vh" },
+        { paddingBottom: "60vh" },
         {
-          paddingBottom: "20vh",
+          paddingBottom: "-20vh",
           ease: "none",
           scrollTrigger: {
             trigger: blackSectionRef.current,
             start: "bottom 110%",
-            end: "bottom 50%",
+            end: "bottom 20%",
             scrub: true,
           },
         }
       );
     });
 
-    // ✅ Only one cleanup
     return () => mm.revert();
-  }, []);
+  }, [setColors]);
 
   return (
     <div
-    ref={sectionRef}
-    className="hidden lg:block bg-[#E7E4E5] relative h-[350vh] overflow-hidden">
+      ref={sectionRef}
+      className="hidden lg:block bg-[#E7E4E5] relative h-[350vh] overflow-hidden "
+    >
       <div className="w-full min-h-screen">
         {/* Hero section */}
         <div className="w-full h-[92vh] relative bg-black">
@@ -265,12 +296,12 @@ const { setColors } = useHeaderContext();
 
         {/* Mid text box */}
         <div className="w-full flex flex-col items-center bg-black ">
-          <div className="border border-white w-[600px] h-[158px] flex flex-col justify-center items-center text-white">
+          <div className="border border-white w-[620px] h-[168px] flex flex-col justify-center items-center text-white overflow-hidden">
             <p ref={midTitleRef} className="font5">
-              AI OPTIMISATION
-            </p>
-            <h3 ref={midSubtitleRef} className="font4 text-[32px]">
               THAT BUILDS ON PROPRIETARY
+            </p>
+            <h3 ref={midSubtitleRef} className="font1 text-[68px] text-nowrap tracking-wide">
+              AI OPTIMISATION 
             </h3>
           </div>
         </div>
@@ -291,24 +322,47 @@ const { setColors } = useHeaderContext();
           />
         </div>
 
-        {/* Ending text */}
-        <div className="pb-[50vh] bg-black" ref={blackSectionRef}>
-          <div className="w-full flex flex-col justify-center items-center gap-4 bg-black">
+        {/* Ending text with MASK REVEAL (not clip-path morph) */}
+         <div className="pb-[60vh] bg-black relative overflow-hidden" ref={blackSectionRef}>
+          {/* ✅ STATIC TRIANGLE LAYER (ALWAYS A TRIANGLE) */}
+          <div className="absolute inset-0 bg-black" style={{
+            clipPath: "polygon(0% 0%, 100% 0%, 50% 100.5%)",
+            transform: "translateZ(0)",
+  backfaceVisibility: "hidden"
+          }} />
+          
+          {/* ✅ LEFT MASK - slides in diagonally */}
+          <div 
+            ref={leftMaskRef}
+            className="absolute inset-0 bg-[#E7E4E5] z-20"
+            style={{
+              clipPath: "polygon(0% 0%, 20% 0%, 50% 100%, 0% 100%)"
+            }}
+          />
+          
+          {/* ✅ RIGHT MASK - slides in diagonally */}
+          <div 
+            ref={rightMaskRef}
+            className="absolute inset-0 bg-[#E7E4E5] z-20"
+            style={{
+              clipPath: "polygon(80% 0%, 100% 0%, 100% 100%, 50% 100%)"
+            }}
+          />
+
+          {/* Content layer on top */}
+          <div className="w-full flex flex-col justify-center items-center gap-4 relative z-10 ">
             <div className="w-fit h-[35.6vh]">
-              <div
-                ref={videoBottomBorderRef}
-                className="bg-white w-[0.8px]"
-              />
+              <div ref={videoBottomBorderRef} className="bg-white w-[0.8px]" />
             </div>
             <h3
               ref={endH3Ref}
-              className="text-white font4 text-[58px] leading-tight tracking-tight text-center"
+              className="text-white font4 text-[42px] leading-tight tracking-tight text-center"
             >
               DRIVING ENGAGEMENT AT ALL <br /> STAGES OF THE FUNNEL
             </h3>
             <p
               ref={endPRef}
-              className="font5 text-white/80 text-[28px] tracking-wide mt-3"
+              className="font5 font-semibold text-white/80 text-[16px] tracking-wide mt-2"
             >
               FOR A UNIQUE CUSTOMER EXPERIENCE
             </p>
