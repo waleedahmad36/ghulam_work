@@ -130,7 +130,8 @@ const Hero = () => {
             <Logo width={'100%'} />
           </div>
 
-          <h1 className="hero-heading font4 text-3xl lg:text-[87px] max-w-6xl font-extrabold">
+          <h1 className="hero-heading font1 text-3xl
+           lg:text-[87px] max-w-6xl ">
             <span className="">
               BIG MOMENTS FOR<br/> DISRUPTIVE BRANDS
             </span>

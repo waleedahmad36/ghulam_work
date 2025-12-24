@@ -326,7 +326,7 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
          <div className="pb-[60vh] bg-black relative overflow-hidden" ref={blackSectionRef}>
           {/* ✅ STATIC TRIANGLE LAYER (ALWAYS A TRIANGLE) */}
           <div className="absolute inset-0 bg-black" style={{
-            clipPath: "polygon(0% 0%, 100% 0%, 50% 100.5%)",
+            clipPath: "polygon(0% 0%, 100% 0%, 50% 100%)",
             transform: "translateZ(0)",
   backfaceVisibility: "hidden"
           }} />

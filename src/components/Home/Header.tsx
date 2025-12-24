@@ -30,13 +30,28 @@ const Header = () => {
     if (!headerRef.current) return;
 
     const ctx = gsap.context(() => {
+      let isFixed = false;
+
       ScrollTrigger.create({
-        trigger: "#hero-section", // 👈 HERO IS THE TRIGGER
-        start: "bottom top",      // when hero ends
-        end: 99999,               // stay pinned until user scrolls up
-        pin: headerRef.current,
-        pinSpacing: false,        // IMPORTANT (no layout space)
-        anticipatePin: 1,
+        trigger: headerRef.current,
+        start: "top top", // when header reaches top of viewport
+        end: 99999,
+        onEnter: () => {
+          // Switch to fixed when header reaches top
+          if (headerRef.current) {
+            headerRef.current.style.position = "fixed";
+            headerRef.current.style.top = "0";
+            isFixed = true;
+          }
+        },
+        onLeaveBack: () => {
+          // Switch back to absolute when scrolling up
+          if (headerRef.current) {
+            headerRef.current.style.position = "absolute";
+            headerRef.current.style.top = "100vh"; // Position after Hero
+            isFixed = false;
+          }
+        },
       });
     });
 
@@ -47,7 +62,7 @@ const Header = () => {
     <>
       <header
         ref={headerRef}
-        className="py-8 px-4 lg:px-[75px] bg-transparent"
+        className="absolute top-[100vh] left-0 w-full py-8 px-4 lg:px-[75px] bg-transparent"
         style={{ zIndex: 9999 }}
       >
         <div className="lg:max-w-7xl 2xl:max-w-[1400px] mx-auto flex justify-between items-center">

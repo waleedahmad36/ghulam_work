@@ -11,7 +11,7 @@ if (typeof window !== "undefined") {
 
 const ICONS = [Apple, Victoria, Marot, Netflix, TrustPilot];
 
-const HorizontalSliderOnScroll = ({ items = [], height = "80vh" }) => {
+const HorizontalSliderOnScroll = ({ items = [], height = "600px" }) => {
   const containerRef = useRef(null);
   const innerRef = useRef(null);
 
@@ -86,7 +86,7 @@ const HorizontalSliderOnScroll = ({ items = [], height = "80vh" }) => {
     firstItemWidth,
   } = setup();
 
-  const HORIZONTAL_PADDING = 32; // px-8
+  const HORIZONTAL_PADDING = 28; 
 
   // 🔥 exact top-left alignment (no gap)
   const finalX =
@@ -136,7 +136,7 @@ const HorizontalSliderOnScroll = ({ items = [], height = "80vh" }) => {
       return (
         <div
           key={i}
-          className={`shrink-0 w-30 rounded-3xl flex justify-center items-center  ${
+          className={`shrink-0 w-30 rounded-3xl flex justify-center items-center max-h-20 ${
             i === 0 ? "mr-3" : "mx-3"
           }`}
         >
@@ -148,13 +148,12 @@ const HorizontalSliderOnScroll = ({ items = [], height = "80vh" }) => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full overflow-hidden bg-black "
-      style={{ height }}
+      className="relative w-full overflow-hidden bg-black h-[600px] "
+      style={{ height, maxHeight: "600px" }}
     >
       <div
         ref={innerRef}
-        className="absolute -top-14 flex items-center gap-8 px-8 will-change-transform pointer-events-none"
-        style={{ height: "100%" }}
+        className="absolute top-0 flex items-center gap-8 px-7 will-change-transform pointer-events-none h-full"
       >
         {slides}
       </div>

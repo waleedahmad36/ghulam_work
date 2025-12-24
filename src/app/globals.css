@@ -170,7 +170,12 @@ body {
   background: black;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
+  backface-visibility: hidden;
+}
+
+html {
+  overflow-x: clip;
 }
 
 
@@ -228,5 +233,57 @@ body {
   clip-path: polygon(100% 0, 100% 100%, 0 0);
 }
 
+/* ===============================
+   CARDS GRID RESPONSIVE LAYOUT
+================================ */
+
+/* Mobile (default): stacked, hidden if you want */
+.cards-grid-custom {
+  display: none; /* keep hidden on mobile */
+}
+
+/* Tablet (900px–1139px) */
+@media (min-width: 900px) and (max-width: 1139px) {
+  .cards-grid-custom {
+    display: grid;
+    grid-template-columns: 300px 300px 300px; /* 3 fixed columns of 180px */
+    column-gap: 1rem; /* 16px horizontal spacing */
+    row-gap: 2rem;    /* 32px vertical spacing between rows */
+    justify-content: center; /* center the grid horizontally */
+    margin: 0 auto;
+    max-width: 1600px;
+  }
+
+  /* Card height for this range */
+  .cards-grid-custom .card > div {
+    height: 400px;
+    width: 300px;
+  }
+}
 
 
+/* Large Desktop (1140px–1535px) */
+@media (min-width: 1140px) and (max-width: 1535px) {
+  .cards-grid-custom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* still 3 columns */
+    gap: 2rem;
+    justify-items: center;
+    margin: 0 auto;
+    max-width: 1600px;
+  }
+
+  .cards-grid-custom .card > div {
+    height: 220px !important; /* shorter cards for desktop */
+    width: 100% !important;
+  }
+}
+
+/* Extra Large Desktop (1536px and above) */
+@media (min-width: 1536px) {
+  .cards-grid-custom {
+    grid-template-columns: repeat(3, 420px); /* fixed width columns */
+    gap: 2rem;
+    justify-content: center;
+  }
+}

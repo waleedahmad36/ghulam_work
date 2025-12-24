@@ -17,7 +17,7 @@ export default function Home() {
     <HeaderProvider>
       <>
         <Hero />
-        <Header />
+         <Header />
         <HorizontalSliderOnScroll />
         <PinVideoInBg />
         <Process />

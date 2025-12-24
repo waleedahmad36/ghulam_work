@@ -203,8 +203,8 @@ const PinVideoInBg = () => {
 
       {/* SECTION 4 */}
       <div className="pb-text-section relative z-10 text-center hidden md:flex flex-col lg:items-start justify-center px-2 lg:px-0 lg:pr-[25px]">
-        <div className="max-w-[700px] 2xl:max-w-3xl">
-          <h3 className="pb-quote text-2xl md:text-3xl lg:text-[34px] font-light text-white leading-snug mb-2 max-w-4xl font1">
+        <div className="max-w-[740px]">
+          <h3 className="pb-quote text-2xl md:text-3xl lg:text-[34px] font-light text-white leading-snug mb-2 max-w-[740px] font1">
             "The Boathouse is our creative agency Navy Seals, who find a way to
             get it done in an exceptional manner when no one else could."
           </h3>
@@ -216,8 +216,8 @@ const PinVideoInBg = () => {
 
       {/* SECTION 5 */}
       <div className="pb-text-section relative z-10 text-center flex flex-col items-end justify-center px-4 lg:px-0 font1">
-        <div className="max-w-3xl">
-          <h3 className="pb-quote text-2xl md:text-3xl lg:text-[34px] font-light text-white leading-snug mb-2 max-w-4xl">
+        <div className="max-w-[740px]">
+          <h3 className="pb-quote text-2xl md:text-3xl lg:text-[34px] font-light text-white leading-snug mb-2 max-w-[740px]">
             "They're like nothing I've ever experienced with other agency
             partners."
           </h3>

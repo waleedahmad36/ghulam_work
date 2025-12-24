@@ -58,23 +58,12 @@ const CardsDisplay = () => {
   }, []);
 
   return (
-    <div className="pb-6 space-y-8 px-4">
+    <div className="pb-6">
       {[0, 1].map((rowIndex) => (
         <div
           key={rowIndex}
           ref={(el) => el && (rowRefs.current[rowIndex] = el)}
-          className="
-  grid
-  gap-8
-  justify-center
-  mx-auto
-  max-w-[1600px]
-
-  grid-cols-[repeat(3,220px)]
-  lg:grid-cols-[repeat(3,380px)]
-  2xl:grid-cols-[repeat(3,420px)]
-"
-
+          className="cards-grid-custom space-y-4"
         >
           {cardsData
             .slice(rowIndex * 3, rowIndex * 3 + 3)
@@ -96,10 +85,7 @@ const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
   className="
       relative
       bg-black
-      overflow-visible
-      w-full
-      md:h-[500px]
-      lg:h-[220px]
+      overflow-visible 
     "
 >
         <Image src={imageSrc} alt="" fill className="object-cover opacity-95" />

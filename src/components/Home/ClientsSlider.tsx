@@ -66,7 +66,7 @@ useEffect(() => {
             trigger: container,
             start: "top 95%",        // starts when slider enters view
             end: () => `+=${maxLeft}`,
-            scrub: 1,
+            scrub: 0.3,  // Reduced from 1 to 0.3 for more responsive control
             invalidateOnRefresh: true,
           },
         });
