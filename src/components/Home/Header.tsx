@@ -26,54 +26,55 @@ const Header = () => {
     };
   }, [open]);
 
+  // Desktop-only ScrollTrigger behavior
   useEffect(() => {
     if (!headerRef.current) return;
 
-    const ctx = gsap.context(() => {
-      let isFixed = false;
-
-      ScrollTrigger.create({
-        trigger: headerRef.current,
-        start: "top top", // when header reaches top of viewport
-        end: 99999,
-        onEnter: () => {
-          // Switch to fixed when header reaches top
-          if (headerRef.current) {
-            headerRef.current.style.position = "fixed";
-            headerRef.current.style.top = "0";
-            isFixed = true;
-          }
-        },
-        onLeaveBack: () => {
-          // Switch back to absolute when scrolling up
-          if (headerRef.current) {
-            headerRef.current.style.position = "absolute";
-            headerRef.current.style.top = "100vh"; // Position after Hero
-            isFixed = false;
-          }
-        },
+    if (window.innerWidth >= 1140) {
+      const ctx = gsap.context(() => {
+        ScrollTrigger.create({
+          trigger: headerRef.current,
+          start: "top top",
+          end: 99999,
+          onEnter: () => {
+            if (headerRef.current) {
+              headerRef.current.style.position = "fixed";
+              headerRef.current.style.top = "0";
+            }
+          },
+          onLeaveBack: () => {
+            if (headerRef.current) {
+              headerRef.current.style.position = "absolute";
+              headerRef.current.style.top = "100vh";
+            }
+          },
+        });
       });
-    });
 
-    return () => ctx.revert();
+      return () => ctx.revert();
+    }
   }, []);
 
   return (
     <>
       <header
         ref={headerRef}
-        className="absolute top-[100vh] left-0 w-full py-8 px-4 lg:px-[75px] bg-transparent"
+        className="
+          left-0 w-full py-8 px-[28px] md:px-[48px] lg:px-[75px] bg-transparent
+          sticky top-0 md:sticky md:top-0
+          lg:absolute lg:top-[100vh]
+        "
         style={{ zIndex: 9999 }}
       >
-        <div className="lg:max-w-7xl 2xl:max-w-[1400px] mx-auto flex justify-between items-center">
-         <div  className="w-32 relative flex items-center" >
-          <Logo width={"32"} fillLogo={fillColor} />
-         </div>
+        <div className="mx-auto flex justify-between items-center">
+          <div className="w-32 relative flex items-center">
+            <Logo width={"32"} fillLogo={"white"} />
+          </div>
 
           <button
             onClick={() => setOpen((s) => !s)}
             className="w-fit flex items-center justify-center cursor-pointer"
-            style={{ color: menuIconColor }}
+            style={{ color: "white" }}
           >
             {open ? <X className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
           </button>
@@ -90,7 +91,10 @@ const Header = () => {
         ].join(" ")}
       >
         <div className="h-full py-8 relative">
-          <X  className="size-8 text-white absolute right-20 top-12 cursor-pointer"  onClick={() => setOpen((s) => !s)}  />
+          <X
+            className="size-8 text-white absolute right-20 top-12 cursor-pointer"
+            onClick={() => setOpen((s) => !s)}
+          />
           <nav className="mt-24 flex flex-col px-16 gap-8 text-2xl font-semibold text-white">
             <Link href="">Projects</Link>
             <Link href="">Contact Us</Link>

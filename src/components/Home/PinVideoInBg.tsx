@@ -15,20 +15,27 @@ const PinVideoInBg = () => {
   const heroSectionRef = useRef<HTMLDivElement>(null);
   const heroTopRef = useRef<HTMLHeadingElement>(null);
   const heroBottomRef = useRef<HTMLHeadingElement>(null);
-  const heroBottomInnerRef = useRef<HTMLSpanElement>(null); // inner wrapper for transform-only tracking
+  const heroBottomInnerRef = useRef<HTMLSpanElement>(null);
   const heroSubRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Rendering hints to keep text crisp during transforms
-      gsap.set([heroTopRef.current, heroBottomRef.current, heroBottomInnerRef.current, heroSubRef.current], {
-        willChange: "transform, opacity",
-        transformOrigin: "center center",
-      });
+      gsap.set(
+        [
+          heroTopRef.current,
+          heroBottomRef.current,
+          heroBottomInnerRef.current,
+          heroSubRef.current,
+        ],
+        {
+          willChange: "transform, opacity",
+          transformOrigin: "center center",
+        }
+      );
 
-      // Smooth, scroll-linked timeline (no manual onUpdate)
+      // Desktop timeline (unchanged)
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: heroSectionRef.current,
@@ -41,29 +48,25 @@ const PinVideoInBg = () => {
         defaults: { ease: "power2.out" },
       });
 
-      // Top line: fade in + rise + gentle scale down
       tl.fromTo(
         heroTopRef.current,
-        { autoAlpha: 0.3, y: 40, scale: 1 },
+        { autoAlpha: 0.5, y: 40, scale: 1 },
         { autoAlpha: 1, y: 0, scale: 0.84 },
         0
-      );
+      )
+        .fromTo(
+          heroBottomRef.current,
+          { autoAlpha: 0.3, y: 40 },
+          { autoAlpha: 1, y: 0 },
+          0
+        )
+        .fromTo(
+          heroBottomInnerRef.current,
+          { scaleX: 1, scaleY: 1 },
+          { scaleX: 0.84, scaleY: 0.88 },
+          "<"
+        );
 
-      // Bottom line: fade in + rise; tracking-tight via scaleX on inner span
-      // We avoid letterSpacing to prevent layout thrash — scaleX is GPU smooth.
-      tl.fromTo(
-        heroBottomRef.current,
-        { autoAlpha: 0.3, y: 40 },
-        { autoAlpha: 1, y: 0 },
-        0
-      ).fromTo(
-        heroBottomInnerRef.current,
-        { scaleX: 1, scaleY: 1 },
-        { scaleX: 0.84, scaleY: 0.88 },
-        "<"
-      );
-
-      // Sub line: gentle fade + rise
       if (heroSubRef.current) {
         gsap.fromTo(
           heroSubRef.current,
@@ -82,7 +85,6 @@ const PinVideoInBg = () => {
         );
       }
 
-      // Other text sections (kept smooth with transform-only)
       const sections = Array.from(
         containerRef.current.querySelectorAll(".pb-text-section")
       ) as HTMLElement[];
@@ -116,6 +118,22 @@ const PinVideoInBg = () => {
         pinSpacing: false,
         anticipatePin: 1,
       });
+
+      // Tablet-specific animation tuning
+      ScrollTrigger.matchMedia({
+        "(min-width: 768px) and (max-width: 1023px)": () => {
+          gsap.to(heroBottomInnerRef.current, {
+            scaleX: 0.9,
+            scaleY: 0.9,
+            scrollTrigger: {
+              trigger: heroSectionRef.current,
+              start: "top 75%",
+              end: "top 15%",
+              scrub: 2, // faster scrub for snappier feel
+            },
+          });
+        },
+      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -124,42 +142,37 @@ const PinVideoInBg = () => {
   return (
     <div
       ref={containerRef}
-      className="pb-pin-section w-full min-h-[300vh] relative flex flex-col justify-start px-6 md:px-10 lg:px-16 gap-[25vh] pt-32 md:pt-40 pb-14 overflow-hidden"
+      className="pb-pin-section w-full min-h-[300vh] relative hidden md:flex flex-col justify-start px-6 md:px-10 lg:px-16 md:gap-[18vh] lg:gap-[25vh] xl:gap-[23vh] pt-32 md:pt-40 pb-14 overflow-hidden"
     >
       {/* HERO SECTION */}
       <div
         ref={heroSectionRef}
-        className="pb-text-section pb-hero-wrap relative z-10 text-center flex flex-col items-center justify-center px-4 font3 mt-6 mb-12"
+        className="pb-text-section pb-hero-wrap relative z-10 text-center flex flex-col items-center justify-center px-4 font3 mt-6 md:mb-6 lg:mb-12"
         style={{
-          // Optional rendering hints to reduce font jitter on some browsers
           textRendering: "optimizeLegibility",
           WebkitFontSmoothing: "antialiased",
           MozOsxFontSmoothing: "grayscale",
         }}
       >
-        <div className="max-w-6xl">
+        <div className="max-w-xl lg:max-w-6xl overflow-hidden xl:mt-9 ">
           <h2
             ref={heroTopRef}
-            className="pb-hero-top text-4xl md:text-6xl lg:text-[80px] font-light text-white mb-1 font4"
+            className="pb-hero-top text-2xl md:text-6xl lg:text-[72px] font-light text-white mb-1 font4"
           >
             A GLOBAL 360° CREATIVE
           </h2>
 
-          {/* Bottom line with inner transform wrapper for smooth tracking-tight */}
           <h2
             ref={heroBottomRef}
-            className="pb-hero-bottom text-4xl md:text-6xl lg:text-[80px] font-bold text-white mt-[15px] mb-4 font4"
+            className="pb-hero-bottom text-2xl md:text-5xl lg:text-[72px] font-bold text-white mt-[2px] mb-4 font4"
           >
             <span
               ref={heroBottomInnerRef}
               className="inline-block"
-              style={{
-                display: "inline-block",
-                willChange: "transform",
-              }}
+              style={{ display: "inline-block", willChange: "transform" }}
             >
               AGENCY{" "}
-              <span className="pb-hero-x font3 text-[40px] md:text-[48px] lg:text-[50px] relative bottom-1 md:bottom-2 lg:bottom-3">
+              <span className="pb-hero-x font3 text-[32px] md:text-[44px] lg:text-[50px] relative bottom-1 md:bottom-2 lg:bottom-3">
                 x
               </span>{" "}
               STUDIO
@@ -168,7 +181,8 @@ const PinVideoInBg = () => {
 
           <p
             ref={heroSubRef}
-            className="pb-hero-sub text-[16px] md:text-[18px] lg:text-[20px] text-white/90 tracking-[1.5px] md:tracking-[2px] mt-6 font5"
+            className="pb-hero-sub text-[16px] md:text-[16px] lg:text-[20px]
+            xl:text-[24px] text-white/90 tracking-[1.5px] md:tracking-[2px] mt-6 font5   text-nowrap"
           >
             SPARKING STAGGERING BRAND MOVEMENTS IN ASTONISHING WAYS
           </p>
@@ -178,12 +192,12 @@ const PinVideoInBg = () => {
       {/* SECTION 2 */}
       <div className="pb-text-section relative z-10 flex flex-col items-center justify-center px-4 md:px-8 mt-12">
         <div className="max-w-5xl">
-          <h3 className="pb-quote text-2xl md:text-3xl lg:text-[34px] font-light text-white mb-2 text-center font1 leading-[32px] md:leading-[38px] lg:leading-[40px] tracking-[0.5px] md:tracking-[1px]">
+          <h3 className="pb-quote text-[20px] md:text-[28px] lg:text-[34px] font-light text-white mb-2 text-center font1 leading-[32px] md:leading-[38px] lg:leading-[40px] tracking-[0.5px] md:tracking-[1px] mt-8">
             "Staying on budget, while ensuring quality, The{" "}
-            <br className="hidden md:block" />
-            Boathouse boosted my target KPIs by 10x in the past year."
+            <br className="hidden md:block xl:hidden" />
+            Boathouse <br className="hidden xl:block" /> boosted my target KPIs by 10x in the past year."
           </h3>
-          <p className="pb-author text-slate-100 text-xs md:text-sm tracking-[2px] mt-2 text-center font1">
+          <p className="pb-author text-[12px] md:text-[14px] lg:text-[16px] text-slate-100 tracking-[2px] mt-2 text-center font1">
             OLLIE CMO
           </p>
         </div>
@@ -192,10 +206,10 @@ const PinVideoInBg = () => {
       {/* SECTION 3 */}
       <div className="pb-text-section relative z-10 text-center flex flex-col items-end justify-center px-4 lg:pr-32">
         <div className="max-w-3xl">
-          <h3 className="pb-quote text-2xl md:text-3xl lg:text-[34px] font-light text-white leading-snug mb-2 font1">
+          <h3 className="pb-quote text-[20px] md:text-[28px] lg:text-[34px] xl:text-[40px] font-light text-white leading-snug mb-2 font1 text-nowrap">
             "A one of a kind process with unparalleled results."
           </h3>
-          <p className="pb-author text-slate-300 text-xs md:text-sm tracking-[2px] mt-2">
+          <p className="pb-author text-[12px] md:text-[14px] lg:text-[16px] text-slate-300 tracking-[2px]">
             RXSENSE | PRESIDENT + CMO
           </p>
         </div>
@@ -203,25 +217,25 @@ const PinVideoInBg = () => {
 
       {/* SECTION 4 */}
       <div className="pb-text-section relative z-10 text-center hidden md:flex flex-col lg:items-start justify-center px-2 lg:px-0 lg:pr-[25px]">
-        <div className="max-w-[740px]">
-          <h3 className="pb-quote text-2xl md:text-3xl lg:text-[34px] font-light text-white leading-snug mb-2 max-w-[740px] font1">
+        <div className="max-w-[740px] xl:max-w-[870px]">
+          <h3 className="pb-quote text-[20px] md:text-[28px] lg:text-[34px] xl:text-[40px] font-light text-white leading-snug mb-2 max-w-[740px] xl:max-w-[870px] font1 xl:leading-[40px]">
             "The Boathouse is our creative agency Navy Seals, who find a way to
             get it done in an exceptional manner when no one else could."
           </h3>
-          <p className="pb-author text-slate-300 text-xs md:text-sm tracking-[2px] mt-2">
+                   <p className="pb-author text-[12px] md:text-[14px] lg:text-[16px] text-slate-300 tracking-[2px] ">
             APPLE | COMMUNICATIONS & BRAND MARKETING
           </p>
         </div>
       </div>
 
       {/* SECTION 5 */}
-      <div className="pb-text-section relative z-10 text-center flex flex-col items-end justify-center px-4 lg:px-0 font1">
-        <div className="max-w-[740px]">
-          <h3 className="pb-quote text-2xl md:text-3xl lg:text-[34px] font-light text-white leading-snug mb-2 max-w-[740px]">
-            "They're like nothing I've ever experienced with other agency
+      <div className="pb-text-section relative z-10 text-center flex flex-col items-end justify-center px-4 lg:px-0 xl:pr-[75px] font1">
+        <div className="max-w-[740px] xl:max-w-[810px]">
+          <h3 className="pb-quote text-[20px] md:text-[28px] lg:text-[34px] xl:text-[40px] font-light text-white leading-snug mb-2 max-w-[810px] xl:max-w-[810px] xl:text-nowrap">
+            "They're like nothing I've ever experienced with other <br  className="hidden xl:block" /> agency
             partners."
           </h3>
-          <p className="pb-author text-slate-300 text-xs md:text-sm tracking-[2px] mt-2">
+          <p className="pb-author text-[12px] md:text-[14px] lg:text-[16px] text-slate-300 tracking-[2px] mt-2">
             APPLE | COMMUNICATIONS & BRAND MARKETING
           </p>
         </div>

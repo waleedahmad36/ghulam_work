@@ -130,16 +130,17 @@ const Hero = () => {
             <Logo width={'100%'} />
           </div>
 
-          <h1 className="hero-heading font1 text-3xl
-           lg:text-[87px] max-w-6xl ">
+          <h1 className="hero-heading font1 text-3xl md:text-[60px]
+           lg:text-[87px]
+           xl:text-[98px] max-w-6xl xl:tracking-normal ">
             <span className="">
               BIG MOMENTS FOR<br/> DISRUPTIVE BRANDS
             </span>
           </h1>
         </div>
 
-        <div className="hidden md:flex flex-col items-center gap-3 absolute bottom-[25px] ">
-          <span className="hero-subtext md:text-[12px] lg:text-[14px] text-[#b4b0b0] mt-8 text-center tracking-wider shadow-2xl font3">
+        <div className="hidden md:flex flex-col items-center gap-3 absolute bottom-[25px] xl:bottom-[30px] ">
+          <span className="hero-subtext md:text-[12px] lg:text-[14px]  text-[#b4b0b0] mt-8 text-center tracking-wider shadow-2xl font3">
             EXPLORE OUR ONE OF A KIND APPROACH
           </span>
 
@@ -148,11 +149,11 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hidden md:block absolute md:left-4 lg:left-[34px] z-40 w-fit">
+        <div className="hidden md:block absolute md:left-4 lg:left-[34px] xl:left-[39px] z-40 w-fit">
           <HeroLeftBranding />
         </div>
 
-        <div className="hidden md:block absolute md:right-4 lg:right-[34px] z-40 w-fit">
+        <div className="hidden md:block absolute md:right-4 lg:right-[34px] xl:right-[39px] z-40 w-fit">
           <HeroRightBranding />
         </div>
       </div>
@@ -164,7 +165,7 @@ export default Hero;
 
 /* Arrow */
 export const ArrowDown = () => (
-  <svg fill="white" viewBox="46.141 20.63 107.717 158.741" height="35" width="42">
+  <svg fill="white" viewBox="46.141 20.63 107.717 158.741" height="40" width="42">
     <path d="m153.858 130.731-53.857 48.64-53.86-48.64 1.804-1.944 50.722 45.809V20.63h2.669v153.965l50.719-45.809 1.803 1.945z" />
   </svg>
 );

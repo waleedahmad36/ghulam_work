@@ -100,17 +100,19 @@ const TalentGallery = () => {
   return (
    <>
    <TelantTop/>
-    <div className="hidden no-scrollbar-vw lg:grid lg:grid-cols-5 overflow-hidden mt-4 relative">
+    <div className="hidden no-scrollbar-vw md:grid md:grid-cols-5 overflow-hidden mt-4 relative">
       {images.map((src, index) => (
         <div
           key={index}
-          className="w-[20vw] h-[170px] relative bg-black"
+          className="w-[20vw] md:h-[300px] lg:h-[170px] xl:h-[220px] relative bg-black"
         >
           <Image
             src={src}
             alt={`Talent ${index + 1}`}
             fill
-            className=" object-center opacity-55 hover:opacity-100 transition-opacity duration-500 cursor-pointer"
+            className=" 
+            md:object-cover
+            lg:object-center opacity-55 hover:opacity-100 transition-opacity duration-500 cursor-pointer"
           />
         </div>
       ))}
@@ -127,18 +129,18 @@ const TalentGallery = () => {
     <div className="h-[22vh] flex items-start">
         <div
           ref={upperBorderRef}
-          className="bg-black w-[0.9px]"
+          className="bg-black w-[0.6px]"
           style={{ height: 0 }}
         />
       </div>
-      <p  className="font5 text-[18px]"   ref={awardTextRef} >
+      <p  className="font5 text-[18px] mt-2"   ref={awardTextRef} >
         AWARD-WINNING
       </p>
       <p  className="font4 text-[68px] "  ref={executionTextRef}  >EXECUTION</p>
       <div className="h-[22vh] flex items-start">
         <div
           ref={lowerBorderRef}
-          className="bg-black w-[0.9px]"
+          className="bg-black w-[0.6px]"
           style={{ height: 0 }}
         />
       </div>

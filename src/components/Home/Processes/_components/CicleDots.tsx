@@ -94,21 +94,20 @@ export default function StrategyCircle() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full hidden lg:flex justify-center min-h-[210vh]"
+      className="relative w-full hidden md:flex justify-center min-h-[210vh]"
     >
       <div
         ref={circleWrapRef}
         className="sticky top-0 h-screen flex items-center justify-center"
       >
         <div
-          className="relative top-3 flex items-center justify-center rounded-full mt-12"
+          className="relative top-3 flex items-center justify-center rounded-full mt-12
+          w-[390px] h-[390px] xl:w-[450px] xl:h-[450px]"
           style={{
-            width: "390px",
-            height: "390px",
             border: "1px solid #000000",
           }}
         >
-          <h3 className="text-[50px]  font4 text-nowrap font-bold tracking-tight">
+          <h3 className="text-[50px] xl:text-[60px]  font4 text-nowrap font-bold tracking-tight">
             THE STRATEGY
           </h3>
 
@@ -116,34 +115,34 @@ export default function StrategyCircle() {
           <div className="dot absolute top-[-10px] left-1/2 -translate-x-1/2" />
           <p
             ref={topTextRef}
-            className="absolute top-[-45px] left-1/2 -translate-x-1/2 text-[18px] tracking-widest text-[#656363] font-light opacity-0 whitespace-nowrap"
+            className="absolute top-[-45px] left-1/2 -translate-x-1/2 md:text-[16px] lg:text-[18px] tracking-widest text-[#656363] font-light opacity-0 whitespace-nowrap"
           >
             CONSUMER PSYCHOGRAPHICS
           </p>
 
           {/* RIGHT TOP */}
-          <div className="dot absolute top-[48px] right-[50px]" />
+          <div className="dot absolute top-[48px] right-[50px] xl:right-[60px]" />
           <p
             ref={(el) => (rightTexts.current[0] = el)}
-            className="absolute top-[45px] right-[-250px] text-[18px] tracking-widest text-[#4d4b4b] font-light opacity-0"
+            className="absolute top-[45px] md:right-[-230px]  lg:right-[-250px] md:text-[16px] lg:text-[18px] tracking-widest text-[#4d4b4b] font-light opacity-0"
           >
             COMPETITION RESEARCH
           </p>
 
           {/* LEFT TOP */}
-          <div className="dot absolute top-[48px] left-[50px]" />
+          <div className="dot absolute top-[48px] left-[50px] xl:left-[60px]" />
           <p
             ref={(el) => (leftTexts.current[0] = el)}
-            className="absolute top-[48px] left-[-130px] text-[18px] tracking-widest text-[#4d4b4b] opacity-0 font-light"
+            className="absolute top-[48px] md:left-[-120px] lg:left-[-130px] md:text-[16px] lg:text-[18px] tracking-widest text-[#4d4b4b] opacity-0 font-light"
           >
             KPI TARGETS
           </p>
 
           {/* LEFT CENTER */}
-          <div className="dot absolute left-[-8px] top-1/2 -translate-y-1/2" />
+          <div className="dot absolute  left-[-8px] top-1/2 -translate-y-1/2" />
           <p
             ref={(el) => (leftTexts.current[1] = el)}
-            className="absolute left-[-300px] top-1/2 -translate-y-1/2 text-[18px] tracking-widest text-[#4d4b4b] opacity-0"
+            className="absolute md:left-[-275px] lg:left-[-300px] top-1/2 -translate-y-1/2 md:text-[16px] lg:text-[18px] tracking-widest text-[#4d4b4b] opacity-0"
           >
             CHANNEL INTEGRATIONS
           </p>
@@ -152,25 +151,29 @@ export default function StrategyCircle() {
           <div className="dot absolute right-[-8px] top-1/2 -translate-y-1/2" />
           <p
             ref={(el) => (rightTexts.current[1] = el)}
-            className="absolute right-[-278px] top-1/2 -translate-y-1/2 text-[18px] tracking-widest text-[#4d4b4b] opacity-0"
+            className="absolute  md:right-[-258px] lg:right-[-278px] top-1/2 -translate-y-1/2 md:text-[16px] lg:text-[18px] tracking-widest text-[#4d4b4b] opacity-0"
           >
             BRAND AFFINITY INDEX
           </p>
 
           {/* RIGHT BOTTOM */}
-          <div className="dot absolute bottom-[48px] right-[50px]" />
+          <div className="dot absolute bottom-[48px] right-[50px] xl:right-[60px]" />
           <p
             ref={(el) => (rightTexts.current[2] = el)}
-            className="absolute bottom-[45px] right-[-250px] text-[18px] tracking-widest text-[#4d4b4b] font-light opacity-0"
+            className="absolute bottom-[45px]
+            md:right-[-230px]
+            lg:right-[-250px] md:text-[16px] lg:text-[18px] tracking-widest text-[#4d4b4b] font-light opacity-0"
           >
             REGRESSION ANALYTICS
           </p>
 
           {/* LEFT BOTTOM */}
-          <div className="dot absolute bottom-[48px] left-[50px]" />
+          <div className="dot absolute bottom-[48px] left-[50px] xl:left-[60px]" />
           <p
             ref={(el) => (leftTexts.current[2] = el)}
-            className="absolute bottom-[45px] left-[-270px] text-[20px] tracking-[2px] text-[#4d4b4b] font-light opacity-0"
+            className="absolute bottom-[45px] 
+            md:left-[-245px]
+            lg:left-[-270px] md:text-[16px] lg:text-[18px] tracking-[2px] text-[#4d4b4b] font-light opacity-0"
           >
             CAMPAIGN POSITIONING
           </p>

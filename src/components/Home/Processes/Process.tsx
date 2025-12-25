@@ -50,6 +50,7 @@ const Process = () => {
     // 👇 Previous section gets control
     setColors({ fillColor: "white", menuIconColor: "white" });
   },
+  
 });
 
 
@@ -159,7 +160,7 @@ const Process = () => {
       className="hidden md:flex flex-col bg-[#E7E4E5] justify-center items-center text-black"
     >
       {/* Top border */}
-      <div className="lg:h-[23.6vh] flex items-start">
+      <div className="md:h-[18vh] lg:h-[23.6vh] flex items-start">
         <div
           ref={topBorderInnerRef}
           className="bg-black w-[0.8px]"
@@ -171,13 +172,13 @@ const Process = () => {
       <h3
         id="process_heading"
         ref={headingRef}
-        className="text-center lg:text-[74px] font4 tracking-tight font-bold"
+        className="text-center md:text-[58px] lg:text-[68px] font4 tracking-tight "
       >
         OUR PROCESS
       </h3>
 
       {/* Bottom border */}
-      <div className="h-[23vh] flex items-start">
+      <div className="md:h-[18vh] lg:h-[23vh] flex items-start">
         <div
           ref={bottomBorderInnerRef}
           className="bg-black w-[0.8px]"
@@ -193,7 +194,7 @@ const Process = () => {
       </div>
 
       {/* StrategyCircle */}
-      <div className="relative -mt-[17px]">
+      <div className="relative  lg:-mt-[17px]">
         <StrategyCircle />
       </div>
 

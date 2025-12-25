@@ -92,12 +92,12 @@ export default function BoathouseCTA() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-screen bg-black text-white font-sans overflow-hidden"
+      className="relative w-full h-[632px] bg-black text-white font-sans overflow-hidden"
     >
       <div className="flex flex-col items-center h-full text-center z-40 relative pt-14">
         <h1
           ref={headingRef}
-          className="text-[32px] md:text-[48px] lg:text-[100px] font-bold  leading-[120px] text-center  font4"
+          className="text-[48px] sm:text-[68px] leading-tight  lg:text-[100px] font-bold  lg:leading-[120px] text-center  font4"
         >
           NOW IT’S <br /> YOUR MOVE
         </h1>
@@ -106,14 +106,14 @@ export default function BoathouseCTA() {
         <button
           ref={buttonRef}
           style={{ "--border-progress": "0%" } as any}
-          className="border border-white text-white text-[20px] tracking-wide transition-all duration-300 rounded-full w-[202px] h-[46px] relative overflow-hidden font5"
+          className="border border-white text-white text-[20px] tracking-wide transition-all duration-300 rounded-full w-[202px] h-[46px] relative overflow-hidden font5 mt-2 lg:mt-0"
         >
           CONTACT US
         </button>
 
         <div
           ref={linksRef}
-          className="flex gap-6 mt-4 text-[16px] tracking-wide font5"
+          className="flex flex-col md:flex-row gap-6 mt-4 text-[16px] tracking-wide font5"
         >
           <a href="#" className="hover:text-[20px] transition-all duration-300">
             CASE STUDIES
@@ -124,7 +124,7 @@ export default function BoathouseCTA() {
         </div>
 
         <div className="absolute bottom-8 flex flex-col gap-12  items-center text-[14px] text-white/70 font5">
-          <div className="w-[100px] h-[120px] font-bold mb-1 relative">
+          <div className="w-[80px] h-[80px] md:w-[100px] md:h-[120px] font-bold mb-1 relative">
             <Image
               src="/images/bl.avif"
               alt=""

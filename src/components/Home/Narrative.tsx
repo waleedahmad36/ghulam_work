@@ -90,7 +90,7 @@ const Narrative = () => {
   return (
     <div
       ref={sectionRef}
-      className="w-full bg-[#E7E4E5] hidden  lg:flex flex-col items-center"
+      className="w-full bg-[#E7E4E5] hidden  md:flex flex-col items-center"
     >
       {/* Top heading */}
       <h3
@@ -101,7 +101,7 @@ const Narrative = () => {
       </h3>
 
       {/* Border */}
-      <div className="lg:h-[21.6vh] flex items-start my-3">
+      <div className="md:h-[21.6vh] flex items-start my-3">
         <div
           ref={borderRef}
           className="bg-black w-[0.9px]"

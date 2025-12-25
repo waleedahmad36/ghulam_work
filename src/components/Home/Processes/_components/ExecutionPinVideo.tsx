@@ -157,7 +157,7 @@ export default function ExecutionPinVideo() {
           4
         </div>
 
-        <p className="text-white text-[18px] md:text-[22px] font5 tracking-widest mb-2">
+        <p className="text-white text-[10px] lg:text-[18px] font5 tracking-widest mb-2">
           WELCOME TO
         </p>
 

@@ -5,6 +5,7 @@ import EcoSystem from "@/components/Home/EcoSystem";
 import Header from "@/components/Home/Header";
 import Hero from "@/components/Home/Hero";
 import HorizontalRevealWrapper from "@/components/Home/HorizontalRevealSections/HorizontalRevealWrapper";
+import HorizontalSliderOnMobileScroll from "@/components/Home/HorizontalSliderOnMobileScroll";
 import HorizontalSliderOnScroll from "@/components/Home/HorizontalSliderOnScroll";
 import Narrative from "@/components/Home/Narrative";
 import PinVideoInBg from "@/components/Home/PinVideoInBg";
@@ -19,10 +20,11 @@ export default function Home() {
         <Hero />
          <Header />
         <HorizontalSliderOnScroll />
+        <HorizontalSliderOnMobileScroll   />
         <PinVideoInBg />
         <Process />
         
-        <HorizontalRevealWrapper/> 
+        <HorizontalRevealWrapper/>  
         <EcoSystem/> 
          <Narrative/>
         <ClientsSlider/>

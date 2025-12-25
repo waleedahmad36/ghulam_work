@@ -21,12 +21,13 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
   const leftMaskRef = useRef(null);
   const rightMaskRef = useRef(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const blackSecContentRef = useRef<HTMLDivElement>(null);
   
 
   useEffect(() => {
     const mm = gsap.matchMedia();
 
-    mm.add("(min-width: 1024px)", () => {
+    mm.add("(min-width: 900px)", () => {
       if (setColors) {
         ScrollTrigger.create({
           trigger: sectionRef.current,
@@ -146,7 +147,7 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
         videoTopBorderRef.current,
         { height: 0 },
         {
-          height: "32.6vh",
+          height: "210px",
           ease: "none",
           scrollTrigger: {
             trigger: videoTopBorderRef.current,
@@ -217,14 +218,13 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
           ease: "none",
           scrollTrigger: {
             trigger: blackSectionRef.current,
-            start: "bottom 180%",
-            end: "bottom 105%",
+            start: "bottom 130%",
+            end: "bottom 110%",
             scrub: true,
           },
         }
       );
 
-      // Right mask slides in diagonally from right
       gsap.fromTo(
         rightMaskRef.current,
         {
@@ -235,28 +235,15 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
           ease: "none",
           scrollTrigger: {
             trigger: blackSectionRef.current,
-            start: "bottom 180%",
-            end: "bottom 105%",
+            start: "bottom 130%",
+            end: "bottom 110%",
             scrub: true,
           },
         }
       );
 
-      // Padding reduction
-      gsap.fromTo(
-        blackSectionRef.current,
-        { paddingBottom: "60vh" },
-        {
-          paddingBottom: "-20vh",
-          ease: "none",
-          scrollTrigger: {
-            trigger: blackSectionRef.current,
-            start: "bottom 110%",
-            end: "bottom 20%",
-            scrub: true,
-          },
-        }
-      );
+      
+      
     });
 
     return () => mm.revert();
@@ -265,7 +252,7 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
   return (
     <div
       ref={sectionRef}
-      className="hidden lg:block bg-[#E7E4E5] relative h-[350vh] overflow-hidden "
+      className="hidden md:block bg-[#E7E4E5] relative md:h-[400vh] lg:h-[370vh]  xl:h-[370vh] overflow-hidden  "
     >
       <div className="w-full min-h-screen">
         {/* Hero section */}
@@ -274,12 +261,12 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
             ref={imageRef}
             src="/images/ss.png"
             alt=""
-            className="object-center z-0"
+            className="md:object-cover lg:object-center z-0"
             fill
             priority
           />
           <div className="absolute w-full h-[88vh] z-10 flex flex-col items-center gap-2">
-            <div className="lg:h-[50.6vh] flex items-start">
+            <div className="md:h-[40vh] lg:h-[50.6vh] flex items-start">
               <div ref={topBorderRef} className="bg-white w-[0.8px] h-full" />
             </div>
             <p
@@ -288,7 +275,7 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
             >
               AN ECOSYSTEM OF CONTENT THAT&apos;S ALWAYS LEARNING AND EVOLVING
             </p>
-            <div className="lg:h-[28.6vh] flex items-start">
+            <div className="md:h-[28.6vh] flex items-start">
               <div ref={bottomBorderRef} className="bg-white w-[0.8px]" />
             </div>
           </div>
@@ -307,10 +294,10 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
         </div>
 
         {/* Video section */}
-        <div className="w-full flex flex-col items-center justify-center relative h-screen overflow-hidden bg-black">
+        <div className="w-full flex flex-col items-center justify-center relative h-[580px] overflow-visible bg-black z-40 ">
           <div
             ref={videoTopBorderRef}
-            className="bg-white w-[0.8px] absolute top-0 z-10"
+            className="bg-white w-[0.8px] absolute top-0 z-50"
           />
           <video
             src="https://video.wixstatic.com/video/f415e2_c9b41b05b086461ba2a34848b1c15ca9/720p/mp4/file.mp4"
@@ -318,12 +305,12 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
             loop
             muted
             playsInline
-            className="h-[94vh] translate-y-[18vh] object-center relative"
+            className="h-[600px] object-center z-20  absolute bottom-[-160px]"
           />
         </div>
 
         {/* Ending text with MASK REVEAL (not clip-path morph) */}
-         <div className="pb-[60vh] bg-black relative overflow-hidden" ref={blackSectionRef}>
+         <div className=" bg-black relative overflow-hidden pt-[60px] md:pb-[80vh]  lg:pb-[300px] xl:pb-[50vh] 2xl:pb-[60vh]" ref={blackSectionRef}>
           {/* ✅ STATIC TRIANGLE LAYER (ALWAYS A TRIANGLE) */}
           <div className="absolute inset-0 bg-black" style={{
             clipPath: "polygon(0% 0%, 100% 0%, 50% 100%)",
@@ -334,7 +321,7 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
           {/* ✅ LEFT MASK - slides in diagonally */}
           <div 
             ref={leftMaskRef}
-            className="absolute inset-0 bg-[#E7E4E5] z-20"
+            className="absolute inset-0 bg-[#E7E4E5] z-70"
             style={{
               clipPath: "polygon(0% 0%, 20% 0%, 50% 100%, 0% 100%)"
             }}
@@ -343,14 +330,16 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
           {/* ✅ RIGHT MASK - slides in diagonally */}
           <div 
             ref={rightMaskRef}
-            className="absolute inset-0 bg-[#E7E4E5] z-20"
+            className="absolute inset-0 bg-[#E7E4E5] z-70"
             style={{
               clipPath: "polygon(80% 0%, 100% 0%, 100% 100%, 50% 100%)"
             }}
           />
 
           {/* Content layer on top */}
-          <div className="w-full flex flex-col justify-center items-center gap-4 relative z-10 ">
+          <div className="w-full flex flex-col justify-center items-center gap-4 relative z-50  "
+            //  ref={blackSecContentRef}  
+             >
             <div className="w-fit h-[35.6vh]">
               <div ref={videoBottomBorderRef} className="bg-white w-[0.8px]" />
             </div>

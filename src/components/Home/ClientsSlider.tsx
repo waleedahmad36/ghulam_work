@@ -27,7 +27,7 @@ useEffect(() => {
 
   const ctx = gsap.context(() => {
     ScrollTrigger.matchMedia({
-      "(min-width: 724px)": () => {
+      "(min-width: 900px)": () => {
         /* ---------------- BORDER ---------------- */
         gsap.fromTo(
           border,
@@ -98,10 +98,10 @@ useEffect(() => {
   return (
     <div
       ref={sectionRef}
-      className="w-full h-screen bg-[#E7E4E5] hidden lg:flex flex-col items-center"
+      className="w-full h-screen bg-[#E7E4E5] hidden md:flex flex-col items-center"
     >
       {/* Top border */}
-      <div className="lg:h-[35vh] flex items-start">
+      <div className="md:h-[35vh] flex items-start">
         <div
           ref={borderRef}
           className="bg-black w-[0.9px]"

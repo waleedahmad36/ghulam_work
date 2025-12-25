@@ -5,7 +5,7 @@ const HeroRightBranding = () => {
     <svg
       viewBox="0 0 16 809"
       preserveAspectRatio="xMaxYMid meet"
-      className="h-[542px] w-auto block"
+      className="h-[542px] xl:h-[620px] w-auto block"
       xmlns="http://www.w3.org/2000/svg"
       fillRule="evenodd"
       clipRule="evenodd"

@@ -36,7 +36,7 @@ export default function HorizontalRevealWrapper() {
         scrollTrigger: {
           trigger: wrapper,
           start: "top top",
-          end: "+=400%",
+          end: "+=500%",
           scrub: true,
           pin: true,
           anticipatePin: 1,
@@ -101,7 +101,7 @@ export default function HorizontalRevealWrapper() {
   return (
     <section
       ref={wrapperRef}
-      className="hidden lg:block relative h-screen w-full overflow-hidden bg-[#EEEEEE]"
+      className="hidden md:block relative h-screen w-full overflow-hidden bg-[#EEEEEE]"
     >
       {/* SECTION 1 MASK */}
       <div ref={maskRef} className="absolute inset-0 overflow-hidden z-20 pointer-events-none ">

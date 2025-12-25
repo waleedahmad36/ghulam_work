@@ -34,7 +34,7 @@ const ClientsSliderSec = forwardRef<HTMLDivElement, ClientsSliderSecProps>(
     return (
       <section
         ref={containerRef}
-        className="hidden lg:block relative w-full overflow-hidden"
+        className="hidden md:block relative w-full overflow-hidden"
         style={{ height }}
       >
         <div
