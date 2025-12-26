@@ -160,7 +160,7 @@ const Process = () => {
       className="hidden md:flex flex-col bg-[#E7E4E5] justify-center items-center text-black"
     >
       {/* Top border */}
-      <div className="md:h-[18vh] lg:h-[23.6vh] flex items-start">
+      <div className="md:h-[18vh] lg:h-[23.6vh] xl:h-[140px] flex items-start">
         <div
           ref={topBorderInnerRef}
           className="bg-black w-[0.8px]"
@@ -172,13 +172,13 @@ const Process = () => {
       <h3
         id="process_heading"
         ref={headingRef}
-        className="text-center md:text-[58px] lg:text-[68px] font4 tracking-tight "
+        className="text-center md:text-[58px] lg:text-[68px] xl:text-[78px] font4 tracking-tight "
       >
         OUR PROCESS
       </h3>
 
       {/* Bottom border */}
-      <div className="md:h-[18vh] lg:h-[23vh] flex items-start">
+      <div className="md:h-[18vh] lg:h-[23vh] xl:h-[140px] flex items-start">
         <div
           ref={bottomBorderInnerRef}
           className="bg-black w-[0.8px]"

@@ -30,7 +30,7 @@ export default function StrategyCircle() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 75%",
-            end: "top 55%",
+            end: "top 45%",
             scrub: true,
           },
         }

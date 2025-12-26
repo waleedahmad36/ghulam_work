@@ -63,7 +63,14 @@ const CardsDisplay = () => {
         <div
           key={rowIndex}
           ref={(el) => el && (rowRefs.current[rowIndex] = el)}
-          className="cards-grid-custom space-y-4"
+          className="
+            hidden md:grid 
+            md:grid-cols-3 
+            md:gap-x-4 md:space-y-8 
+            lg:space-y-8 
+            justify-center 
+            max-w-[95vw] mx-auto
+          "
         >
           {cardsData
             .slice(rowIndex * 3, rowIndex * 3 + 3)
@@ -81,13 +88,15 @@ export default CardsDisplay;
 const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
   return (
     <div className="card flex justify-center">
-     <div
-  className="
-      relative
-      bg-black
-      overflow-visible 
-    "
->
+      <div
+        className="
+          relative bg-black overflow-hidden
+          w-[300px] h-[400px] 
+          lg:h-[220px] lg:w-[30vw]
+          xl:w-[30vw] xl:h-[300px] 
+          2xl:w-[30vw] 2xl:h-[321px] 
+        "
+      >
         <Image src={imageSrc} alt="" fill className="object-cover opacity-95" />
 
         <div className="absolute left-4 top-2 w-10 h-10">
@@ -108,18 +117,10 @@ const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
 
         <div
           className="
-            absolute
-            bottom-4
-            left-1/2
-            -translate-x-1/2
-            w-[90%]
-            h-[52px]
-            bg-white
-            flex
-            justify-center
-            items-center
-            px-2
-            text-center
+            absolute bottom-4 left-1/2 -translate-x-1/2
+            w-[90%] h-[52px] bg-white
+            flex justify-center items-center
+            px-2 text-center
           "
         >
           <span className="text-[9.9px] leading-tight">

@@ -125,22 +125,22 @@ const Hero = () => {
 
       {/* CONTENT */}
       <div className="relative h-screen z-30 flex flex-col justify-center items-center w-full">
-        <div className="relative text-center flex flex-col gap-[18px] px-2 lg:px-0">
-          <div className="hero-logo-wrap w-[268px] flex justify-center mx-auto">
+        <div className="relative text-center flex flex-col gap-2 md:gap-[18px] px-2 lg:px-0">
+          <div className="hero-logo-wrap w-[130px] md:w-[241px] lg:w-[270px] xl:w-[220px]     flex justify-center mx-auto ">
             <Logo width={'100%'} />
           </div>
 
-          <h1 className="hero-heading font1 text-3xl md:text-[60px]
+          <h1 className="hero-heading font1 text-3xl md:text-[70px]
            lg:text-[87px]
-           xl:text-[98px] max-w-6xl xl:tracking-normal ">
+           xl:text-[92px] max-w-6xl xl:tracking-normal ">
             <span className="">
               BIG MOMENTS FOR<br/> DISRUPTIVE BRANDS
             </span>
           </h1>
         </div>
 
-        <div className="hidden md:flex flex-col items-center gap-3 absolute bottom-[25px] xl:bottom-[30px] ">
-          <span className="hero-subtext md:text-[12px] lg:text-[14px]  text-[#b4b0b0] mt-8 text-center tracking-wider shadow-2xl font3">
+        <div className="hidden md:flex flex-col items-center gap-3 lg:gap-2 absolute bottom-[25px] xl:bottom-[30px] ">
+          <span className="hero-subtext md:text-[12px] lg:text-[14px]  text-[#b4b0b0]  text-center tracking-wider xl:tracking-normal shadow-2xl font3">
             EXPLORE OUR ONE OF A KIND APPROACH
           </span>
 
@@ -165,7 +165,7 @@ export default Hero;
 
 /* Arrow */
 export const ArrowDown = () => (
-  <svg fill="white" viewBox="46.141 20.63 107.717 158.741" height="40" width="42">
+  <svg fill="white" viewBox="46.141 20.63 107.717 158.741" height="38" width="42">
     <path d="m153.858 130.731-53.857 48.64-53.86-48.64 1.804-1.944 50.722 45.809V20.63h2.669v153.965l50.719-45.809 1.803 1.945z" />
   </svg>
 );

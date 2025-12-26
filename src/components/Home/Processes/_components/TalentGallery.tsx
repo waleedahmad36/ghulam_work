@@ -126,7 +126,7 @@ const TalentGallery = () => {
         THE FACES OF OUR RECENT CAMPAIGNS
       </p>
     </div>
-    <div className="h-[22vh] flex items-start">
+    <div className="h-[22vh] xl:h-[140px] flex items-start">
         <div
           ref={upperBorderRef}
           className="bg-black w-[0.6px]"
@@ -136,8 +136,8 @@ const TalentGallery = () => {
       <p  className="font5 text-[18px] mt-2"   ref={awardTextRef} >
         AWARD-WINNING
       </p>
-      <p  className="font4 text-[68px] "  ref={executionTextRef}  >EXECUTION</p>
-      <div className="h-[22vh] flex items-start">
+      <p  className="font4 text-[68px] xl:text-[78px]"  ref={executionTextRef}  >EXECUTION</p>
+      <div className="h-[22vh] xl:h-[140px] flex items-start">
         <div
           ref={lowerBorderRef}
           className="bg-black w-[0.6px]"

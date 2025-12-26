@@ -164,7 +164,7 @@ const PinVideoInBg = () => {
 
           <h2
             ref={heroBottomRef}
-            className="pb-hero-bottom text-2xl md:text-5xl lg:text-[72px] font-bold text-white mt-[2px] mb-4 font4"
+            className="pb-hero-bottom md:text-[32px] lg:text-[72px] font-bold text-white mt-[2px] mb-4 font4 text-nowrap"
           >
             <span
               ref={heroBottomInnerRef}
@@ -172,7 +172,7 @@ const PinVideoInBg = () => {
               style={{ display: "inline-block", willChange: "transform" }}
             >
               AGENCY{" "}
-              <span className="pb-hero-x font3 text-[32px] md:text-[44px] lg:text-[50px] relative bottom-1 md:bottom-2 lg:bottom-3">
+              <span className="pb-hero-x font3  md:text-[32px] lg:text-[50px] relative bottom-1 md:bottom-2 lg:bottom-3">
                 x
               </span>{" "}
               STUDIO

@@ -18,17 +18,17 @@ export default function Home() {
     <HeaderProvider>
       <>
         <Hero />
-         <Header />
-        <HorizontalSliderOnScroll />
-        <HorizontalSliderOnMobileScroll   />
+        <Header />
+         <HorizontalSliderOnScroll />
+         <HorizontalSliderOnMobileScroll   />
         <PinVideoInBg />
-        <Process />
-        
-        <HorizontalRevealWrapper/>  
-        <EcoSystem/> 
+         <Process />
+         <HorizontalRevealWrapper/> 
+         <EcoSystem/> 
          <Narrative/>
         <ClientsSlider/>
-        <BoathouseCTA/>
+       
+         <BoathouseCTA/>
       </>
     </HeaderProvider>
   );
