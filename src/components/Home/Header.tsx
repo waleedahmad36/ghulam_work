@@ -67,8 +67,8 @@ const Header = () => {
         style={{ zIndex: 9999 }}
       >
         <div className="mx-auto flex justify-between items-center">
-          <div className="w-32 relative flex items-center">
-            <Logo width={"32"} fillLogo={"white"} />
+          <div className="w-[133px] relative flex items-center">
+            <Logo width={"133px"} fillLogo={"white"} />
           </div>
 
           <button

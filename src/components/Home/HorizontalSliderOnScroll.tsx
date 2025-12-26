@@ -62,7 +62,7 @@ const HorizontalSliderOnScroll = ({ items = [], height = "600px" }) => {
           firstItemWidth,
         } = setup();
 
-        const HORIZONTAL_PADDING = 28;
+        const HORIZONTAL_PADDING = 46;
 
         const finalX =
           -initialOffset + firstItemWidth / 2 - HORIZONTAL_PADDING;
@@ -110,7 +110,7 @@ const HorizontalSliderOnScroll = ({ items = [], height = "600px" }) => {
           firstItemWidth,
         } = setup();
 
-        const HORIZONTAL_PADDING = 28;
+        const HORIZONTAL_PADDING = 30;
 
         // 🔥 exact top-left alignment (no gap)
         const finalX =
@@ -170,12 +170,12 @@ const HorizontalSliderOnScroll = ({ items = [], height = "600px" }) => {
   return (
     <section
       ref={containerRef}
-      className="hidden md:block relative w-full overflow-hidden bg-black md:h-[750px] lg:h-[600px] xl:h-[620px] "
+      className="hidden md:block relative w-full overflow-hidden bg-black md:h-[750px] lg:h-[605px] xl:h-[620px] "
       style={{ maxHeight: "unset" }}
     >
       <div
         ref={innerRef}
-        className="absolute top-0 flex items-center gap-8 px-7 will-change-transform pointer-events-none h-full"
+        className="absolute top-0 flex items-center gap-8 px-[46px] will-change-transform pointer-events-none h-full"
       >
         {slides}
       </div>

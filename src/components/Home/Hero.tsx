@@ -124,23 +124,25 @@ const Hero = () => {
       />
 
       {/* CONTENT */}
-      <div className="relative h-screen z-30 flex flex-col justify-center items-center w-full">
+      <div className="relative h-screen z-30 flex flex-col justify-center items-center w-full ">
         <div className="relative text-center flex flex-col gap-2 md:gap-[18px] px-2 lg:px-0">
-          <div className="hero-logo-wrap w-[130px] md:w-[241px] lg:w-[270px] xl:w-[220px]     flex justify-center mx-auto ">
+          <div className="hero-logo-wrap w-[130px] sm:w-[170px] md:w-[258px] lg:w-[265px] xl:w-[241px]     flex justify-center mx-auto ">
             <Logo width={'100%'} />
           </div>
 
-          <h1 className="hero-heading font1 text-3xl md:text-[70px]
+          <h1 className="hero-heading font1 text-3xl
+          sm:text-[56px]
+          md:text-[70px]
            lg:text-[87px]
-           xl:text-[92px] max-w-6xl xl:tracking-normal ">
+           xl:text-[92px] max-w-6xl  lg:tracking-normal ">
             <span className="">
               BIG MOMENTS FOR<br/> DISRUPTIVE BRANDS
             </span>
           </h1>
         </div>
 
-        <div className="hidden md:flex flex-col items-center gap-3 lg:gap-2 absolute bottom-[25px] xl:bottom-[30px] ">
-          <span className="hero-subtext md:text-[12px] lg:text-[14px]  text-[#b4b0b0]  text-center tracking-wider xl:tracking-normal shadow-2xl font3">
+        <div className="hidden sm:flex flex-col items-center gap-3 lg:gap-2 absolute bottom-[25px] xl:bottom-[30px] ">
+          <span className="hero-subtext sm:text-[12px] md:text-[12px] lg:text-[14px]  text-[#b4b0b0]  text-center tracking-wider xl:tracking-normal shadow-2xl font3">
             EXPLORE OUR ONE OF A KIND APPROACH
           </span>
 
@@ -149,11 +151,11 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hidden md:block absolute md:left-4 lg:left-[34px] xl:left-[39px] z-40 w-fit">
+        <div className="hidden sm:block absolute sm:left-4 md:left-6 lg:left-[34px] xl:left-[39px] z-40 w-fit">
           <HeroLeftBranding />
         </div>
 
-        <div className="hidden md:block absolute md:right-4 lg:right-[34px] xl:right-[39px] z-40 w-fit">
+        <div className="hidden sm:block absolute sm:right-4 md:right-6 lg:right-[34px] xl:right-[39px] z-40 w-fit">
           <HeroRightBranding />
         </div>
       </div>
