@@ -242,6 +242,20 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
         }
       );
 
+      gsap.to(
+        blackSecContentRef.current,
+        {
+          y: 300,
+          ease: "none",
+          scrollTrigger: {
+            trigger: blackSecContentRef.current,
+            start: "top 40%",
+            end: "bottom -80%",
+            scrub: true,
+          },
+        }
+      );
+
       
       
     });
@@ -310,13 +324,21 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
         </div>
 
         {/* Ending text with MASK REVEAL (not clip-path morph) */}
-         <div className=" bg-black relative overflow-hidden pt-[60px] md:pb-[80vh]  lg:pb-[300px] xl:pb-[50vh] 2xl:pb-[60vh]" ref={blackSectionRef}>
+         <div className=" bg-black relative overflow-hidden pt-[60px] h-[110vh]
+          // md:pb-[80vh]  lg:pb-[300px] xl:pb-[50vh] 2xl:pb-[60vh]
+          " ref={blackSectionRef}>
           {/* ✅ STATIC TRIANGLE LAYER (ALWAYS A TRIANGLE) */}
-          <div className="absolute inset-0 bg-black" style={{
-            clipPath: "polygon(0% 0%, 100% 0%, 50% 100%)",
-            transform: "translateZ(0)",
-  backfaceVisibility: "hidden"
-          }} />
+        <div
+  className="absolute inset-0 bg-black"
+  style={{
+    clipPath: "polygon(-1% 0%, 101% 0%, 50% 102%)",
+    top: "-1px",
+    height: "calc(100% + 2px)",
+    transform: "translateZ(0)",
+    backfaceVisibility: "hidden",
+  }}
+/>
+
           
           {/* ✅ LEFT MASK - slides in diagonally */}
           <div 
@@ -338,7 +360,8 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
 
           {/* Content layer on top */}
           <div className="w-full flex flex-col justify-center items-center gap-4 relative z-50  "
-            //  ref={blackSecContentRef}  
+             ref={blackSecContentRef}  
+             style={{ isolation: "isolate" }}
              >
             <div className="w-fit h-[35.6vh]">
               <div ref={videoBottomBorderRef} className="bg-white w-[0.8px]" />

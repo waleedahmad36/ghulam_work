@@ -124,15 +124,15 @@ const Hero = () => {
       />
 
       {/* CONTENT */}
-      <div className="relative h-screen z-30 flex flex-col justify-center items-center w-full ">
+      <div className="relative h-screen  z-30 flex flex-col justify-center items-center w-full ">
         <div className="relative text-center flex flex-col gap-2 md:gap-[18px] px-2 lg:px-0">
-          <div className="hero-logo-wrap w-[130px] sm:w-[170px] md:w-[258px] lg:w-[265px] xl:w-[241px]     flex justify-center mx-auto ">
+          <div className="hero-logo-wrap w-[130px] sm:w-[170px] md:w-[260px] lg:w-[265px] xl:w-[241px]     flex justify-center mx-auto ">
             <Logo width={'100%'} />
           </div>
 
           <h1 className="hero-heading font1 text-3xl
           sm:text-[56px]
-          md:text-[70px]
+          md:text-[72px]
            lg:text-[87px]
            xl:text-[92px] max-w-6xl  lg:tracking-normal ">
             <span className="">
@@ -141,8 +141,8 @@ const Hero = () => {
           </h1>
         </div>
 
-        <div className="hidden sm:flex flex-col items-center gap-3 lg:gap-2 absolute bottom-[25px] xl:bottom-[30px] ">
-          <span className="hero-subtext sm:text-[12px] md:text-[12px] lg:text-[14px]  text-[#b4b0b0]  text-center tracking-wider xl:tracking-normal shadow-2xl font3">
+        <div className="hidden sm:flex flex-col items-center gap-2 lg:gap-2 absolute bottom-[18px] lg:bottom-[25px] xl:bottom-[30px] ">
+          <span className="hero-subtext sm:text-[12px] md:text-[14px] lg:text-[14px]  text-[#b4b0b0]  text-center tracking-wider xl:tracking-normal shadow-2xl font3">
             EXPLORE OUR ONE OF A KIND APPROACH
           </span>
 
@@ -151,11 +151,11 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hidden sm:block absolute sm:left-4 md:left-6 lg:left-[34px] xl:left-[39px] z-40 w-fit">
+        <div className="hidden sm:block absolute sm:left-4 md:left-[28px] lg:left-[34px] xl:left-[39px] z-40 w-fit">
           <HeroLeftBranding />
         </div>
 
-        <div className="hidden sm:block absolute sm:right-4 md:right-6 lg:right-[34px] xl:right-[39px] z-40 w-fit">
+        <div className="hidden sm:block absolute sm:right-4 md:right-[28px] lg:right-[34px] xl:right-[39px] z-40 w-fit">
           <HeroRightBranding />
         </div>
       </div>
@@ -167,7 +167,7 @@ export default Hero;
 
 /* Arrow */
 export const ArrowDown = () => (
-  <svg fill="white" viewBox="46.141 20.63 107.717 158.741" height="38" width="42">
+  <svg fill="white" viewBox="46.141 20.63 107.717 158.741"  className="w-[34px] h-[30px] lg:w-[42px] lg:h-[38px]" >
     <path d="m153.858 130.731-53.857 48.64-53.86-48.64 1.804-1.944 50.722 45.809V20.63h2.669v153.965l50.719-45.809 1.803 1.945z" />
   </svg>
 );

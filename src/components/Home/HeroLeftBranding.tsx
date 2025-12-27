@@ -5,7 +5,7 @@ const HeroLeftBranding = () => {
     <svg
      viewBox="0 0 15 865"
       preserveAspectRatio="xMinYMid meet"
-      className="sm:h-[550px] md:h-[460px] lg:h-[540px] xl:h-[600px]  w-auto block"
+      className="sm:h-[550px] md:h-[440px] lg:h-[540px] xl:h-[600px]  w-auto block"
       fill="white"
       xmlns="http://www.w3.org/2000/svg"
       role="presentation"

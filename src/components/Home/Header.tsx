@@ -30,7 +30,7 @@ const Header = () => {
   useEffect(() => {
     if (!headerRef.current) return;
 
-    if (window.innerWidth >= 1140) {
+    if (window.innerWidth >= 900) {
       const ctx = gsap.context(() => {
         ScrollTrigger.create({
           trigger: headerRef.current,
@@ -60,23 +60,23 @@ const Header = () => {
       <header
         ref={headerRef}
         className="
-          left-0 w-full py-8 px-[28px] md:px-[48px] lg:px-[75px] bg-transparent
-          sticky top-0 md:sticky md:top-0
-          lg:absolute lg:top-[100vh]
+          left-0 w-full py-4 lg:py-6 px-[28px] md:px-[48px] lg:px-[75px] bg-transparent
+          sticky top-0 
+          md:absolute md:top-[100vh]
         "
         style={{ zIndex: 9999 }}
       >
         <div className="mx-auto flex justify-between items-center">
           <div className="w-[133px] relative flex items-center">
-            <Logo width={"133px"} fillLogo={"white"} />
+            <Logo width={"130px"} fillLogo={"white"} />
           </div>
 
           <button
             onClick={() => setOpen((s) => !s)}
-            className="w-fit flex items-center justify-center cursor-pointer"
+            className="w-fit flex items-center justify-center cursor-pointer border-none outline-none"
             style={{ color: "white" }}
           >
-            {open ? <X className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
+            {open ? <X className="w-6 h-6 lg:w-8 lg:h-8" /> : <MenuIcon className="w-8 h-8" />}
           </button>
         </div>
       </header>

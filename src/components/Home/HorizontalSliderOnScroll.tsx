@@ -70,8 +70,8 @@ const HorizontalSliderOnScroll = ({ items = [], height = "600px" }) => {
         return ScrollTrigger.create({
           trigger: container,
           start: "top 72%",
-          end: "bottom 5%",
-          scrub: 2, // Slightly lower scrub for "snappier/faster" feel
+          end: "bottom -15%",
+          scrub: 2, 
 
           onUpdate: (self) => {
             const p = self.progress;
@@ -159,7 +159,7 @@ const HorizontalSliderOnScroll = ({ items = [], height = "600px" }) => {
         <div
           key={i}
           className={`shrink-0 w-30 rounded-3xl flex justify-center items-center max-h-20 ${
-            i === 0 ? "mr-3 xl:mr-4" : "mx-3 xl:mx-4"
+            i === 0 ? "mr-2 lg:mr-3 xl:mr-4" : "mx-2 lg:mx-3 xl:mx-4"
           }`}
         >
           <Icon />
@@ -170,12 +170,12 @@ const HorizontalSliderOnScroll = ({ items = [], height = "600px" }) => {
   return (
     <section
       ref={containerRef}
-      className="hidden md:block relative w-full overflow-hidden bg-black md:h-[750px] lg:h-[605px] xl:h-[620px] "
+      className="hidden md:block relative w-full overflow-hidden bg-black md:h-[95vh] lg:h-[605px] xl:h-[620px] "
       style={{ maxHeight: "unset" }}
     >
       <div
         ref={innerRef}
-        className="absolute top-0 flex items-center gap-8 px-[46px] will-change-transform pointer-events-none h-full"
+        className="absolute  top-0 flex items-center gap-8 px-[46px] will-change-transform pointer-events-none h-full  "
       >
         {slides}
       </div>

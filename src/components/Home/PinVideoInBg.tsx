@@ -147,24 +147,24 @@ const PinVideoInBg = () => {
       {/* HERO SECTION */}
       <div
         ref={heroSectionRef}
-        className="pb-text-section pb-hero-wrap relative z-10 text-center flex flex-col items-center justify-center px-4 font3 mt-6 md:mb-6 lg:mb-12"
+        className="pb-text-section pb-hero-wrap relative z-10 text-center flex flex-col items-center justify-center px-4  mt-6 md:mb-6 lg:mb-12"
         style={{
           textRendering: "optimizeLegibility",
           WebkitFontSmoothing: "antialiased",
           MozOsxFontSmoothing: "grayscale",
         }}
       >
-        <div className="max-w-xl lg:max-w-6xl overflow-hidden xl:mt-9 ">
+        <div className=" lg:max-w-6xl overflow-hidden xl:mt-9 ">
           <h2
             ref={heroTopRef}
-            className="pb-hero-top text-2xl md:text-6xl lg:text-[72px] font-light text-white mb-1 font4"
+            className="pb-hero-top text-2xl md:text-[28px] lg:text-[72px] font-light text-white mb-1 font4"
           >
             A GLOBAL 360° CREATIVE
           </h2>
 
           <h2
             ref={heroBottomRef}
-            className="pb-hero-bottom md:text-[32px] lg:text-[72px] font-bold text-white mt-[2px] mb-4 font4 text-nowrap"
+            className="pb-hero-bottom md:text-[28px] lg:text-[72px] font-bold text-white mt-[2px] mb-4 font4 text-nowrap"
           >
             <span
               ref={heroBottomInnerRef}
@@ -172,7 +172,7 @@ const PinVideoInBg = () => {
               style={{ display: "inline-block", willChange: "transform" }}
             >
               AGENCY{" "}
-              <span className="pb-hero-x font3  md:text-[32px] lg:text-[50px] relative bottom-1 md:bottom-2 lg:bottom-3">
+              <span className="pb-hero-x   md:text-[28px] lg:text-[50px] relative bottom-1 md:bottom-2 lg:bottom-3">
                 x
               </span>{" "}
               STUDIO
