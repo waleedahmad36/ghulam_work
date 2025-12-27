@@ -1,4 +1,5 @@
 "use client";
+import CaseStudies from "@/components/CaseStudies";
 import BoathouseCTA from "@/components/Footer";
 import ClientsSlider from "@/components/Home/ClientsSlider";
 import EcoSystem from "@/components/Home/EcoSystem";
@@ -19,6 +20,9 @@ export default function Home() {
       <>
         <Hero />
         <Header />
+        <div   className="md:hidden"  >
+          <CaseStudies/>
+        </div>
          <HorizontalSliderOnScroll />
          <HorizontalSliderOnMobileScroll   />
         <PinVideoInBg />

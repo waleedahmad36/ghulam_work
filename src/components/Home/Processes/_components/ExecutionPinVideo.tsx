@@ -135,7 +135,7 @@ export default function ExecutionPinVideo() {
   return (
     <div
       ref={containerRef}
-      className="w-full min-h-[140vh] relative flex flex-col items-center justify-start overflow-hidden"
+      className="w-full min-h-[140vh] relative hidden md:flex flex-col items-center justify-start overflow-hidden"
     >
       {/* Pinned Video */}
       <video

@@ -69,7 +69,7 @@ function OohAndInfluencerSection() {
           fill
           className="object-cover relative"
         />
-        <h2 className="font4 text-[45px] text-white absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
+        <h2 className="font4 text-[45px] text-white absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
           OOH
         </h2>
       </div>
@@ -85,54 +85,58 @@ function OohAndInfluencerSection() {
       <div className="absolute inset-0 px-[4vw] z-50 flex justify-end items-center">
         <div 
         ref={stripRef} 
-        className="flex gap-4 will-change-transform relative left-[45vw]">
+        className="flex gap-4 will-change-transform relative md:left-[70vw] lg:left-[45vw] xl:left-[30vw] 2xl:left-[13vw]">
+          <div  className=" relative md:w-[205px] md:h-[350px] lg:w-[235px] lg:h-[410px]" >
           <Image
             src="/images/storyImage1.avif"
             alt=""
-            width={235}
-            height={320}
-            className="rounded-lg shrink-0"
+            fill
+            className="rounded-lg shrink-0 object-center"
           />
-         <div  className="relative w-fit h-fit" >
+          </div>
+         <div  className="relative md:w-[205px] md:h-[350px] lg:w-[235px] lg:h-[410px]" >
           <div className="absolute top-14 z-10" >
             <FloatingReactions/>
           </div>
            <Image
             src="/images/storyImage2.avif"
             alt=""
-            width={235}
-            height={320}
+            fill
             className="rounded-lg shrink-0 relative z-0"
           />
          </div>
+          <div  className=" relative md:w-[205px] md:h-[350px] lg:w-[235px] lg:h-[410px]" >
           <Image
             src="/images/storyImage3.avif"
             alt=""
-            width={235}
-            height={320}
-            className="rounded-lg shrink-0"
+            fill
+            className="rounded-lg shrink-0 object-center"
           />
+          </div>
+          <div  className=" relative md:w-[205px] md:h-[350px] lg:w-[235px] lg:h-[410px]" >
           <Image
             src="/images/storyImage4.avif"
             alt=""
-            width={235}
-            height={320}
-            className="rounded-lg shrink-0"
+            fill
+            className="rounded-lg shrink-0 object-center"
           />
+          </div>
+           <div  className=" relative md:w-[205px] md:h-[350px] lg:w-[235px] lg:h-[410px]" >
           <Image
             src="/images/storyImage5.avif"
             alt=""
-            width={235}
-            height={320}
-            className="rounded-lg shrink-0"
+            fill
+            className="rounded-lg shrink-0 object-center"
           />
+          </div>
+           <div  className=" relative md:w-[205px] md:h-[350px] lg:w-[235px] lg:h-[410px]" >
           <Image
             src="/images/storyImage6.avif"
             alt=""
-            width={235}
-            height={320}
-            className="rounded-lg shrink-0"
+            fill
+            className="rounded-lg shrink-0 object-center"
           />
+          </div>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { useHeaderContext } from "@/context/useHeaderContext";
+import Link from "next/link";
 
 export default function BoathouseCTA() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -103,21 +104,23 @@ export default function BoathouseCTA() {
         </h1>
 
         {/* ✅ Button with border animation support */}
-        <button
+      <Link  href="/contacts" >
+      <button
           ref={buttonRef}
           style={{ "--border-progress": "0%" } as any}
           className="border border-white text-white text-[20px] tracking-wide transition-all duration-300 rounded-full w-[202px] h-[46px] relative overflow-hidden font5 mt-2 lg:mt-0"
         >
           CONTACT US
         </button>
+    </Link>
 
         <div
           ref={linksRef}
           className="flex flex-col md:flex-row gap-6 mt-4 text-[16px] tracking-wide font5"
         >
-          <a href="#" className="hover:text-[20px] transition-all duration-300">
+          <Link href="/case-studies" className="hover:text-[20px] transition-all duration-300">
             CASE STUDIES
-          </a>
+          </Link>
           <a href="#" className="hover:text-[20px] transition-all duration-300">
             PRESS
           </a>

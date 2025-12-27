@@ -170,7 +170,7 @@ const HorizontalSliderOnScroll = ({ items = [], height = "600px" }) => {
   return (
     <section
       ref={containerRef}
-      className="hidden md:block relative w-full overflow-hidden bg-black md:h-[95vh] lg:h-[605px] xl:h-[620px] "
+      className="hidden md:block relative w-full overflow-hidden bg-black md:h-[80vh] lg:h-[605px] xl:h-[620px] "
       style={{ maxHeight: "unset" }}
     >
       <div

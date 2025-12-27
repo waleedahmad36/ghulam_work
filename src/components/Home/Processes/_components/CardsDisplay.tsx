@@ -58,7 +58,7 @@ const CardsDisplay = () => {
   }, []);
 
   return (
-    <div className="pb-6">
+    <div className="md:pb-3 lg:pb-6">
       {[0, 1].map((rowIndex) => (
         <div
           key={rowIndex}
@@ -66,10 +66,10 @@ const CardsDisplay = () => {
           className="
             hidden md:grid 
             md:grid-cols-3 
-            md:gap-x-4 md:space-y-8 
+            md:gap-x-4 md:space-y-4 
             lg:space-y-8 
             justify-center 
-            max-w-[95vw] mx-auto
+            max-w-[96vw]  mx-auto
           "
         >
           {cardsData
@@ -91,8 +91,8 @@ const Card = ({ imageSrc, CircleIcon, TextIcon }: CardProps) => {
       <div
         className="
           relative bg-black overflow-hidden
-          w-[300px] h-[400px] 
-          lg:h-[220px] lg:w-[30vw]
+          w-[320px] h-[35vh] 
+          lg:h-[230px] lg:w-[32vw]
           xl:w-[30vw] xl:h-[300px] 
           2xl:w-[30vw] 2xl:h-[321px] 
         "

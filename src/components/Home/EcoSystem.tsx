@@ -266,7 +266,7 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
   return (
     <div
       ref={sectionRef}
-      className="hidden md:block bg-[#E7E4E5] relative md:h-[400vh] lg:h-[370vh]  xl:h-[370vh] overflow-hidden  "
+      className="hidden md:block bg-[#E7E4E5] relative md:h-[380vh] lg:h-[370vh]  xl:h-[370vh] overflow-hidden  "
     >
       <div className="w-full min-h-screen">
         {/* Hero section */}
@@ -331,11 +331,16 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
         <div
   className="absolute inset-0 bg-black"
   style={{
-    clipPath: "polygon(-1% 0%, 101% 0%, 50% 102%)",
-    top: "-1px",
-    height: "calc(100% + 2px)",
-    transform: "translateZ(0)",
-    backfaceVisibility: "hidden",
+    clipPath: "polygon(0% 0%, 100% 0%, 50% 100%)",
+      top: "-2px",
+      left: "-2px",
+      width: "calc(100% + 4px)",
+      height: "calc(100% + 4px)",
+      transform: "scale(1.01)",
+      transformOrigin: "top center",
+      backfaceVisibility: "hidden",
+      // WebkitBackfaceVisibility: "hidden",
+      willChange: "clip-path, transform",
   }}
 />
 
@@ -344,9 +349,16 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
           <div 
             ref={leftMaskRef}
             className="absolute inset-0 bg-[#E7E4E5] z-70"
-            style={{
-              clipPath: "polygon(0% 0%, 20% 0%, 50% 100%, 0% 100%)"
-            }}
+           style={{
+      clipPath: "polygon(0% 0%, 20% 0%, 50% 100%, 0% 100%)",
+      left: "-2px",
+      top: "-2px",
+      width: "calc(100% + 4px)",
+      height: "calc(100% + 4px)",
+      backfaceVisibility: "hidden",
+      // WebkitBackfaceVisibility: "hidden",
+      willChange: "transform",
+    }}
           />
           
           {/* ✅ RIGHT MASK - slides in diagonally */}
@@ -354,8 +366,15 @@ const EcoSystem = ({ setColors }: { setColors?: (colors: { fillColor: string; me
             ref={rightMaskRef}
             className="absolute inset-0 bg-[#E7E4E5] z-70"
             style={{
-              clipPath: "polygon(80% 0%, 100% 0%, 100% 100%, 50% 100%)"
-            }}
+      clipPath: "polygon(80% 0%, 100% 0%, 100% 100%, 50% 100%)",
+      right: "-2px",
+      top: "-2px",
+      width: "calc(100% + 4px)",
+      height: "calc(100% + 4px)",
+      backfaceVisibility: "hidden",
+      // WebkitBackfaceVisibility: "hidden",
+      willChange: "transform",
+    }}
           />
 
           {/* Content layer on top */}

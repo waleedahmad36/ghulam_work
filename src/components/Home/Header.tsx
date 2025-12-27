@@ -30,7 +30,7 @@ const Header = () => {
   useEffect(() => {
     if (!headerRef.current) return;
 
-    if (window.innerWidth >= 900) {
+    if (window.innerWidth >= 326) {
       const ctx = gsap.context(() => {
         ScrollTrigger.create({
           trigger: headerRef.current,
@@ -61,8 +61,7 @@ const Header = () => {
         ref={headerRef}
         className="
           left-0 w-full py-4 lg:py-6 px-[28px] md:px-[48px] lg:px-[75px] bg-transparent
-          sticky top-0 
-          md:absolute md:top-[100vh]
+          absolute sm:top-[100vh]
         "
         style={{ zIndex: 9999 }}
       >
@@ -82,7 +81,7 @@ const Header = () => {
       </header>
 
       {/* Slide-out menu */}
-      <div
+       <div
         className={[
           "fixed top-0 right-0 h-screen z-[10000]",
           "bg-black/95 w-full md:w-1/2",
@@ -90,14 +89,25 @@ const Header = () => {
           open ? "translate-x-0" : "translate-x-full",
         ].join(" ")}
       >
-        <div className="h-full py-8 relative">
-          <X
-            className="size-8 text-white absolute right-20 top-12 cursor-pointer"
-            onClick={() => setOpen((s) => !s)}
-          />
-          <nav className="mt-24 flex flex-col px-16 gap-8 text-2xl font-semibold text-white">
-            <Link href="">Projects</Link>
-            <Link href="">Contact Us</Link>
+        <div className="h-full  relative">
+          {/* Top bar */}
+          <div className="flex items-center justify-between px-14 py-6 relative z-20">
+            <div className="w-[140px] relative flex items-center">
+              <Logo width={"140px"} fillLogo={"white"} />
+            </div>
+
+            <X
+              className="size-8  text-white cursor-pointer"
+              onClick={() => setOpen(false)}
+            />
+          </div>
+
+          <nav className="mt-24 flex uppercase text-[40px] flex-col px-10 py-6 leading-13  
+          font-semibold text-white relative font4 z-20 ">
+            <Link href="" className=" transition-[letter-spacing] duration-200 ease-out
+          hover:tracking-[0.2em]">Case Studies</Link>
+            <Link href="" className=" transition-[letter-spacing] duration-200 ease-out
+          hover:tracking-[0.2em]">Contact Us</Link>
           </nav>
 
           <video
@@ -105,10 +115,11 @@ const Header = () => {
             autoPlay
             muted
             loop
-            className="absolute bottom-0 left-0 w-full opacity-60"
+            className="absolute top-0 left-0 w-full h-full object-cover
+             opacity-60 pointer-events-none z-0"
           />
         </div>
-      </div>
+        </div>
     </>
   );
 };

@@ -45,7 +45,7 @@ function ExperiencesSection() {
       )}
 
       {/* LABEL */}
-      <h2 className="font1 text-[45px] text-white absolute bottom-0 z-10 left-1/2 -translate-x-1/2 pointer-events-none">
+      <h2 className="font1 text-[45px] text-white absolute md:bottom-3 lg:bottom-2 z-10 left-1/2 -translate-x-1/2 pointer-events-none">
         EXPERIENCES
       </h2>
     </div>

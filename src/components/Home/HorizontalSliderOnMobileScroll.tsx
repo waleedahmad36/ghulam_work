@@ -11,7 +11,7 @@ if (typeof window !== "undefined") {
 
 const ICONS = [Apple, Victoria, Marot, Netflix, TrustPilot , Naked , TrustPilot , Marot];
 
-const HorizontalSliderOnMobileScroll = ({ items = [], height = "400px" }) => {
+const HorizontalSliderOnMobileScroll = ({ items = [], height = "600px" }) => {
   const containerRef = useRef(null);
   const innerRef = useRef(null);
 
@@ -58,7 +58,7 @@ const HorizontalSliderOnMobileScroll = ({ items = [], height = "400px" }) => {
   return (
     <section
       ref={containerRef}
-      className="md:hidden relative w-full overflow-hidden"
+      className="sm:hidden relative w-full overflow-hidden"
       style={{ height }}
     >
       <div

@@ -157,13 +157,13 @@ const Process = () => {
   return (
     <div
       ref={sectionRef}
-      className="hidden md:flex flex-col bg-[#E7E4E5] justify-center items-center text-black"
+      className="hidden sm:flex flex-col bg-[#E7E4E5] justify-center items-center text-black"
     >
       {/* Top border */}
-      <div className="md:h-[18vh] lg:h-[23.6vh] xl:h-[140px] flex items-start">
+      <div className="md:h-[140px] lg:h-[23.6vh] xl:h-[140px] hidden md:flex items-start">
         <div
           ref={topBorderInnerRef}
-          className="bg-black w-[0.8px]"
+          className="bg-black/90 w-[0.6px]"
           style={{ height: 0 }}
         />
       </div>
@@ -172,48 +172,48 @@ const Process = () => {
       <h3
         id="process_heading"
         ref={headingRef}
-        className="text-center md:text-[58px] lg:text-[68px] xl:text-[78px] font4 tracking-tight "
+        className="hidden md:block text-center md:text-[58px] lg:text-[68px] xl:text-[78px] font4 tracking-tight "
       >
         OUR PROCESS
       </h3>
 
       {/* Bottom border */}
-      <div className="md:h-[18vh] lg:h-[23vh] xl:h-[140px] flex items-start">
+      <div className="md:h-[140px] lg:h-[23vh] xl:h-[140px] hidden  md:flex items-start">
         <div
           ref={bottomBorderInnerRef}
-          className="bg-black w-[0.8px]"
+          className="bg-black/90 w-[0.4px]"
           style={{ height: 0 }}
         />
       </div>
 
       {/* Circle 1 */}
-      <div className="w-12 h-12 flex justify-center items-center mt-10 rounded-full border border-black">
+      <div className="w-12 h-12 hidden md:flex justify-center items-center mt-10 rounded-full border border-black">
         <span className="text-[35px] font-sans" id="circle_number">
           1
         </span>
       </div>
 
       {/* StrategyCircle */}
-      <div className="relative  lg:-mt-[17px]">
+      <div className="hidden md:block relative md:mt-5  lg:-mt-[17px]">
         <StrategyCircle />
       </div>
 
       {/* Second border */}
-      <div className="h-[18vh] flex items-start">
+      <div className="h-[150px] hidden md:flex items-start md:mt-6 lg:mt-0">
         <div
           ref={secondBorderInnerRef}
-          className="bg-black w-[0.9px]"
+          className="bg-black/90 w-[0.6px]"
           style={{ height: 0 }}
         />
       </div>
 
       {/* Circle 2 */}
-      <div className="w-12 h-12 flex justify-center items-center mt-3 mb-2 rounded-full border border-black">
-        2
+      <div className="w-12 h-12 hidden  md:flex justify-center items-center mt-3 lg:mt-1 mb-2 rounded-full border border-black">
+        <span  className="text-2xl" >2</span>
       </div>
 
       {/* IDEATION */}
-      <h3 ref={ideationRef} className="text-[60px] my-4 font4 tracking-tight">
+      <h3 ref={ideationRef} className="hidden md:block md:text-[38px]  lg:text-[60px] md:my-2 lg:my-1 font4 tracking-tight">
         IDEATION
       </h3>
 
@@ -221,7 +221,7 @@ const Process = () => {
       <CardsDisplay />
 
       {/* Second border */}
-      <div className="h-[23vh] flex items-start">
+      <div className="h-[23vh] hidden md:flex items-start">
         <div
           ref={thirdBorderInnerRef}
           className="bg-black w-[0.9px]"

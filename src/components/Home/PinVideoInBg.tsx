@@ -154,10 +154,10 @@ const PinVideoInBg = () => {
           MozOsxFontSmoothing: "grayscale",
         }}
       >
-        <div className=" lg:max-w-6xl overflow-hidden xl:mt-9 ">
+        <div className=" w-full lg:max-w-6xl overflow-hidden xl:mt-9 ">
           <h2
             ref={heroTopRef}
-            className="pb-hero-top text-2xl md:text-[28px] lg:text-[72px] font-light text-white mb-1 font4"
+            className="pb-hero-top md:text-[28px] lg:text-[72px] font-light text-white mb-1 font4"
           >
             A GLOBAL 360° CREATIVE
           </h2>
@@ -181,7 +181,7 @@ const PinVideoInBg = () => {
 
           <p
             ref={heroSubRef}
-            className="pb-hero-sub text-[16px] md:text-[16px] lg:text-[20px]
+            className="pb-hero-sub text-[16px] md:text-[8px] lg:text-[20px]
             xl:text-[24px] text-white/90 tracking-[1.5px] md:tracking-[2px] mt-6 font5   text-nowrap"
           >
             SPARKING STAGGERING BRAND MOVEMENTS IN ASTONISHING WAYS

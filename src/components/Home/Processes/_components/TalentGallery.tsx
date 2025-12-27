@@ -104,7 +104,7 @@ const TalentGallery = () => {
       {images.map((src, index) => (
         <div
           key={index}
-          className="w-[20vw] md:h-[300px] lg:h-[170px] xl:h-[220px] relative bg-black"
+          className="w-[20vw] md:h-[27vh] lg:h-[170px] xl:h-[220px] relative bg-black"
         >
           <Image
             src={src}
@@ -126,18 +126,18 @@ const TalentGallery = () => {
         THE FACES OF OUR RECENT CAMPAIGNS
       </p>
     </div>
-    <div className="h-[22vh] xl:h-[140px] flex items-start">
+    <div className="sm:h-[140px] md:h-[152px] lg:h-[22vh] xl:h-[140px] flex items-start">
         <div
           ref={upperBorderRef}
           className="bg-black w-[0.6px]"
           style={{ height: 0 }}
         />
       </div>
-      <p  className="font5 text-[18px] mt-2"   ref={awardTextRef} >
+      <p  className="font5 sm:text-[14px] lg:text-[18px] mt-2"   ref={awardTextRef} >
         AWARD-WINNING
       </p>
-      <p  className="font4 text-[68px] xl:text-[78px]"  ref={executionTextRef}  >EXECUTION</p>
-      <div className="h-[22vh] xl:h-[140px] flex items-start">
+      <p  className="font4 sm:text-[55px] lg:text-[68px] xl:text-[78px]"  ref={executionTextRef}  >EXECUTION</p>
+      <div className="sm:h-[140px] md:h-[152px] lg:h-[22vh] xl:h-[140px] flex items-start">
         <div
           ref={lowerBorderRef}
           className="bg-black w-[0.6px]"
@@ -154,19 +154,19 @@ export default TalentGallery;
 const TelantTop = ()=> {
     return (
         <>
-          <div className="w-12 h-12 flex justify-center items-center mt-2 mb-3 rounded-full border text-[30px] font5 border-black">
+          <div className="w-12 h-12 hidden  md:flex justify-center items-center mt-2 mb-3 rounded-full border text-[30px] font5 border-black">
                 3
               </div>
         
-              <h3 className="text-[52px]  font4 tracking-tight">TALENT ACQUISITION</h3>
-              <div className="flex items-center gap-5 font5 my-2 text-[16px]">
+              <h3 className="hidden md:block text-[52px]  font4 tracking-tight">TALENT ACQUISITION</h3>
+              <div className="hidden   md:flex items-center gap-5 font5 my-2 text-[16px]">
                 <p>NEGOTIATION</p>
                 <ArrowRight />
                 <p>PAYROLL</p>
                 <ArrowRight />
                 <p>RESIDUALS</p>
               </div>
-              <p className="font2 mb-1 text-[34px]">ALL IN-HOUSE</p>
+              <p className="hidden md:block font2 mb-1 text-[34px]">ALL IN-HOUSE</p>
         </>
     )
 }
